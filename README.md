@@ -1,7 +1,5 @@
 - 👋 Hi, I’m @arnav-ray
-- 👀 I’m interested in Data Science 
-- 🌱 I’m currently learning Machine Learning
-- 💞️ I’m looking to collaborate on Data Science projects 
+- 👀 I’m interested in AI projects 
 - 📫 How to reach me: ping me on GitHub
 
 <!---
