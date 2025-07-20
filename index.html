@@ -153,12 +153,23 @@
             overflow: hidden;
         }
 
-        #ocean-canvas {
+        #ocean-video {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
             z-index: -1;
         }
 
@@ -577,7 +588,9 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <canvas id="ocean-canvas"></canvas>
+        <video id="ocean-video" autoplay muted loop playsinline poster="assets/video/ocean-fallback.jpg">
+            <source src="assets/video/ocean-bg.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
             <h1>Navigating the Blue Ocean of Innovation</h1>
             <p class="subtitle">Exploring new tech waters through AI & creativity.</p>
@@ -768,7 +781,6 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Smooth scrolling for navigation links
@@ -859,84 +871,6 @@
                     closeModal();
                 }
             });
-
-            // Three.js Realistic Ocean Wave Animation
-            let scene, camera, renderer, oceanMesh, clock;
-
-            function initOceanWaves() {
-                const canvas = document.getElementById('ocean-canvas');
-                if (!canvas) return;
-
-                scene = new THREE.Scene();
-                clock = new THREE.Clock();
-
-                // Camera
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-                camera.position.set(0, 4, 8);
-                camera.lookAt(0, 0, 0);
-
-                // Renderer
-                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-                // Geometry
-                const geometry = new THREE.PlaneGeometry(40, 40, 200, 200);
-                
-                const material = new THREE.MeshPhongMaterial({
-                    color: 0x3ec6e0,
-                    transparent: true,
-                    opacity: 0.7,
-                    shininess: 90,
-                    side: THREE.DoubleSide,
-                });
-
-                oceanMesh = new THREE.Mesh(geometry, material);
-                oceanMesh.rotation.x = -Math.PI / 2;
-                scene.add(oceanMesh);
-
-                // Lighting
-                const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-                scene.add(ambient);
-
-                const directional = new THREE.DirectionalLight(0xffffff, 0.8);
-                directional.position.set(-5, 5, 5);
-                scene.add(directional);
-
-                window.addEventListener('resize', onWindowResize);
-                animateWaves();
-            }
-
-            function animateWaves() {
-                requestAnimationFrame(animateWaves);
-
-                const time = clock.getElapsedTime();
-                const pos = oceanMesh.geometry.attributes.position;
-
-                for (let i = 0; i < pos.count; i++) {
-                    const x = pos.getX(i);
-                    const y = pos.getY(i);
-
-                    // Multiple overlapping wave functions for realism
-                    const wave1 = Math.sin(x * 0.4 + time * 1.2) * 0.25;
-                    const wave2 = Math.cos(y * 0.3 + time * 1.4) * 0.2;
-                    const wave3 = Math.sin((x + y) * 0.5 + time * 0.8) * 0.15;
-
-                    pos.setZ(i, wave1 + wave2 + wave3);
-                }
-
-                pos.needsUpdate = true;
-                oceanMesh.geometry.computeVertexNormals();
-                renderer.render(scene, camera);
-            }
-
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-            
-            initOceanWaves();
         });
     </script>
 </body>
