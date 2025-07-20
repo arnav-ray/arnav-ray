@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnav Amal Ray - Exploring with AI & Innovation</title>
-    <meta name="description" content="AI learner building full-stack applications. Showcasing cloud architecture, API integrations, and a journey of curiosity.">
+    <title>Arnav Amal Ray - AI & Innovation Portfolio</title>
+    <meta name="description" content="A portfolio showcasing full-stack applications built with AI collaboration, cloud architecture, and a passion for technology.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --bg-color: #031926; /* Deep Ocean */
+            --card-color: rgba(3, 41, 54, 0.5); /* Dark water with transparency */
+            --border-color: rgba(38, 70, 83, 0.5); /* Seaweed greenish border */
+            --primary-color: #3ec6e0; /* Coral blue */
+            --text-color: #b8d8e3; /* Washed light cyan */
+            --heading-color: #e0f7fa; /* Foam white */
+            --shadow-color: rgba(0, 47, 75, 0.4);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
         }
 
         .container {
@@ -26,16 +41,16 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(3, 25, 38, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--border-color);
         }
 
         nav {
@@ -46,8 +61,8 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-weight: 600;
+            color: var(--heading-color);
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -56,7 +71,7 @@
         .verified-badge {
             width: 20px;
             height: 20px;
-            fill: #667eea;
+            fill: var(--primary-color);
         }
 
         .nav-links {
@@ -67,359 +82,260 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: var(--primary-color);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--heading-color);
             position: relative;
+            padding: 5rem 0;
+            overflow: hidden;
+        }
+
+        #ocean-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease-out;
+            font-weight: 700;
         }
 
         .hero-content .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 2.5rem;
+            color: var(--text-color);
             opacity: 0.9;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
-        .hero-content .tagline {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            opacity: 0.8;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
         .cta-button {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
             transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.9s both;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            box-shadow: 0 4px 20px rgba(62, 198, 224, 0.3);
         }
 
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(62, 198, 224, 0.4);
         }
 
-        /* Section Styles */
+        /* General Section Styles */
         .section {
-            padding: 5rem 0;
-            background: white;
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
-
-        .section:nth-child(even) {
-            background: #f8f9fa;
+        .section:last-of-type {
+            border-bottom: none;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            color: var(--heading-color);
+            font-weight: 600;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 1.1rem;
+            color: var(--text-color);
             margin-bottom: 4rem;
-            max-width: 800px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+        
+        .glass-card {
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         /* About Section */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            align-items: start;
         }
-
+        
         .about-text h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+         .about-text p {
+            font-size: 1.05rem;
         }
 
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .stats-grid {
+        /* Projects Section */
+        .projects-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .project-card {
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
+        .project-header {
+            padding: 1.5rem;
+            cursor: pointer;
         }
 
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Journey & What's Next Section */
-        .journey-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-marker {
-            width: 40px;
-            height: 40px;
-            background: #667eea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-right: 2rem;
-            flex-shrink: 0;
-            margin-top: 1rem;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            flex: 1;
-        }
-
-        .timeline-content h4 {
-            color: #667eea;
+        .project-header h3 {
+            font-size: 1.5rem;
+            color: var(--heading-color);
             margin-bottom: 0.5rem;
         }
 
-        .next-steps-list {
-            list-style: none;
-            padding-left: 0;
+        .project-header p {
+            font-size: 1rem;
+            color: var(--text-color);
         }
-
-        .next-steps-list li {
-            padding: 0.75rem 0;
-            padding-left: 2.5rem;
-            position: relative;
-            font-size: 1.1rem;
+        
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            padding: 0 1.5rem;
         }
-
-        .next-steps-list li:before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-
-        /* Projects Section */
-        .project-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-
-        .project-info h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .project-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
+        
+        .project-card.open .project-details {
+            max-height: 500px; /* Adjust as needed */
+            padding: 0 1.5rem 1.5rem;
         }
 
         .achievement-list {
             list-style: none;
-            margin-bottom: 2rem;
+            margin: 1.5rem 0;
+            padding-left: 0;
         }
 
         .achievement-list li {
-            padding: 0.5rem 0;
             padding-left: 2rem;
             position: relative;
+            margin-bottom: 0.5rem;
         }
 
-        .achievement-list li:before {
+        .achievement-list li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #28a745;
+            color: var(--primary-color);
             font-weight: bold;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
         }
 
         .btn {
             padding: 0.8rem 1.5rem;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: 500;
             transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
-            background: #667eea;
-            color: white;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            font-weight: 600;
         }
-
-        .btn-secondary {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Architecture Diagram */
-        .architecture-diagram {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-
-        .architecture-flow {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .arch-component {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .arch-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .arch-arrow {
-            font-size: 2rem;
-            color: #667eea;
-        }
-
-        .security-badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .security-badge {
-            background: #e8f4fd;
-            color: #0066cc;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        
+        .btn-primary:hover {
+            filter: brightness(1.1);
         }
 
         /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .skill-category {
-            background: white;
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .skill-category:hover {
+            transform: translateY(-5px);
         }
 
-        .skill-icon {
-            font-size: 3rem;
+        .skill-icon svg {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 1rem;
+            color: var(--primary-color);
+        }
+        
+        .skill-category h4 {
+            color: var(--heading-color);
+            font-weight: 500;
             margin-bottom: 1rem;
-            color: #667eea;
         }
 
         .skill-list {
             list-style: none;
-            text-align: left;
+            text-align: center;
+            padding-left: 0;
         }
 
         .skill-list li {
-            padding: 0.3rem 0;
-            color: #666;
+            padding: 0.2rem 0;
+            color: var(--text-color);
         }
 
         /* Contact Section */
@@ -432,26 +348,118 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 3rem;
+            flex-wrap: wrap;
         }
 
-        .contact-item {
-            text-align: center;
+        .contact-item a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-
-        .contact-item .icon {
-            font-size: 2rem;
-            color: #667eea;
-            margin-bottom: 1rem;
+        .contact-item a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .contact-item .icon svg {
+            width: 32px;
+            height: 32px;
         }
 
         /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: var(--bg-color);
+            color: var(--text-color);
             text-align: center;
             padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Modal for Live Demo */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            width: 90%;
+            height: 85%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px var(--shadow-color);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.show .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .modal-title {
+            color: var(--heading-color);
+            font-weight: 500;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            flex-grow: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
 
         /* Animations */
@@ -468,31 +476,8 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-grid,
-            .project-showcase {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .nav-links {
                 display: none;
-            }
-
-            .architecture-flow {
-                flex-direction: column;
-            }
-
-            .arch-arrow {
-                transform: rotate(90deg);
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 2rem;
             }
         }
     </style>
@@ -507,9 +492,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#journey">Journey</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#next">What's Next</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -518,85 +501,26 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <canvas id="ocean-canvas"></canvas>
         <div class="hero-content">
-            <h1>Building with AI</h1>
-            <p class="subtitle">AI Learner • Curious about Tech • Cloud Enthusiast</p>
-            <p class="tagline">Exploring how to transform ideas into applications with new tools</p>
-            <a href="#projects" class="cta-button">See My Work</a>
+            <h1>Navigating the Blue Ocean of Innovation</h1>
+            <p class="subtitle">Exploring new tech waters through AI & creativity.</p>
+            <a href="#projects" class="cta-button">Explore My Projects</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>My Background</h3>
-                    <p>By day, I'm a finance transformation consultant, helping large organizations navigate complex SAP S/4HANA systems. My work involves bridging the gap between finance, tax compliance, and technology to optimize business processes.</p>
-                    
-                    <h3>Why I Build</h3>
-                    <p>In my personal time, I build these small AI projects as a creative outlet. It's my way of staying curious and exploring how modern AI can be used to build simple, user-friendly tools that solve everyday problems. This hands-on approach allows me to learn about technology, design, and usability from a practical perspective, moving from a blank page to a functional application.</p>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">Years Coding Experience</span>
+            <div class="glass-card">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>My Day Job</h3>
+                        <p>I am an SAP FI (Finance) consultant, specializing in helping large organizations navigate complex S/4HANA implementations. My work involves bridging the critical gap between finance, tax compliance, and technology to design and optimize key business processes.</p>
                     </div>
-                    <div class="stat-card">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">AI-Assisted Development</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Full-Stack Applications</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">Learning Potential</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Journey Section -->
-    <section id="journey" class="section">
-        <div class="container">
-            <h2 class="section-title">My Learning Journey</h2>
-            <p class="section-subtitle">This isn't just about coding. It's a full product development cycle undertaken by a non-technical person, driven by curiosity and a determination to build.</p>
-            
-            <div class="journey-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h4>Ideation & Design Thinking</h4>
-                        <p>Every project began not with code, but with a problem. I applied design thinking principles to define user needs, sketch out UI/UX flows, and create a clear product vision before a single line of code was written.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h4>AI-Powered Collaboration</h4>
-                        <p>I leveraged a suite of AI tools (Gemini, Claude, Cursor, ChatGPT) as my development partners. This went beyond simple code generation; I used them for architectural brainstorming, exploring different technical solutions, and translating my product vision into a tangible development plan.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h4>Navigating the Technical Maze</h4>
-                        <p>The biggest challenge was overcoming the initial blockers. I wrestled with cryptic bugs, learned to debug systematically, and dove into concepts like API security and serverless architecture. Figuring out how to host a webpage securely was a project in itself, requiring persistence and a lot of trial and error.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <h4>Deployment & Iteration</h4>
-                        <p>Successfully deploying an application was a major milestone. The final step involved gathering user feedback, identifying areas for improvement, and iterating on the design and functionality—closing the loop on a complete product development cycle.</p>
+                    <div class="about-text">
+                        <h3>Why I Build</h3>
+                        <p>While AI tools handled the coding, I acted as the architect, project manager, and creative director. I provided the vision, the logic, and the prompts, and then debugged the output. This hands-on approach allows me to understand technology, design, and usability from a practical perspective as a curious learner.</p>
                     </div>
                 </div>
             </div>
@@ -607,159 +531,61 @@
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            <p class="section-subtitle">A collection of applications built from scratch with AI collaboration</p>
+            <p class="section-subtitle">A collection of applications built from scratch with AI collaboration. Click any project to learn more.</p>
             
-            <!-- Project 1: German for Visitors -->
-            <div class="project-showcase">
-                 <div class="project-info">
-                    <h3>German for Visitors</h3>
-                    <p class="project-description">A practical phrasebook designed for Indian parents visiting Germany. Features audio, multiple language translations, and an interactive mind map to make learning key phrases easy and intuitive.</p>
-                    
-                    <ul class="achievement-list">
-                        <li>Focus on practical, real-world scenarios for visitors</li>
-                        <li>Integrates Google Sheets as a lightweight CMS</li>
-                        <li>Features text-to-speech for audio pronunciation</li>
-                        <li>Interactive D3.js mind map for visual learning</li>
-                        <li>Provides translations in Hindi, Bengali, and Marathi</li>
-                    </ul>
-                    
-                    <div class="project-links">
-                        <a href="https://visitgermany.arnavray.ca" class="btn btn-primary" target="_blank">Live Demo</a>
+            <div class="projects-container">
+
+                <!-- Project 1: German for Visitors -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>German for Visitors</h3>
+                        <p>An all-in-one travel and language tool.</p>
+                    </div>
+                    <div class="project-details">
+                        <ul class="achievement-list">
+                            <li>Interactive guided tour with Leaflet.js</li>
+                            <li>Contextual dialogue practice for real-world scenarios</li>
+                            <li>D3.js mind map for visual learning</li>
+                            <li>Multi-language support (Hindi, Bengali, Marathi)</li>
+                        </ul>
+                        <button class="btn btn-primary demo-btn" data-url="https://visitgermany.arnavray.ca" data-title="German for Visitors">Try Live Demo</button>
                     </div>
                 </div>
 
-                <div class="architecture-diagram">
-                    <h4 style="text-align: center; margin-bottom: 2rem; color: #333;">Technical Architecture</h4>
-                    <div class="architecture-flow">
-                        <div class="arch-component">
-                            <div class="arch-icon">🌐</div>
-                            <h5>Frontend</h5>
-                            <p>HTML/CSS/JS<br>D3.js Visualization</p>
-                        </div>
-                        
-                        <div class="arch-arrow">→</div>
-                        
-                        <div class="arch-component">
-                            <div class="arch-icon">📊</div>
-                            <h5>Google Sheets API</h5>
-                            <p>Content Management<br>Lightweight Database</p>
-                        </div>
+                <!-- Project 2: Daily German Learning -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Daily German Learning</h3>
+                        <p>An interactive language learning platform.</p>
+                    </div>
+                    <div class="project-details">
+                        <ul class="achievement-list">
+                            <li>Built with 0 prior coding experience</li>
+                            <li>Integrated cloud APIs via serverless functions</li>
+                            <li>Interactive exercises (drag & drop, memory games)</li>
+                            <li>Color-coded grammar analysis system</li>
+                        </ul>
+                        <button class="btn btn-primary demo-btn" data-url="https://german.arnavray.ca" data-title="Daily German Learning">Try Live Demo</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Divider -->
-            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 2px solid #e9ecef;"></div>
+                <!-- Project 3: LLM Chat Portal -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>LLM Chat Portal</h3>
+                        <p>A personal AI chat interface with Google's Gemini API.</p>
+                    </div>
+                    <div class="project-details">
+                         <ul class="achievement-list">
+                            <li>Integrated Google Gemini API</li>
+                            <li>Clean, responsive chat interface</li>
+                            <li>Real-time message streaming</li>
+                            <li>Deployed on Google Cloud Platform</li>
+                        </ul>
+                        <a href="http://arnav-personal-sandbox.uc.r.appspot.com/" target="_blank" class="btn btn-primary">Try Live Demo</a>
+                    </div>
+                </div>
 
-            <!-- Project 2: Daily German Learning -->
-            <div class="project-showcase">
-                <div class="project-info">
-                    <h3>Daily German Learning Platform</h3>
-                    <p class="project-description">An interactive web application that helps users learn German through themed articles, color-coded grammar analysis, and engaging exercises. Built entirely through AI collaboration without prior coding experience.</p>
-                    
-                    <ul class="achievement-list">
-                        <li>Built with 0 prior coding experience</li>
-                        <li>Integrated cloud APIs and serverless functions</li>
-                        <li>Implemented security best practices including XSS prevention</li>
-                        <li>Created interactive exercises: drag & drop, memory games, crosswords</li>
-                        <li>Developed color-coded grammar analysis system</li>
-                    </ul>
-                    
-                    <div class="project-links">
-                        <a href="https://german.arnavray.ca" class="btn btn-primary" target="_blank">Live Demo</a>
-                        <a href="#architecture-german" class="btn btn-secondary">View Architecture</a>
-                    </div>
-                </div>
-                
-                <div class="architecture-diagram" id="architecture-german">
-                    <h4 style="text-align: center; margin-bottom: 2rem; color: #333;">Technical Architecture</h4>
-                    <div class="architecture-flow">
-                        <div class="arch-component">
-                            <div class="arch-icon">🌐</div>
-                            <h5>Frontend</h5>
-                            <p>HTML/CSS/JavaScript<br>Interactive UI</p>
-                        </div>
-                        
-                        <div class="arch-arrow">→</div>
-                        
-                        <div class="arch-component">
-                            <div class="arch-icon">⚡</div>
-                            <h5>Netlify Functions</h5>
-                            <p>Serverless Backend<br>API Proxy</p>
-                        </div>
-                        
-                        <div class="arch-arrow">→</div>
-                        
-                        <div class="arch-component">
-                            <div class="arch-icon">📊</div>
-                            <h5>Google Sheets API</h5>
-                            <p>Content Management<br>Cloud Storage</p>
-                        </div>
-                    </div>
-                    
-                    <div class="security-badges">
-                        <span class="security-badge">🔒 XSS Prevention</span>
-                        <span class="security-badge">🛡️ Input Sanitization</span>
-                        <span class="security-badge">🔑 Secure API Keys</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 2px solid #e9ecef;"></div>
-            
-            <!-- Project 3: LLM Chat Portal -->
-            <div class="project-showcase">
-                <div class="project-info">
-                    <h4>LLM Chat Portal</h4>
-                    <p class="project-description">A personal AI chat interface powered by Google's Gemini API. Built to explore conversational AI capabilities and provide a clean, intuitive chat experience.</p>
-                    
-                    <ul class="achievement-list">
-                        <li>Integrated Google Gemini API for advanced AI conversations</li>
-                        <li>Clean, responsive chat interface design</li>
-                        <li>Real-time message handling and streaming</li>
-                        <li>Deployed on Google Cloud Platform</li>
-                    </ul>
-                    
-                    <div class="project-links">
-                        <a href="http://arnav-personal-sandbox.uc.r.appspot.com/" class="btn btn-primary" target="_blank">Try Live Demo</a>
-                    </div>
-                </div>
-                
-                <div class="architecture-diagram">
-                    <h5 style="text-align: center; margin-bottom: 1.5rem; color: #333;">AI Chat Architecture</h5>
-                    <div class="architecture-flow">
-                        <div class="arch-component">
-                            <div class="arch-icon">💬</div>
-                            <h6>Chat Interface</h6>
-                            <p>Real-time UI<br>Message Streaming</p>
-                        </div>
-                        
-                        <div class="arch-arrow">→</div>
-                        
-                        <div class="arch-component">
-                            <div class="arch-icon">🤖</div>
-                            <h6>Gemini API</h6>
-                            <p>AI Processing<br>Natural Language</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What's Next Section -->
-    <section id="next" class="section">
-        <div class="container">
-             <h2 class="section-title">What's Next?</h2>
-             <p class="section-subtitle">My journey of learning is ongoing. I plan to continue exploring the intersection of AI and practical problem-solving.</p>
-             <div style="max-width: 800px; margin: 0 auto;">
-                <ul class="next-steps-list">
-                    <li>Tackling more complex challenges, perhaps by building a tool that simplifies a common financial or tax-related task.</li>
-                    <li>Experimenting with multi-modal AI, integrating image and voice capabilities into my applications.</li>
-                    <li>Deepening my understanding of secure and scalable cloud architecture to support more robust projects.</li>
-                </ul>
-                <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem;">The goal remains the same: to learn by doing and to share my explorations along the way.</p>
             </div>
         </div>
     </section>
@@ -768,78 +594,47 @@
     <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title">Skills & Technologies</h2>
-            <p class="section-subtitle">What I've learned through AI-assisted development</p>
+            <p class="section-subtitle">A toolkit assembled through hands-on building and AI-assisted development.</p>
             
             <div class="skills-grid">
                 <div class="skill-category">
-                    <div class="skill-icon">🌐</div>
-                    <h4>Frontend Development</h4>
+                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" /></svg></div>
+                    <h4>Frontend</h4>
                     <ul class="skill-list">
                         <li>HTML5 & CSS3</li>
                         <li>JavaScript (ES6+)</li>
                         <li>Responsive Design</li>
-                        <li>Interactive UI/UX</li>
-                        <li>D3.js</li>
+                        <li>D3.js & Leaflet.js</li>
                     </ul>
                 </div>
-                
                 <div class="skill-category">
-                    <div class="skill-icon">☁️</div>
+                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-5.05-2.088 3.75 3.75 0 0 0-6.332-1.618 4.5 4.5 0 0 0-1.332 7.257Z" /></svg></div>
                     <h4>Cloud & APIs</h4>
                     <ul class="skill-list">
                         <li>Google Cloud Platform</li>
-                        <li>RESTful APIs</li>
                         <li>Serverless Functions</li>
-                        <li>Environment Variables</li>
+                        <li>RESTful APIs</li>
                         <li>API Security</li>
                     </ul>
                 </div>
-                
                 <div class="skill-category">
-                    <div class="skill-icon">🔒</div>
-                    <h4>Security & Best Practices</h4>
+                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Z" /></svg></div>
+                    <h4>Dev & Security</h4>
                     <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>CI/CD (Netlify)</li>
                         <li>XSS Prevention</li>
                         <li>Input Sanitization</li>
-                        <li>Secure Authentication</li>
-                        <li>Error Handling</li>
-                        <li>Code Security</li>
                     </ul>
                 </div>
-                
                 <div class="skill-category">
-                    <div class="skill-icon">🚀</div>
-                    <h4>DevOps & Deployment</h4>
-                    <ul class="skill-list">
-                        <li>Git Version Control</li>
-                        <li>Netlify Deployment</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Domain Management</li>
-                        <li>Performance Optimization</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="skill-icon">🤖</div>
+                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a.75.75 0 0 0 .75-.75V11.25l1.43 1.43c.44.44 1.15.44 1.59 0l1.5-1.5a1.125 1.125 0 0 0 0-1.59l-5.25-5.25a1.125 1.125 0 0 0-1.59 0l-5.25 5.25a1.125 1.125 0 0 0 0 1.59l1.5 1.5c.44.44 1.15.44 1.59 0l1.43-1.43V17.25A.75.75 0 0 0 12 18Z" /></svg></div>
                     <h4>AI Collaboration</h4>
                     <ul class="skill-list">
                         <li>Prompt Engineering</li>
-                        <li>Technical Problem Solving</li>
-                        <li>Code Review & Debugging</li>
+                        <li>Technical Brainstorming</li>
+                        <li>AI-Assisted Debugging</li>
                         <li>Architecture Planning</li>
-                        <li>Learning Optimization</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="skill-icon">📚</div>
-                    <h4>Domain Expertise</h4>
-                    <ul class="skill-list">
-                        <li>Educational Technology</li>
-                        <li>German Language</li>
-                        <li>Content Strategy</li>
-                        <li>User Experience</li>
-                        <li>Product Development</li>
                     </ul>
                 </div>
             </div>
@@ -851,31 +646,44 @@
         <div class="container">
             <div class="contact-content">
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Interested in AI-assisted development, technical collaboration, or just want to chat about the future of learning and creating?</p>
+                <p class="section-subtitle">Interested in AI-assisted development, technical collaboration, or just want to chat about the future of creating?</p>
                 
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="icon">📧</div>
-                        <h4>Email</h4>
-                        <p><a href="mailto:arnav@arnavray.ca" style="color: #667eea; text-decoration: none;">arnav@arnavray.ca</a></p>
+                        <a href="mailto:arnav@arnavray.ca">
+                            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg></span>
+                            <span>Email</span>
+                        </a>
                     </div>
-                    
                     <div class="contact-item">
-                        <div class="icon">💼</div>
-                        <h4>LinkedIn</h4>
-                        <p><a href="https://www.linkedin.com/in/arnavray" target="_blank" style="color: #667eea; text-decoration: none;">Connect with me</a></p>
+                         <a href="https://www.linkedin.com/in/arnavray" target="_blank">
+                            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" /></svg></span>
+                            <span>LinkedIn</span>
+                        </a>
                     </div>
-                    
                     <div class="contact-item">
-                        <div class="icon">💻</div>
-                        <h4>GitHub</h4>
-                        <p><a href="https://github.com/arnav-ray" target="_blank" style="color: #667eea; text-decoration: none;">View my code</a></p>
+                        <a href="https://github.com/arnav-ray" target="_blank">
+                            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-1.006 1.118-1.118l1.12-1.12a1.125 1.125 0 0 1 1.59 0l1.12 1.12c.558.112 1.028.576 1.118 1.118l.29 1.744a.49.49 0 0 0 .393.393l1.744.29c.542.09 1.006.56 1.118 1.118l1.12 1.12a1.125 1.125 0 0 1 0 1.59l-1.12 1.12c-.112.558-.576 1.028-1.118 1.118l-1.744.29a.49.49 0 0 0-.393.393l-.29 1.744c-.09.542-.56 1.006-1.118 1.118l-1.12 1.12a1.125 1.125 0 0 1-1.59 0l-1.12-1.12c-.558-.112-1.028-.576-1.118-1.118l-.29-1.744a.49.49 0 0 0-.393-.393l-1.744-.29c-.542-.09-1.006-.56-1.118-1.118l-1.12-1.12a1.125 1.125 0 0 1 0-1.59l1.12-1.12c.112-.558.576-1.028 1.118-1.118l1.744-.29a.49.49 0 0 0 .393-.393l.29-1.744Z" /></svg></span>
+                            <span>GitHub</span>
+                        </a>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Demo Modal -->
+    <div class="modal-overlay" id="demo-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title">Live Demo</h3>
+                <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="demo-iframe" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -884,29 +692,162 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll effect to header
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(3, 25, 38, 0.9)';
+                } else {
+                    header.style.background = 'rgba(3, 25, 38, 0.8)';
                 }
             });
-        });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            // Project card accordion
+            document.querySelectorAll('.project-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const card = header.closest('.project-card');
+                    const wasOpen = card.classList.contains('open');
+
+                    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('open'));
+                    
+                    if (!wasOpen) {
+                        card.classList.add('open');
+                    }
+                });
+            });
+
+            // Modal functionality
+            const modalOverlay = document.getElementById('demo-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const demoIframe = document.getElementById('demo-iframe');
+            const closeBtn = document.getElementById('modal-close-btn');
+            const demoBtns = document.querySelectorAll('.demo-btn');
+
+            const openModal = (url, title) => {
+                modalTitle.textContent = title;
+                demoIframe.src = url;
+                modalOverlay.classList.add('show');
+            };
+
+            const closeModal = () => {
+                modalOverlay.classList.remove('show');
+                demoIframe.src = ''; 
+            };
+
+            demoBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const url = btn.dataset.url;
+                    const title = btn.dataset.title;
+                    openModal(url, title);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Three.js Realistic Ocean Wave Animation
+            let scene, camera, renderer, oceanMesh, clock;
+
+            function initOceanWaves() {
+                const canvas = document.getElementById('ocean-canvas');
+                if (!canvas) return;
+
+                scene = new THREE.Scene();
+                clock = new THREE.Clock();
+
+                // Camera
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+                camera.position.set(0, 4, 8);
+                camera.lookAt(0, 0, 0);
+
+                // Renderer
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                // Geometry
+                const geometry = new THREE.PlaneGeometry(40, 40, 200, 200);
+
+                const material = new THREE.MeshPhongMaterial({
+                    color: 0x3ec6e0,
+                    transparent: true,
+                    opacity: 0.7,
+                    shininess: 90,
+                    side: THREE.DoubleSide,
+                });
+
+                oceanMesh = new THREE.Mesh(geometry, material);
+                oceanMesh.rotation.x = -Math.PI / 2;
+                scene.add(oceanMesh);
+
+                // Lighting
+                const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+                scene.add(ambient);
+
+                const directional = new THREE.DirectionalLight(0xffffff, 0.8);
+                directional.position.set(-5, 5, 5);
+                scene.add(directional);
+
+                window.addEventListener('resize', onWindowResize);
+                animateWaves();
             }
+
+            function animateWaves() {
+                requestAnimationFrame(animateWaves);
+
+                const time = clock.getElapsedTime();
+                const pos = oceanMesh.geometry.attributes.position;
+
+                for (let i = 0; i < pos.count; i++) {
+                    const x = pos.getX(i);
+                    const y = pos.getY(i);
+
+                    // Multiple overlapping wave functions for realism
+                    const wave1 = Math.sin(x * 0.4 + time * 1.2) * 0.25;
+                    const wave2 = Math.cos(y * 0.3 + time * 1.4) * 0.2;
+                    const wave3 = Math.sin((x + y) * 0.5 + time * 0.8) * 0.15;
+
+                    pos.setZ(i, wave1 + wave2 + wave3);
+                }
+
+                pos.needsUpdate = true;
+                oceanMesh.geometry.computeVertexNormals();
+                renderer.render(scene, camera);
+            }
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            initOceanWaves();
         });
     </script>
 </body>
