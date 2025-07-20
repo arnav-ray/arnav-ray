@@ -91,6 +91,55 @@
             color: var(--primary-color);
         }
 
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--heading-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 25, 38, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+
+        .mobile-nav a {
+            color: var(--heading-color);
+            text-decoration: none;
+            font-size: 2rem;
+            margin: 1.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary-color);
+        }
+
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -100,7 +149,7 @@
             text-align: center;
             color: var(--heading-color);
             position: relative;
-            padding: 5rem 0;
+            padding: 5rem 1rem;
             overflow: hidden;
         }
 
@@ -119,14 +168,14 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease-out;
             font-weight: 700;
         }
 
         .hero-content .subtitle {
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: clamp(1rem, 4vw, 1.3rem);
             margin-bottom: 2.5rem;
             color: var(--text-color);
             opacity: 0.9;
@@ -153,7 +202,7 @@
 
         /* General Section Styles */
         .section {
-            padding: 6rem 0;
+            padding: 5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
         .section:last-of-type {
@@ -162,7 +211,7 @@
 
         .section-title {
             text-align: center;
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: clamp(2rem, 6vw, 2.8rem);
             margin-bottom: 1.5rem;
             color: var(--heading-color);
             font-weight: 600;
@@ -172,7 +221,7 @@
             text-align: center;
             font-size: 1.1rem;
             color: var(--text-color);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -182,7 +231,7 @@
             background: var(--card-color);
             border: 1px solid var(--border-color);
             border-radius: 15px;
-            padding: 2.5rem;
+            padding: 2rem;
             box-shadow: 0 8px 32px 0 var(--shadow-color);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -191,7 +240,7 @@
         /* About Section */
         .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2.5rem;
             align-items: start;
         }
@@ -209,8 +258,8 @@
         /* Projects Section */
         .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .project-card {
@@ -250,7 +299,7 @@
         }
         
         .project-card.open .project-details {
-            max-height: 500px; /* Adjust as needed */
+            max-height: 500px;
             padding: 0 1.5rem 1.5rem;
         }
 
@@ -298,7 +347,7 @@
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1.5rem;
         }
 
@@ -348,7 +397,7 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
             margin-top: 3rem;
             flex-wrap: wrap;
         }
@@ -409,7 +458,7 @@
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 15px;
-            width: 90%;
+            width: 95%;
             height: 85%;
             max-width: 1400px;
             display: flex;
@@ -475,9 +524,24 @@
         }
 
         /* Responsive Design */
+        @media (min-width: 769px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .projects-container {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+            .hamburger {
+                display: block;
             }
         }
     </style>
@@ -496,8 +560,20 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="hamburger" id="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
     </header>
+    
+    <div class="mobile-nav" id="mobile-nav-menu">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -516,7 +592,7 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <h3>My Day Job</h3>
-                        <p>I am an SAP FI (Finance) consultant, specializing in helping large organizations navigate complex SAP S/4HANA implementations. My work involves bridging the critical gap between finance, tax compliance, and technology to design and optimize key business processes.</p>
+                        <p>I am an SAP FI (Finance) consultant, specializing in helping large organizations navigate complex S/4HANA implementations. My work involves bridging the critical gap between finance, tax compliance, and technology to design and optimize key business processes.</p>
                     </div>
                     <div class="about-text">
                         <h3>Why I Build</h3>
@@ -722,6 +798,19 @@
                     header.style.background = 'rgba(3, 25, 38, 0.8)';
                 }
             });
+            
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav-menu');
+            hamburger.addEventListener('click', () => {
+                mobileNav.classList.toggle('open');
+            });
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('open');
+                });
+            });
+
 
             // Project card accordion
             document.querySelectorAll('.project-header').forEach(header => {
@@ -793,7 +882,7 @@
 
                 // Geometry
                 const geometry = new THREE.PlaneGeometry(40, 40, 200, 200);
-
+                
                 const material = new THREE.MeshPhongMaterial({
                     color: 0x3ec6e0,
                     transparent: true,
