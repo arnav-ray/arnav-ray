@@ -3,144 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnav Amal Ray - AI & Innovation Portfolio</title>
-    <meta name="description" content="A portfolio showcasing full-stack applications built with AI collaboration, cloud architecture, and a passion for technology.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Arnav Ray - Navigating the Blue Ocean of Innovation</title>
     <style>
-        :root {
-            --bg-color: #031926; /* Deep Ocean */
-            --card-color: rgba(3, 41, 54, 0.5); /* Dark water with transparency */
-            --border-color: rgba(38, 70, 83, 0.5); /* Seaweed greenish border */
-            --primary-color: #3ec6e0; /* Coral blue */
-            --text-color: #b8d8e3; /* Washed light cyan */
-            --heading-color: #e0f7fa; /* Foam white */
-            --shadow-color: rgba(0, 47, 75, 0.4);
-        }
-
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0a0e27;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(3, 25, 38, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Safari compatibility */
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--heading-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .verified-badge {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Mobile Navigation */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: var(--heading-color);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav {
+        /* Ocean Video Background */
+        .ocean-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(3, 25, 38, 0.95);
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ocean-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Safari compatibility */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 1000;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .mobile-nav.open {
-            transform: translateX(0);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-
-        .mobile-nav a {
-            color: var(--heading-color);
-            text-decoration: none;
-            font-size: 2rem;
-            margin: 1.5rem 0;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-nav a:hover {
-            color: var(--primary-color);
-        }
-
 
         /* Hero Section */
         .hero {
@@ -149,732 +60,437 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--heading-color);
-            position: relative;
-            padding: 5rem 1rem;
-            overflow: hidden;
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, rgba(10, 14, 39, 0.7), rgba(10, 14, 39, 0.9));
         }
 
-        #ocean-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.3);
-            z-index: -1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.2rem, 8vw, 3.5rem);
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
-            font-weight: 700;
+            background: linear-gradient(135deg, #4fc3f7, #1e88e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
         }
 
-        .hero-content .subtitle {
-            font-size: clamp(1rem, 4vw, 1.3rem);
-            margin-bottom: 2.5rem;
-            color: var(--text-color);
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--bg-color);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.6s both;
-            box-shadow: 0 4px 20px rgba(62, 198, 224, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 25px rgba(62, 198, 224, 0.4);
-        }
-
-        /* General Section Styles */
-        .section {
-            padding: 5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .section:last-of-type {
-            border-bottom: none;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(2rem, 6vw, 2.8rem);
-            margin-bottom: 1.5rem;
-            color: var(--heading-color);
-            font-weight: 600;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-color);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .glass-card {
-            background: var(--card-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px 0 var(--shadow-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            align-items: start;
-        }
-        
-        .about-text h3 {
+        .tagline {
             font-size: 1.5rem;
+            color: #b3e5fc;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .intro-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .intro-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .intro-block h2 {
+            font-size: 1.5rem;
+            color: #4fc3f7;
             margin-bottom: 1rem;
-            color: var(--primary-color);
             font-weight: 600;
         }
-         .about-text p {
-            font-size: 1.05rem;
+
+        .intro-block p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e1f5fe;
         }
 
         /* Projects Section */
-        .projects-container {
+        .projects {
+            padding: 5rem 0;
+            background: rgba(10, 14, 39, 0.95);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #4fc3f7;
+        }
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
         .project-card {
-            background: var(--card-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
         }
-        
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.1), rgba(30, 136, 229, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--shadow-color);
+            box-shadow: 0 10px 40px rgba(79, 195, 247, 0.3);
         }
 
-        .project-header {
-            padding: 1.5rem;
-            cursor: pointer;
-        }
-
-        .project-header h3 {
-            font-size: 1.5rem;
-            color: var(--heading-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-header p {
-            font-size: 1rem;
-            color: var(--text-color);
-        }
-        
-        .project-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-            padding: 0 1.5rem;
-        }
-        
-        .project-card.open .project-details {
-            max-height: 500px;
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .achievement-list {
-            list-style: none;
-            margin: 1.5rem 0;
-            padding-left: 0;
-        }
-
-        .achievement-list li {
-            padding-left: 2rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .achievement-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .btn {
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: var(--bg-color);
-            font-weight: 600;
-        }
-        
-        .btn-primary:hover {
-            filter: brightness(1.1);
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            background: var(--card-color);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon svg {
-            width: 40px;
-            height: 40px;
-            margin: 0 auto 1rem;
-            color: var(--primary-color);
-        }
-        
-        .skill-category h4 {
-            color: var(--heading-color);
-            font-weight: 500;
+        .project-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .skill-list {
-            list-style: none;
-            text-align: center;
-            padding-left: 0;
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #4fc3f7;
         }
 
-        .skill-list li {
-            padding: 0.2rem 0;
-            color: var(--text-color);
+        .project-subtitle {
+            color: #b3e5fc;
+            margin-bottom: 1rem;
+            font-style: italic;
         }
 
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+        .project-description {
+            color: #e1f5fe;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
-        .contact-info {
+        .tech-stack {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
             flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
 
-        .contact-item a {
-            display: flex;
-            flex-direction: column;
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #b3e5fc;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-link {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1rem;
-            color: var(--text-color);
+            color: #4fc3f7;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
         }
-        .contact-item a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
+
+        .project-link:hover {
+            color: #b3e5fc;
+            transform: translateX(5px);
         }
-        
-        .contact-item .icon svg {
-            width: 32px;
-            height: 32px;
+
+        /* Featured Project */
+        .featured-project {
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.1), rgba(30, 136, 229, 0.05));
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(79, 195, 247, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #4fc3f7;
+            color: #0a0e27;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 4rem 0;
+            background: rgba(10, 14, 39, 0.98);
+        }
+
+        .skills-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Footer */
         footer {
-            background: var(--bg-color);
-            color: var(--text-color);
+            background: rgba(10, 14, 39, 0.98);
+            padding: 3rem 0;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Modal for Live Demo */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px); /* Safari compatibility */
+        .footer-links {
             display: flex;
-            align-items: center;
             justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .modal-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-container {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            width: 95%;
-            height: 85%;
-            max-width: 1400px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 40px var(--shadow-color);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal-overlay.show .modal-container {
-            transform: scale(1);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .modal-title {
-            color: var(--heading-color);
-            font-weight: 500;
-        }
-
-        .modal-close-btn {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
+        .footer-links a {
+            color: #4fc3f7;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
-        .modal-close-btn:hover {
-            color: var(--primary-color);
+
+        .footer-links a:hover {
+            color: #b3e5fc;
         }
 
-        .modal-body {
-            flex-grow: 1;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .modal-body iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (min-width: 769px) {
-            .about-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .projects-container {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            }
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
-            .hamburger {
-                display: block;
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .intro-sections {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Ocean Video Background -->
+    <div class="ocean-container">
+        <video class="ocean-video" autoplay muted loop playsinline>
+            <source src="https://cdn.pixabay.com/vimeo/328940142/ocean-23981.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="logo">
-                Arnav Amal Ray
-                <svg class="verified-badge" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.25 17.292l-4.5-4.364 1.857-1.858 2.643 2.506 5.643-5.784 1.857 1.857-7.5 7.643z"/></svg>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger-menu">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </nav>
+        <div class="container">
+            <h1 style="font-size: 1.5rem; color: #4fc3f7;">Arnav Amal Ray</h1>
+        </div>
     </header>
-    
-    <div class="mobile-nav" id="mobile-nav-menu">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero">
-        <video id="ocean-video" autoplay muted loop playsinline>
-            <source src="/assets/video/ocean-bg.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <h1>Navigating the Blue Ocean of Innovation</h1>
-            <p class="subtitle">Exploring new tech waters through AI & creativity.</p>
-            <a href="#projects" class="cta-button">Explore My Projects</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
         <div class="container">
-            <div class="glass-card">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h3>My Day Job</h3>
-                        <p>I am an SAP FI (Finance) consultant, specializing in helping large organizations navigate complex S/4HANA implementations. My work involves bridging the critical gap between finance, tax compliance, and technology to design and optimize key business processes.</p>
-                    </div>
-                    <div class="about-text">
-                        <h3>Why I Build</h3>
-                        <p>While AI tools handled the coding, I acted as the architect, project manager, and creative director. I provided the vision, the logic, and the prompts, and then debugged the output. This hands-on approach allows me to understand technology, design, and usability from a practical perspective as a curious learner.</p>
-                    </div>
+            <h1>Navigating the Blue Ocean of Innovation</h1>
+            <p class="tagline">Exploring new tech waters through AI & creativity</p>
+            
+            <div class="intro-sections">
+                <div class="intro-block">
+                    <h2>My Day Job</h2>
+                    <p>I am an SAP FI (Finance) consultant, specializing in helping large organizations navigate complex S/4HANA implementations. My work involves bridging the critical gap between finance, tax compliance, and technology to design and optimize key business processes.</p>
+                </div>
+                
+                <div class="intro-block">
+                    <h2>Why I Build</h2>
+                    <p>While AI tools handled the coding, I acted as the architect, project manager, and creative director. I provided the vision, the logic, and the prompts, and then debugged the output. This hands-on approach allows me to understand technology, design, and usability from a practical perspective as a curious learner.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
+    <section class="projects">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <p class="section-subtitle">A collection of applications built from scratch with AI collaboration. Click any project to learn more.</p>
+            <h2 class="section-title">Product Portfolio: Built with AI Collaboration</h2>
             
-            <div class="projects-container">
-
-                <!-- Project 1: German for Visitors -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>German for Visitors</h3>
-                        <p>An all-in-one travel and language tool.</p>
-                    </div>
-                    <div class="project-details">
-                        <ul class="achievement-list">
-                            <li>Interactive guided tour with Leaflet.js</li>
-                            <li>Contextual dialogue practice for real-world scenarios</li>
-                            <li>D3.js mind map for visual learning</li>
-                            <li>Multi-language support (Hindi, Bengali, Marathi)</li>
-                        </ul>
-                        <button class="btn btn-primary demo-btn" data-url="https://visitgermany.arnavray.ca" data-title="German for Visitors">Try Live Demo</button>
-                    </div>
+            <!-- Featured Project: Automated Podcast -->
+            <div class="featured-project">
+                <span class="featured-badge">NEW FEATURE</span>
+                <div class="project-icon">🎙️</div>
+                <h3 class="project-title">The Automated Podcast</h3>
+                <p class="project-subtitle">Zero-Budget AI Content Generation Platform</p>
+                <p class="project-description">
+                    A fully automated podcast system that creates daily AI-generated episodes from RSS feeds. Built with zero budget constraints, it demonstrates innovative problem-solving by avoiding all major costs while delivering a complete content pipeline.
+                </p>
+                
+                <div class="business-value">
+                    <h4>Business Impact:</h4>
+                    <ul class="value-points">
+                        <li><strong>Cost Innovation:</strong> Engineered a $0 solution using free-tier services and clever architecture</li>
+                        <li><strong>Content Automation:</strong> Generates 5+ hours of content daily without human intervention</li>
+                        <li><strong>Scalable Architecture:</strong> Can expand to multiple languages and topics with minimal changes</li>
+                        <li><strong>Unique IP:</strong> Custom personality engine creates differentiated content, not just AI wrappers</li>
+                    </ul>
                 </div>
 
-                <!-- Project 2: Daily German Learning -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Daily German Learning</h3>
-                        <p>An interactive language learning platform.</p>
-                    </div>
-                    <div class="project-details">
-                        <ul class="achievement-list">
-                            <li>Built with 0 prior coding experience</li>
-                            <li>Integrated cloud APIs via serverless functions</li>
-                            <li>Interactive exercises (drag & drop, memory games)</li>
-                            <li>Color-coded grammar analysis system</li>
-                        </ul>
-                        <button class="btn btn-primary demo-btn" data-url="https://german.arnavray.ca" data-title="Daily German Learning">Try Live Demo</button>
-                    </div>
+                <div class="business-value">
+                    <h4>Technical Innovation:</h4>
+                    <ul class="value-points">
+                        <li>End-to-end pipeline: RSS → Curation → Script Generation → Audio → Distribution</li>
+                        <li>Custom scoring algorithm for content selection</li>
+                        <li>Personality-driven dialogue generation system</li>
+                        <li>GitHub Actions for complete automation</li>
+                    </ul>
                 </div>
 
-                <!-- Project 3: LLM Chat Portal -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>LLM Chat Portal</h3>
-                        <p>A personal AI chat interface with Google's Gemini API.</p>
-                    </div>
-                    <div class="project-details">
-                         <ul class="achievement-list">
-                            <li>Integrated Google Gemini API</li>
-                            <li>Clean, responsive chat interface</li>
-                            <li>Real-time message streaming</li>
-                            <li>Deployed on Google Cloud Platform</li>
-                        </ul>
-                        <a href="http://arnav-personal-sandbox.uc.r.appspot.com/" target="_blank" class="btn btn-primary">Try Live Demo</a>
-                    </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">Edge-TTS</span>
+                    <span class="tech-tag">RSS Processing</span>
+                    <span class="tech-tag">Content Curation AI</span>
                 </div>
 
+                <a href="https://podcast.arnavray.ca/" class="project-link" target="_blank">
+                    Launch Podcast Platform →
+                </a>
+            </div>
+
+            <!-- Other Projects -->
+            <div class="projects-grid">
+                <div class="project-card" onclick="window.open('https://german.arnavray.ca/', '_blank')">
+                    <div class="project-icon">📚</div>
+                    <h3 class="project-title">Daily German Learning</h3>
+                    <p class="project-subtitle">An interactive language learning platform</p>
+                    <p class="project-description">
+                        Built with 0 prior coding experience<br>
+                        Integrated cloud APIs via serverless functions<br>
+                        Interactive exercises (drag & drop, memory games)<br>
+                        Color-coded grammar analysis system
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Google Sheets API</span>
+                        <span class="tech-tag">Serverless Functions</span>
+                        <span class="tech-tag">Interactive UI</span>
+                    </div>
+
+                    <a href="https://german.arnavray.ca/" class="project-link">
+                        Start Learning →
+                    </a>
+                </div>
+
+                <!-- Visit Germany -->
+                <div class="project-card" onclick="window.open('https://visitgermany.arnavray.ca/', '_blank')">
+                    <div class="project-icon">🗺️</div>
+                    <h3 class="project-title">German for Visitors</h3>
+                    <p class="project-subtitle">An all-in-one travel and language tool</p>
+                    <p class="project-description">
+                        Interactive guided tour with Leaflet.js<br>
+                        Contextual dialogue practice for real-world scenarios<br>
+                        D3.js mind map for visual learning<br>
+                        Multi-language support (Hindi, Bengali, Marathi)
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Leaflet.js</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Translation API</span>
+                    </div>
+
+                    <a href="https://visitgermany.arnavray.ca/" class="project-link">
+                        Explore Tours →
+                    </a>
+                </div>
+
+                <!-- Personal AI Interface -->
+                <div class="project-card" onclick="window.open('https://arnav-personal-sandbox.uc.r.appspot.com/', '_blank')">
+                    <div class="project-icon">🤖</div>
+                    <h3 class="project-title">LLM Chat Portal</h3>
+                    <p class="project-subtitle">A personal AI chat interface with Google's Gemini API</p>
+                    <p class="project-description">
+                        Integrated Google Gemini API<br>
+                        Clean, responsive chat interface<br>
+                        Real-time message streaming<br>
+                        Deployed on Google Cloud Platform
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Gemini API</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Google Cloud</span>
+                    </div>
+
+                    <a href="https://arnav-personal-sandbox.uc.r.appspot.com/" class="project-link">
+                        Try AI Assistant →
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section class="skills">
         <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <p class="section-subtitle">A toolkit assembled through hands-on building and AI-assisted development.</p>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" /></svg></div>
-                    <h4>Frontend</h4>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Responsive Design</li>
-                        <li>D3.js & Leaflet.js</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-5.05-2.088 3.75 3.75 0 0 0-6.332-1.618 4.5 4.5 0 0 0-1.332 7.257Z" /></svg></div>
-                    <h4>Cloud & APIs</h4>
-                    <ul class="skill-list">
-                        <li>Google Cloud Platform</li>
-                        <li>Serverless Functions</li>
-                        <li>RESTful APIs</li>
-                        <li>API Security</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Z" /></svg></div>
-                    <h4>Dev & Security</h4>
-                    <ul class="skill-list">
-                        <li>Git & GitHub</li>
-                        <li>CI/CD (Netlify)</li>
-                        <li>XSS Prevention</li>
-                        <li>Input Sanitization</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a.75.75 0 0 0 .75-.75V11.25l1.43 1.43c.44.44 1.15.44 1.59 0l1.5-1.5a1.125 1.125 0 0 0 0-1.59l-5.25-5.25a1.125 1.125 0 0 0-1.59 0l-5.25 5.25a1.125 1.125 0 0 0 0 1.59l1.5 1.5c.44.44 1.15.44 1.59 0l1.43-1.43V17.25A.75.75 0 0 0 12 18Z" /></svg></div>
-                    <h4>AI Collaboration</h4>
-                    <ul class="skill-list">
-                        <li>Prompt Engineering</li>
-                        <li>Technical Brainstorming</li>
-                        <li>AI-Assisted Debugging</li>
-                        <li>Architecture Planning</li>
-                    </ul>
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="skills-content">
+                <p style="font-size: 1.2rem; color: #b3e5fc; margin-bottom: 2rem;">
+                    A toolkit assembled through hands-on building and AI-assisted development
+                </p>
+                <div class="tech-stack" style="justify-content: center; gap: 1rem;">
+                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">SAP S/4HANA</span>
+                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">JavaScript/Node.js</span>
+                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">React</span>
+                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">AI/ML Integration</span>
+                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">Cloud Architecture</span>
+                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">Process Automation</span>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Interested in AI-assisted development, technical collaboration, or just want to chat about the future of creating?</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <a href="mailto:arnav@arnavray.ca">
-                            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg></span>
-                            <span>Email</span>
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                         <a href="https://www.linkedin.com/in/arnavray" target="_blank">
-                            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" /></svg></span>
-                            <span>LinkedIn</span>
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <a href="https://github.com/arnav-ray" target="_blank">
-                            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-1.006 1.118-1.118l1.12-1.12a1.125 1.125 0 0 1 1.59 0l1.12 1.12c.558.112 1.028.576 1.118 1.118l.29 1.744a.49.49 0 0 0 .393.393l1.744.29c.542.09 1.006.56 1.118 1.118l1.12 1.12a1.125 1.125 0 0 1 0 1.59l-1.12 1.12c-.112.558-.576 1.028-1.118 1.118l-1.744.29a.49.49 0 0 0-.393.393l-.29 1.744c-.09.542-.56 1.006-1.118 1.118l-1.12 1.12a1.125 1.125 0 0 1-1.59 0l-1.12-1.12c-.558-.112-1.028-.576-1.118-1.118l-.29-1.744a.49.49 0 0 0-.393-.393l-1.744-.29c-.542-.09-1.006-.56-1.118-1.118l-1.12-1.12a1.125 1.125 0 0 1 0-1.59l1.12-1.12c.112-.558.576-1.028 1.118-1.118l1.744-.29a.49.49 0 0 0 .393-.393l.29-1.744Z" /></svg></span>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Modal -->
-    <div class="modal-overlay" id="demo-modal">
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3 id="modal-title" class="modal-title">Live Demo</h3>
-                <button id="modal-close-btn" class="modal-close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <iframe id="demo-iframe" src="" frameborder="0"></iframe>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Arnav Amal Ray. Built with AI assistance and human creativity.</p>
+            <h2 class="section-title" style="margin-bottom: 2rem;">Let's Connect</h2>
+            <p style="font-size: 1.2rem; color: #b3e5fc; max-width: 600px; margin: 0 auto 2rem;">
+                Interested in AI-assisted development, technical collaboration, or just want to chat about the future of creating?
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/arnavray" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/arnavray" target="_blank">LinkedIn</a>
+                <a href="mailto:contact@arnavray.ca">Email</a>
+            </div>
+            <p style="color: #b3e5fc;">&copy; 2024 Arnav Amal Ray. Navigating innovation, one project at a time.</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 80;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Add scroll effect to header
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('header');
-                if (window.scrollY > 50) {
-                    header.style.background = 'rgba(3, 25, 38, 0.9)';
-                } else {
-                    header.style.background = 'rgba(3, 25, 38, 0.8)';
-                }
-            });
-            
-            // Mobile menu toggle
-            const hamburger = document.getElementById('hamburger-menu');
-            const mobileNav = document.getElementById('mobile-nav-menu');
-            hamburger.addEventListener('click', () => {
-                mobileNav.classList.toggle('open');
-            });
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('open');
-                });
-            });
-
-
-            // Project card accordion
-            document.querySelectorAll('.project-header').forEach(header => {
-                header.addEventListener('click', () => {
-                    const card = header.closest('.project-card');
-                    const wasOpen = card.classList.contains('open');
-
-                    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('open'));
-                    
-                    if (!wasOpen) {
-                        card.classList.add('open');
-                    }
-                });
-            });
-
-            // Modal functionality
-            const modalOverlay = document.getElementById('demo-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const demoIframe = document.getElementById('demo-iframe');
-            const closeBtn = document.getElementById('modal-close-btn');
-            const demoBtns = document.querySelectorAll('.demo-btn');
-
-            const openModal = (url, title) => {
-                modalTitle.textContent = title;
-                demoIframe.src = url;
-                modalOverlay.classList.add('show');
-            };
-
-            const closeModal = () => {
-                modalOverlay.classList.remove('show');
-                demoIframe.src = ''; 
-            };
-
-            demoBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const url = btn.dataset.url;
-                    const title = btn.dataset.title;
-                    openModal(url, title);
-                });
-            });
-
-            closeBtn.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
