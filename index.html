@@ -38,13 +38,13 @@
 
         /* Header */
         header {
-            background: rgba(10, 14, 39, 0.95);
+            background: rgba(0, 100, 100, 0.4);
             backdrop-filter: blur(10px);
             padding: 2rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(79, 195, 247, 0.2);
         }
 
         .container {
@@ -61,16 +61,17 @@
             justify-content: center;
             text-align: center;
             padding: 4rem 0;
-            background: linear-gradient(to bottom, rgba(10, 14, 39, 0.7), rgba(10, 14, 39, 0.9));
+            background: linear-gradient(to bottom, rgba(0, 100, 100, 0.3), rgba(0, 60, 64, 0.5));
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #4fc3f7, #1e88e5);
+            background: linear-gradient(135deg, #4fc3f7, #00acc1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shimmer 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(79, 195, 247, 0.5);
         }
 
         @keyframes shimmer {
@@ -94,16 +95,16 @@
         }
 
         .intro-block {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 100, 100, 0.2);
             padding: 2rem;
             border-radius: 16px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 195, 247, 0.3);
         }
 
         .intro-block h2 {
             font-size: 1.5rem;
-            color: #4fc3f7;
+            color: #00acc1;
             margin-bottom: 1rem;
             font-weight: 600;
         }
@@ -117,14 +118,14 @@
         /* Projects Section */
         .projects {
             padding: 5rem 0;
-            background: rgba(10, 14, 39, 0.95);
+            background: rgba(0, 60, 64, 0.4);
         }
 
         .section-title {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: #4fc3f7;
+            color: #00acc1;
         }
 
         .projects-grid {
@@ -135,14 +136,15 @@
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 100, 100, 0.15);
             border-radius: 20px;
             padding: 2rem;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(79, 195, 247, 0.2);
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            backdrop-filter: blur(10px);
         }
 
         .project-card::before {
@@ -152,7 +154,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(79, 195, 247, 0.1), rgba(30, 136, 229, 0.1));
+            background: linear-gradient(135deg, rgba(0, 172, 193, 0.2), rgba(79, 195, 247, 0.1));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -163,7 +165,8 @@
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(79, 195, 247, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 172, 193, 0.4);
+            border-color: rgba(0, 172, 193, 0.5);
         }
 
         .project-icon {
@@ -174,7 +177,7 @@
         .project-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #4fc3f7;
+            color: #00acc1;
         }
 
         .project-subtitle {
@@ -197,19 +200,19 @@
         }
 
         .tech-tag {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 172, 193, 0.2);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
             color: #b3e5fc;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 172, 193, 0.4);
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #4fc3f7;
+            color: #00acc1;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -217,27 +220,28 @@
         }
 
         .project-link:hover {
-            color: #b3e5fc;
+            color: #4fc3f7;
             transform: translateX(5px);
         }
 
         /* Featured Project */
         .featured-project {
-            background: linear-gradient(135deg, rgba(79, 195, 247, 0.1), rgba(30, 136, 229, 0.05));
+            background: linear-gradient(135deg, rgba(0, 172, 193, 0.15), rgba(0, 96, 100, 0.1));
             border-radius: 24px;
             padding: 3rem;
             margin-bottom: 3rem;
-            border: 2px solid rgba(79, 195, 247, 0.3);
+            border: 2px solid rgba(0, 172, 193, 0.4);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .featured-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #4fc3f7;
-            color: #0a0e27;
+            background: #00acc1;
+            color: #ffffff;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: bold;
@@ -247,7 +251,7 @@
         /* Skills Section */
         .skills {
             padding: 4rem 0;
-            background: rgba(10, 14, 39, 0.98);
+            background: rgba(0, 60, 64, 0.5);
         }
 
         .skills-content {
@@ -258,10 +262,10 @@
 
         /* Footer */
         footer {
-            background: rgba(10, 14, 39, 0.98);
+            background: rgba(0, 60, 64, 0.6);
             padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(0, 172, 193, 0.3);
         }
 
         .footer-links {
@@ -272,13 +276,13 @@
         }
 
         .footer-links a {
-            color: #4fc3f7;
+            color: #00acc1;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #b3e5fc;
+            color: #4fc3f7;
         }
 
         /* Responsive */
@@ -314,7 +318,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <h1 style="font-size: 1.5rem; color: #4fc3f7;">Arnav Amal Ray</h1>
+            <h1 style="font-size: 1.5rem; color: #00acc1;">Arnav Amal Ray</h1>
         </div>
     </header>
 
