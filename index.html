@@ -69,6 +69,20 @@
             box-shadow: 0 12px 40px rgba(0, 172, 193, 0.5);
         }
 
+        .audio-control.compact {
+            min-width: auto;
+            padding: 12px 15px;
+            border-radius: 50px;
+        }
+
+        .audio-control.compact .audio-text {
+            display: none;
+        }
+
+        .audio-control.compact .wave-animation {
+            display: none !important;
+        }
+
         .headphone-icon {
             font-size: 24px;
             transition: transform 0.3s ease;
@@ -83,6 +97,7 @@
             font-weight: 600;
             font-size: 14px;
             white-space: nowrap;
+            transition: opacity 0.3s ease;
         }
 
         .audio-control.muted {
@@ -109,11 +124,61 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease;
+            pointer-events: none;
         }
 
         .volume-equalizer.visible {
             opacity: 1;
             transform: translateY(0);
+            pointer-events: all;
+        }
+
+        /* Desktop hover behavior */
+        @media (min-width: 769px) {
+            .audio-control-container:hover .volume-equalizer {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+            }
+            
+            .audio-control-container:hover .audio-control.compact .audio-text {
+                display: block;
+            }
+
+            .audio-control-container:hover .audio-control.compact {
+                min-width: 200px;
+                padding: 15px 20px;
+            }
+        }
+
+        /* Mobile behavior */
+        @media (max-width: 768px) {
+            .audio-control {
+                min-width: 60px;
+                padding: 12px;
+                border-radius: 50%;
+            }
+
+            .audio-text {
+                display: none;
+            }
+
+            .wave-animation {
+                display: none !important;
+            }
+
+            .volume-equalizer {
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                min-width: 180px;
+            }
+
+            .volume-equalizer.mobile-visible {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+            }
         }
 
         .volume-slider {
@@ -457,15 +522,6 @@
                 bottom: 20px;
                 right: 20px;
             }
-
-            .audio-control, .volume-equalizer {
-                min-width: 160px;
-                padding: 12px 16px;
-            }
-
-            .audio-text {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
@@ -483,7 +539,7 @@
     <div class="audio-control-container">
         <div class="audio-control" id="audioToggle">
             <span class="headphone-icon">🎧</span>
-            <span class="audio-text" id="audioText">Dive into Ocean Vibes</span>
+            <span class="audio-text" id="audioText">Blue Ocean Vibes</span>
             <div class="wave-animation" id="waveAnimation" style="display: none;">
                 <div class="wave-bar"></div>
                 <div class="wave-bar"></div>
@@ -702,9 +758,15 @@
 
         let isPlaying = false;
         let currentVolume = 50;
+        let isMobile = window.innerWidth <= 768;
 
         // Initialize audio
         oceanAudio.volume = currentVolume / 100;
+
+        // Check if mobile
+        window.addEventListener('resize', function() {
+            isMobile = window.innerWidth <= 768;
+        });
 
         // Toggle audio play/pause
         audioToggle.addEventListener('click', function() {
@@ -712,25 +774,52 @@
                 // Pause audio
                 oceanAudio.pause();
                 isPlaying = false;
-                audioText.textContent = 'Dive into Ocean Vibes';
+                audioText.textContent = 'Blue Ocean Vibes';
                 waveAnimation.style.display = 'none';
-                volumeEqualizer.classList.remove('visible');
                 audioToggle.classList.add('muted');
+                audioToggle.classList.remove('compact');
+                
+                // Hide volume controls
+                volumeEqualizer.classList.remove('visible', 'mobile-visible');
             } else {
                 // Play audio
                 oceanAudio.play().then(() => {
                     isPlaying = true;
-                    audioText.textContent = 'Ocean Vibes Playing';
+                    audioText.textContent = 'Now Playing';
                     waveAnimation.style.display = 'flex';
-                    volumeEqualizer.classList.add('visible');
                     audioToggle.classList.remove('muted');
+                    
+                    // Make compact after playing starts
+                    setTimeout(() => {
+                        if (isPlaying) {
+                            audioToggle.classList.add('compact');
+                        }
+                    }, 2000);
+                    
+                    // Show volume controls on mobile
+                    if (isMobile) {
+                        volumeEqualizer.classList.add('mobile-visible');
+                        // Auto-hide on mobile after 5 seconds
+                        setTimeout(() => {
+                            volumeEqualizer.classList.remove('mobile-visible');
+                        }, 5000);
+                    }
                 }).catch(error => {
                     console.log('Audio playback failed:', error);
-                    // Fallback: show controls anyway for user interaction
                     audioText.textContent = 'Click to Enable Audio';
                 });
             }
         });
+
+        // Mobile: Show volume controls when playing button is tapped
+        if (isMobile) {
+            audioToggle.addEventListener('touchstart', function(e) {
+                if (isPlaying) {
+                    volumeEqualizer.classList.toggle('mobile-visible');
+                    e.preventDefault();
+                }
+            });
+        }
 
         // Volume control
         volumeSlider.addEventListener('input', function() {
@@ -754,37 +843,11 @@
         // Handle audio end (shouldn't happen with loop, but just in case)
         oceanAudio.addEventListener('ended', function() {
             isPlaying = false;
-            audioText.textContent = 'Dive into Ocean Vibes';
+            audioText.textContent = 'Blue Ocean Vibes';
             waveAnimation.style.display = 'none';
-            volumeEqualizer.classList.remove('visible');
             audioToggle.classList.add('muted');
-        });
-
-        // Auto-hide volume control after inactivity
-        let hideVolumeTimeout;
-        audioToggle.addEventListener('mouseenter', function() {
-            if (isPlaying) {
-                clearTimeout(hideVolumeTimeout);
-                volumeEqualizer.classList.add('visible');
-            }
-        });
-
-        audioToggle.addEventListener('mouseleave', function() {
-            if (isPlaying) {
-                hideVolumeTimeout = setTimeout(() => {
-                    volumeEqualizer.classList.remove('visible');
-                }, 3000);
-            }
-        });
-
-        volumeEqualizer.addEventListener('mouseenter', function() {
-            clearTimeout(hideVolumeTimeout);
-        });
-
-        volumeEqualizer.addEventListener('mouseleave', function() {
-            hideVolumeTimeout = setTimeout(() => {
-                volumeEqualizer.classList.remove('visible');
-            }, 3000);
+            audioToggle.classList.remove('compact');
+            volumeEqualizer.classList.remove('visible', 'mobile-visible');
         });
     </script>
 </body>
