@@ -812,12 +812,20 @@
         });
 
         // Mobile: Show volume controls when playing button is tapped
+        let lastTouchTime = 0;
         if (isMobile) {
             audioToggle.addEventListener('touchstart', function(e) {
-                if (isPlaying) {
-                    volumeEqualizer.classList.toggle('mobile-visible');
-                    e.preventDefault();
+                const currentTime = Date.now();
+                if (isPlaying && currentTime - lastTouchTime > 300) {
+                    // Only show volume controls if it's been 300ms since last touch
+                    // and we're not in the middle of a play/pause action
+                    setTimeout(() => {
+                        if (isPlaying) {
+                            volumeEqualizer.classList.toggle('mobile-visible');
+                        }
+                    }, 100);
                 }
+                lastTouchTime = currentTime;
             });
         }
 
