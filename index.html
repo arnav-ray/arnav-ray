@@ -463,6 +463,37 @@
             font-size: 0.85rem;
         }
 
+        .value-points {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .value-points li {
+            color: #e1f5fe;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .value-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00acc1;
+            font-weight: bold;
+        }
+
+        .business-value {
+            margin: 2rem 0;
+        }
+
+        .business-value h4 {
+            color: #00acc1;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
         /* Skills Section */
         .skills {
             padding: 4rem 0;
@@ -594,33 +625,94 @@
         <div class="container">
             <h2 class="section-title">Product Portfolio: Built with AI Collaboration</h2>
             
-            <!-- Featured Project: Automated Podcast -->
+            <!-- Featured Project: TreasuryFlow -->
             <div class="featured-project">
-                <span class="featured-badge">NEW FEATURE</span>
-                <div class="project-icon">🎙️</div>
-                <h3 class="project-title">The Automated Podcast</h3>
-                <p class="project-subtitle">Zero-Budget AI Content Generation Platform</p>
+                <span class="featured-badge">FLAGSHIP PROJECT</span>
+                <div class="project-icon">🏦</div>
+                <h3 class="project-title">TreasuryFlow</h3>
+                <p class="project-subtitle">Next-Generation ERP-Agnostic Financial Command Center</p>
                 <p class="project-description">
-                    A fully automated podcast system that creates daily AI-generated episodes from RSS feeds. Built with zero budget constraints, it demonstrates innovative problem-solving by avoiding all major costs while delivering a complete content pipeline.
+                    <strong>Beyond dashboards.</strong> TreasuryFlow isn't just another financial interface - it's a comprehensive analytics and transaction layer that sits above any ERP system. Think of it as the "operating system" for global finance teams, combining my SAP S/4HANA expertise with modern AI capabilities to solve real enterprise challenges.
                 </p>
                 
                 <div class="business-value">
-                    <h4>Business Impact:</h4>
+                    <h4>🎯 Enterprise Value Proposition:</h4>
                     <ul class="value-points">
-                        <li><strong>Cost Innovation:</strong> Engineered a $0 solution using free-tier services and clever architecture</li>
-                        <li><strong>Content Automation:</strong> Generates 5+ hours of content daily without human intervention</li>
-                        <li><strong>Scalable Architecture:</strong> Can expand to multiple languages and topics with minimal changes</li>
-                        <li><strong>Unique IP:</strong> Custom personality engine creates differentiated content, not just AI wrappers</li>
+                        <li><strong>Universal ERP Bridge:</strong> Works with SAP, Oracle, NetSuite, or any backend system via API abstraction</li>
+                        <li><strong>Live Transaction Processing:</strong> Not just reporting - actual payment execution and cash positioning</li>
+                        <li><strong>Intelligent Risk Management:</strong> AI-powered FX exposure analysis and automated hedging recommendations</li>
+                        <li><strong>Cross-System Master Data:</strong> Unified vendor/customer management across multiple ERPs and subsidiaries</li>
+                        <li><strong>Regulatory Compliance Engine:</strong> Built-in IFRS, GAAP, and tax compliance workflows</li>
+                        <li><strong>Zero-Trust Security:</strong> Enterprise-grade RBAC with complete audit trails and SOX compliance</li>
                     </ul>
                 </div>
 
                 <div class="business-value">
-                    <h4>Technical Innovation:</h4>
+                    <h4>🚀 Current Capabilities (Live Demo):</h4>
                     <ul class="value-points">
-                        <li>End-to-end pipeline: RSS → Curation → Script Generation → Audio → Distribution</li>
-                        <li>Custom scoring algorithm for content selection</li>
-                        <li>Personality-driven dialogue generation system</li>
-                        <li>GitHub Actions for complete automation</li>
+                        <li><strong>Multi-Currency Treasury Operations:</strong> Real-time cash positioning across global bank accounts</li>
+                        <li><strong>AI Financial Assistant:</strong> Gemini-powered insights that understand your actual financial data</li>
+                        <li><strong>Smart Process Orchestration:</strong> Visual P2P and O2C workflows with document tracking</li>
+                        <li><strong>Live Market Integration:</strong> TradingView widgets for real-time FX and commodity data</li>
+                        <li><strong>Advanced Analytics:</strong> Predictive cash flow modeling and AR aging analysis</li>
+                        <li><strong>Role-Based Access:</strong> Different user experiences for CFOs, Controllers, and Approvers</li>
+                    </ul>
+                </div>
+
+                <div class="business-value">
+                    <h4>🔮 Future Roadmap (Next 12 Months):</h4>
+                    <ul class="value-points">
+                        <li><strong>SAP S/4HANA Connector:</strong> Direct FIORI-style integration with real-time data synchronization</li>
+                        <li><strong>Smart Contract Automation:</strong> Blockchain-based payment rails for instant B2B settlements</li>
+                        <li><strong>Predictive Analytics Engine:</strong> Machine learning models for cash flow forecasting and credit risk</li>
+                        <li><strong>Mobile Treasury App:</strong> Executive mobile interface for approval workflows and KPI monitoring</li>
+                        <li><strong>Open Banking Integration:</strong> Direct bank API connections for real-time balance updates</li>
+                        <li><strong>ESG Reporting Module:</strong> Sustainability metrics and carbon accounting for treasury operations</li>
+                    </ul>
+                </div>
+
+                <div class="business-value">
+                    <h4>💼 My SAP S/4HANA Expertise Applied:</h4>
+                    <ul class="value-points">
+                        <li><strong>Financial Process Design:</strong> Deep understanding of FI/CO module integration points</li>
+                        <li><strong>Master Data Architecture:</strong> Customer/Vendor hierarchies and chart of accounts optimization</li>
+                        <li><strong>Compliance Framework:</strong> Tax jurisdiction handling and regulatory reporting requirements</li>
+                        <li><strong>Integration Patterns:</strong> API design that mirrors SAP's REST/OData standards</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">SAP S/4HANA Ready</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">Google Gemini API</span>
+                    <span class="tech-tag">TradingView API</span>
+                    <span class="tech-tag">Enterprise Security</span>
+                </div>
+
+                <a href="https://treasuryflow.arnavray.ca/" class="project-link" target="_blank">
+                    Experience the Future of Finance →
+                </a>
+            </div>
+
+            <!-- Featured Project: Automated Podcast -->
+            <div class="featured-project">
+                <span class="featured-badge">AI AUTOMATION</span>
+                <div class="project-icon">🎙️</div>
+                <h3 class="project-title">The Automated Podcast</h3>
+                <p class="project-subtitle">Zero-Budget AI Content Generation Engine</p>
+                <p class="project-description">
+                    Imagine a podcast that never sleeps, never misses a story, and costs absolutely nothing to operate. This fully automated system ingests RSS feeds, curates the most interesting content, and generates engaging podcast episodes with distinct AI personalities - all while running on free-tier services.
+                </p>
+                
+                <div class="business-value">
+                    <h4>🚀 The Innovation:</h4>
+                    <ul class="value-points">
+                        <li><strong>$0 Operating Cost:</strong> Engineered around free-tier limitations with clever architecture</li>
+                        <li><strong>Personality Engine:</strong> Creates unique dialogue between AI hosts, not just text-to-speech</li>
+                        <li><strong>Smart Curation:</strong> Custom scoring algorithm identifies the most engaging stories</li>
+                        <li><strong>Complete Automation:</strong> GitHub Actions orchestrates the entire pipeline</li>
+                        <li><strong>Scalable Foundation:</strong> Can expand to multiple topics, languages, and formats</li>
                     </ul>
                 </div>
 
@@ -629,25 +721,22 @@
                     <span class="tech-tag">GitHub Actions</span>
                     <span class="tech-tag">Edge-TTS</span>
                     <span class="tech-tag">RSS Processing</span>
-                    <span class="tech-tag">Content Curation AI</span>
+                    <span class="tech-tag">Content AI</span>
                 </div>
 
                 <a href="https://podcast.arnavray.ca/" class="project-link" target="_blank">
-                    Launch Podcast Platform →
+                    Listen to AI Hosts →
                 </a>
             </div>
 
             <!-- Other Projects -->
             <div class="projects-grid">
                 <div class="project-card" onclick="window.open('https://german.arnavray.ca/', '_blank')">
-                    <div class="project-icon">📚</div>
+                    <div class="project-icon">🇩🇪</div>
                     <h3 class="project-title">Daily German Learning</h3>
-                    <p class="project-subtitle">An interactive language learning platform</p>
+                    <p class="project-subtitle">From zero coding experience to interactive language platform</p>
                     <p class="project-description">
-                        Built with 0 prior coding experience<br>
-                        Integrated cloud APIs via serverless functions<br>
-                        Interactive exercises (drag & drop, memory games)<br>
-                        Color-coded grammar analysis system
+                        Started as a personal challenge to learn German, evolved into a sophisticated learning platform. Features drag-and-drop exercises, memory games, and a color-coded grammar analyzer that makes complex German structure visual and intuitive.
                     </p>
                     
                     <div class="tech-stack">
@@ -665,12 +754,9 @@
                 <div class="project-card" onclick="window.open('https://visitgermany.arnavray.ca/', '_blank')">
                     <div class="project-icon">🗺️</div>
                     <h3 class="project-title">German for Visitors</h3>
-                    <p class="project-subtitle">An all-in-one travel and language tool</p>
+                    <p class="project-subtitle">Interactive cultural immersion tool</p>
                     <p class="project-description">
-                        Interactive guided tour with Leaflet.js<br>
-                        Contextual dialogue practice for real-world scenarios<br>
-                        D3.js mind map for visual learning<br>
-                        Multi-language support (Hindi, Bengali, Marathi)
+                        More than a travel guide - this is cultural preparation. Interactive maps powered by Leaflet.js, contextual dialogue practice for real situations, and a D3.js mind map that visualizes language connections. Available in multiple Indian languages.
                     </p>
                     
                     <div class="tech-stack">
@@ -687,13 +773,10 @@
                 <!-- Personal AI Interface -->
                 <div class="project-card" onclick="window.open('https://arnav-personal-sandbox.uc.r.appspot.com/', '_blank')">
                     <div class="project-icon">🤖</div>
-                    <h3 class="project-title">LLM Chat Portal</h3>
-                    <p class="project-subtitle">A personal AI chat interface with Google's Gemini API</p>
+                    <h3 class="project-title">Personal AI Portal</h3>
+                    <p class="project-subtitle">Direct line to Google's Gemini intelligence</p>
                     <p class="project-description">
-                        Integrated Google Gemini API<br>
-                        Clean, responsive chat interface<br>
-                        Real-time message streaming<br>
-                        Deployed on Google Cloud Platform
+                        A clean, no-frills interface to Google's most advanced AI. Built to understand how conversational AI really works under the hood - from API calls to streaming responses. Sometimes the simplest tools are the most powerful.
                     </p>
                     
                     <div class="tech-stack">
@@ -703,7 +786,7 @@
                     </div>
 
                     <a href="https://arnav-personal-sandbox.uc.r.appspot.com/" class="project-link">
-                        Try AI Assistant →
+                        Chat with Gemini →
                     </a>
                 </div>
             </div>
@@ -735,128 +818,11 @@
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 2rem;">Let's Connect</h2>
             <p style="font-size: 1.2rem; color: #b3e5fc; max-width: 600px; margin: 0 auto 2rem;">
-                Interested in AI-assisted development, technical collaboration, or just want to chat about the future of creating?
+                Interested in AI-assisted development, enterprise software innovation, or just want to chat about the future of building?
             </p>
             <div class="footer-links">
-                <a href="https://github.com/arnavray" target="_blank">GitHub</a>
+                <a href="https://github.com/arnav-ray" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/arnavray" target="_blank">LinkedIn</a>
                 <a href="mailto:arnav@arnavray.ca">Email</a>
             </div>
-            <p style="color: #b3e5fc;">&copy; 2025 Arnav Amal Ray. Navigating innovation, one project at a time.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Audio Control JavaScript
-        const audioToggle = document.getElementById('audioToggle');
-        const audioText = document.getElementById('audioText');
-        const waveAnimation = document.getElementById('waveAnimation');
-        const volumeEqualizer = document.getElementById('volumeEqualizer');
-        const volumeSlider = document.getElementById('volumeSlider');
-        const volumePercentage = document.getElementById('volumePercentage');
-        const oceanAudio = document.getElementById('oceanAudio');
-
-        let isPlaying = false;
-        let currentVolume = 50;
-        let isMobile = window.innerWidth <= 768;
-
-        // Initialize audio
-        oceanAudio.volume = currentVolume / 100;
-
-        // Check if mobile
-        window.addEventListener('resize', function() {
-            isMobile = window.innerWidth <= 768;
-        });
-
-        // Toggle audio play/pause
-        audioToggle.addEventListener('click', function() {
-            if (isPlaying) {
-                // Pause audio
-                oceanAudio.pause();
-                isPlaying = false;
-                audioText.textContent = 'Blue Ocean Vibes';
-                waveAnimation.style.display = 'none';
-                audioToggle.classList.add('muted');
-                audioToggle.classList.remove('compact');
-                
-                // Hide volume controls
-                volumeEqualizer.classList.remove('visible', 'mobile-visible');
-            } else {
-                // Play audio
-                oceanAudio.play().then(() => {
-                    isPlaying = true;
-                    audioText.textContent = 'Now Playing';
-                    waveAnimation.style.display = 'flex';
-                    audioToggle.classList.remove('muted');
-                    
-                    // Make compact after playing starts
-                    setTimeout(() => {
-                        if (isPlaying) {
-                            audioToggle.classList.add('compact');
-                        }
-                    }, 2000);
-                    
-                    // Show volume controls on mobile
-                    if (isMobile) {
-                        volumeEqualizer.classList.add('mobile-visible');
-                        // Auto-hide on mobile after 5 seconds
-                        setTimeout(() => {
-                            volumeEqualizer.classList.remove('mobile-visible');
-                        }, 5000);
-                    }
-                }).catch(error => {
-                    console.log('Audio playback failed:', error);
-                    audioText.textContent = 'Click to Enable Audio';
-                });
-            }
-        });
-
-        // Mobile: Show volume controls when playing button is tapped
-        let lastTouchTime = 0;
-        if (isMobile) {
-            audioToggle.addEventListener('touchstart', function(e) {
-                const currentTime = Date.now();
-                if (isPlaying && currentTime - lastTouchTime > 300) {
-                    // Only show volume controls if it's been 300ms since last touch
-                    // and we're not in the middle of a play/pause action
-                    setTimeout(() => {
-                        if (isPlaying) {
-                            volumeEqualizer.classList.toggle('mobile-visible');
-                        }
-                    }, 100);
-                }
-                lastTouchTime = currentTime;
-            });
-        }
-
-        // Volume control
-        volumeSlider.addEventListener('input', function() {
-            currentVolume = parseInt(this.value);
-            oceanAudio.volume = currentVolume / 100;
-            volumePercentage.textContent = currentVolume + '%';
-            
-            // Update volume icon based on level
-            const volumeIcon = document.querySelector('.volume-icon');
-            if (currentVolume === 0) {
-                volumeIcon.textContent = '🔇';
-            } else if (currentVolume < 30) {
-                volumeIcon.textContent = '🔈';
-            } else if (currentVolume < 70) {
-                volumeIcon.textContent = '🔉';
-            } else {
-                volumeIcon.textContent = '🔊';
-            }
-        });
-
-        // Handle audio end (shouldn't happen with loop, but just in case)
-        oceanAudio.addEventListener('ended', function() {
-            isPlaying = false;
-            audioText.textContent = 'Blue Ocean Vibes';
-            waveAnimation.style.display = 'none';
-            audioToggle.classList.add('muted');
-            audioToggle.classList.remove('compact');
-            volumeEqualizer.classList.remove('visible', 'mobile-visible');
-        });
-    </script>
-</body>
-</html>
+            <p style="color: #b3e5fc;">&copy; 2025 Arnav Amal Ray. Navigating innovation, one project at
