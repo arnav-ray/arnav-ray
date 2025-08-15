@@ -50,6 +50,7 @@
 
         .audio-control {
             background: rgba(0, 172, 193, 0.9);
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             border: 2px solid rgba(79, 195, 247, 0.5);
             border-radius: 50px;
@@ -112,6 +113,7 @@
         /* Volume Equalizer */
         .volume-equalizer {
             background: rgba(0, 172, 193, 0.9);
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             border: 2px solid rgba(79, 195, 247, 0.5);
             border-radius: 25px;
@@ -142,12 +144,16 @@
             }
             
             .audio-control-container:hover .audio-control.compact .audio-text {
-                display: block;
+                display: none;
             }
 
             .audio-control-container:hover .audio-control.compact {
-                min-width: 200px;
-                padding: 15px 20px;
+                min-width: auto;
+                padding: 12px 15px;
+            }
+            
+            .audio-control-container:hover .audio-control.compact .wave-animation {
+                display: none !important;
             }
         }
 
@@ -253,6 +259,7 @@
         /* Header */
         header {
             background: rgba(0, 40, 50, 0.8);
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             padding: 2rem 0;
             position: sticky;
@@ -313,6 +320,7 @@
             background: rgba(0, 100, 100, 0.2);
             padding: 2rem;
             border-radius: 16px;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(79, 195, 247, 0.3);
         }
@@ -359,6 +367,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
 
@@ -448,6 +457,7 @@
             border: 2px solid rgba(0, 172, 193, 0.4);
             position: relative;
             overflow: hidden;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
 
@@ -581,14 +591,14 @@
         
         <div class="volume-equalizer" id="volumeEqualizer">
             <span class="volume-icon">🔊</span>
-            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" aria-label="Volume control" title="Adjust volume level">
             <span class="volume-percentage" id="volumePercentage">50%</span>
         </div>
     </div>
 
     <!-- Audio Element (hidden) -->
-    <audio id="oceanAudio" loop preload="auto" crossorigin="anonymous">
-              <source src="https://raw.githubusercontent.com/arnav-ray/arnav-ray/main/assets/audio/ocean.mp3" type="audio/mpeg">
+    <audio id="oceanAudio" loop preload="auto">
+        <source src="https://raw.githubusercontent.com/arnav-ray/arnav-ray/main/assets/audio/ocean.mp3" type="audio/mpeg">
         <source src="assets/audio/ocean.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -825,5 +835,4 @@
                 <a href="https://linkedin.com/in/arnavray" target="_blank">LinkedIn</a>
                 <a href="mailto:arnav@arnavray.ca">Email</a>
             </div>
-            <p style="color: #b3e5fc;">&copy; 2025 Arnav Amal Ray. Navigating innovation, one project at a time
-
+            <p style="color: #b3e5fc;">&copy; 2025 Arnav Amal Ray. Navigating innovation, one project at a time.</p>
