@@ -285,6 +285,39 @@
             transform: translateY(0);
         }
 
+        /* Christmas Special Style */
+        .christmas-card {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(0, 100, 0, 0.15)) !important;
+            border: 1px solid rgba(255, 99, 71, 0.5) !important;
+        }
+        
+        .christmas-card:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.4) !important;
+            border-color: rgba(255, 215, 0, 0.8) !important;
+        }
+
+        .christmas-card .project-title {
+            background: linear-gradient(135deg, #ff8a80, #ff5252);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .christmas-card .tech-tag {
+            background: rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.3);
+            color: #ffcdd2;
+        }
+
+        .christmas-card .project-link {
+            background: linear-gradient(135deg, #d32f2f, #c62828);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .christmas-card .project-link:hover {
+            background: linear-gradient(135deg, #b71c1c, #d32f2f);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+        }
+
         /* Featured Project */
         .featured-project {
             background: linear-gradient(135deg, rgba(0, 172, 193, 0.15), rgba(0, 96, 100, 0.1));
@@ -593,42 +626,62 @@
                 </a>
             </div>
 
-            <!-- Featured Project: Automated Podcast -->
-            <div class="featured-project" onclick="window.open('https://podcast.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge">AI AUTOMATION</span>
-                <div class="project-icon">🎙️</div>
-                <h3 class="project-title">The Automated Podcast</h3>
-                <p class="project-subtitle">Zero-Budget AI Content Generation Engine</p>
+            <!-- Featured Project: Curse of the Frozen North (Swapped from Grid) -->
+            <div class="featured-project christmas-card" onclick="window.open('https://game.arnavray.ca/', '_blank')" style="cursor: pointer;">
+                <span class="featured-badge" style="background: #d32f2f;">LATEST INNOVATION</span>
+                <div class="project-icon">🎄</div>
+                <h3 class="project-title">The Curse of the Frozen North</h3>
+                <p class="project-subtitle">Real-Time Multiplayer Christmas Adventure</p>
                 <p class="project-description">
-                    Imagine a podcast that never sleeps, never misses a story, and costs absolutely nothing to operate. This fully automated system ingests RSS feeds, curates the most interesting content, and generates engaging podcast episodes with distinct AI personalities - all while running on free-tier services.
+                    <strong>A festive party game where phones become controllers!</strong> This project explores complex real-time state synchronization. One device hosts the game on a big screen while players join via QR code/room code on their phones to vote and battle in real-time.
                 </p>
                 
                 <div class="business-value">
-                    <h4>🚀 The Innovation:</h4>
+                    <h4>🎯 Technical Challenges Solved:</h4>
                     <ul class="value-points">
-                        <li><strong>$0 Operating Cost:</strong> Engineered around free-tier limitations with clever architecture</li>
-                        <li><strong>Personality Engine:</strong> Creates unique dialogue between AI hosts, not just text-to-speech</li>
-                        <li><strong>Smart Curation:</strong> Custom scoring algorithm identifies the most engaging stories</li>
-                        <li><strong>Complete Automation:</strong> GitHub Actions orchestrates the entire pipeline</li>
-                        <li><strong>Scalable Foundation:</strong> Can expand to multiple topics, languages, and formats</li>
+                        <li><strong>Real-Time Synchronization:</strong> Instant state propagation across all devices using Firebase Firestore</li>
+                        <li><strong>Latency Handling:</strong> Optimistic UI updates for voting and boss battle interactions</li>
+                        <li><strong>Device Orchestration:</strong> Separation of Host (Display) and Client (Controller) logic</li>
+                        <li><strong>Game Loop Physics:</strong> Custom JavaScript physics for random 3D boss movement</li>
                     </ul>
                 </div>
 
                 <div class="tech-stack">
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">GitHub Actions</span>
-                    <span class="tech-tag">Edge-TTS</span>
-                    <span class="tech-tag">RSS Processing</span>
-                    <span class="tech-tag">Content AI</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Firebase Firestore</span>
+                    <span class="tech-tag">Real-Time DB</span>
+                    <span class="tech-tag">Interactive UI</span>
+                    <span class="tech-tag">Tailwind CSS</span>
                 </div>
 
-                <a href="https://podcast.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    Listen to AI Hosts →
+                <a href="https://game.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                    Play Now →
                 </a>
             </div>
 
-            <!-- Other Projects -->
+            <!-- Other Projects Grid -->
             <div class="projects-grid">
+                <!-- Automated Podcast (Swapped from Featured) -->
+                <div class="project-card" onclick="window.open('https://podcast.arnavray.ca/', '_blank')">
+                    <div class="project-icon">🎙️</div>
+                    <h3 class="project-title">The Automated Podcast</h3>
+                    <p class="project-subtitle">Zero-Budget AI Content Engine</p>
+                    <p class="project-description">
+                        A fully automated system that ingests RSS feeds, curates stories using custom algorithms, and generates engaging dialogue between AI personalities. Runs entirely on free-tier services.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Edge-TTS</span>
+                        <span class="tech-tag">AI Content</span>
+                    </div>
+
+                    <a href="https://podcast.arnavray.ca/" class="project-link">
+                        Listen to AI Hosts →
+                    </a>
+                </div>
+
                 <div class="project-card" onclick="window.open('https://german.arnavray.ca/', '_blank')">
                     <div class="project-icon">🇩🇪</div>
                     <h3 class="project-title">Daily German Learning</h3>
@@ -724,3 +777,7 @@
                 <a href="mailto:arnav@arnavray.ca">Email</a>
             </div>
             <p style="color: #b3e5fc;">&copy; 2025 Arnav Amal Ray. Navigating innovation, one project at a time.</p>
+        </div>
+    </footer>
+</body>
+</html>
