@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnav Ray - Navigating the Blue Ocean of Innovation</title>
+    <title>Arnav Ray - Rapid Prototyping & AI Solutions</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #0a0e27;
+            background-color: #05081a; /* Darker, cleaner base */
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -34,21 +34,20 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0.8; /* Slightly dimmed for readability */
         }
-
-
 
         /* Header */
         header {
-            background: rgba(0, 40, 50, 0.8);
-            -webkit-backdrop-filter: blur(15px);
-            backdrop-filter: blur(15px);
+            background: rgba(5, 10, 25, 0.85); /* Dark navy glass */
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
             padding: 2rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 100, 120, 0.4);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
         .container {
@@ -65,29 +64,27 @@
             justify-content: center;
             text-align: center;
             padding: 4rem 0;
-            background: linear-gradient(to bottom, rgba(0, 100, 100, 0.3), rgba(0, 60, 64, 0.5));
+            /* Cleaner gradient, less muddy */
+            background: linear-gradient(to bottom, rgba(5, 10, 25, 0.4), rgba(5, 10, 25, 0.8));
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #4fc3f7, #00acc1);
+            /* Pure white to Ice Blue gradient */
+            background: linear-gradient(135deg, #ffffff 0%, #82b1ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shimmer 3s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(79, 195, 247, 0.5);
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+            text-shadow: 0 0 40px rgba(130, 177, 255, 0.3);
+            letter-spacing: -0.02em;
         }
 
         .tagline {
             font-size: 1.5rem;
-            color: #b3e5fc;
+            color: #e3f2fd; /* Very light blue */
             margin-bottom: 3rem;
             font-weight: 300;
+            opacity: 0.9;
         }
 
         .intro-sections {
@@ -99,43 +96,29 @@
         }
 
         .intro-block {
-            background: rgba(0, 100, 100, 0.2);
+            /* Neutral Dark Glass */
+            background: rgba(20, 30, 50, 0.6);
             padding: 2rem;
             border-radius: 16px;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(79, 195, 247, 0.3);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .intro-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 172, 193, 0.2), rgba(79, 195, 247, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .intro-block:hover::before {
-            opacity: 1;
-        }
-
         .intro-block:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 172, 193, 0.4);
-            border-color: rgba(0, 172, 193, 0.5);
+            background: rgba(30, 40, 60, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .intro-block h2 {
             font-size: 1.5rem;
-            color: #00acc1;
+            color: #ffffff; /* Clean white */
             margin-bottom: 1rem;
             font-weight: 600;
         }
@@ -143,101 +126,159 @@
         .intro-block p {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #e1f5fe;
+            color: #cfd8dc; /* Light gray-blue */
         }
 
         /* Projects Section */
         .projects {
             padding: 5rem 0;
-            background: rgba(0, 60, 64, 0.4);
+            background: rgba(5, 10, 25, 0.5);
         }
 
         .section-title {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: #00acc1;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-card {
-            background: rgba(0, 100, 100, 0.15);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(79, 195, 247, 0.2);
+        /* Featured Project Card Styles */
+        .featured-project {
+            /* Dark Neutral Glass - No Teal Tint */
+            background: rgba(15, 23, 42, 0.75);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 172, 193, 0.2), rgba(79, 195, 247, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card:hover {
+        .featured-project:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 172, 193, 0.4);
-            border-color: rgba(0, 172, 193, 0.5);
+            border-color: rgba(130, 177, 255, 0.3); /* Subtle blue glow on hover */
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #2962ff; /* Strong Royal Blue */
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 10px rgba(41, 98, 255, 0.3);
         }
 
         .project-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
         }
 
         .project-title {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: #00acc1;
+            color: #ffffff; /* Clean White */
+            font-weight: 700;
         }
 
         .project-subtitle {
-            color: #b3e5fc;
-            margin-bottom: 1rem;
+            color: #90caf9; /* Light Blue Accent */
+            margin-bottom: 2rem;
             font-style: italic;
+            font-size: 1.1rem;
         }
 
-        .project-description {
-            color: #e1f5fe;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+        /* Executive Summary Grid (Problem/Solution) */
+        .exec-summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid #448aff; /* Blue accent */
+        }
+
+        .exec-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exec-col p {
+            font-size: 1rem;
+            color: #eceff1;
+            line-height: 1.7;
+        }
+
+        /* Executive Metrics Row */
+        .exec-metric-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .metric-badge {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-width: 140px;
+            flex: 1;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: #b0bec5; /* Grey */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .highlight-text {
+            color: #82b1ff;
+            font-weight: 600;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
 
         .tech-tag {
-            background: rgba(0, 172, 193, 0.2);
-            padding: 0.3rem 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-size: 0.85rem;
-            color: #b3e5fc;
-            border: 1px solid rgba(0, 172, 193, 0.4);
+            font-size: 0.9rem;
+            color: #e3f2fd;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .project-link {
@@ -245,55 +286,61 @@
             align-items: center;
             gap: 0.5rem;
             color: #ffffff;
-            background: linear-gradient(135deg, #00acc1, #0288d1);
-            padding: 1rem 2rem;
+            /* Deep Blue Gradient */
+            background: linear-gradient(135deg, #1565c0, #0d47a1);
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .project-link:hover::before {
-            left: 100%;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .project-link:hover {
-            background: linear-gradient(135deg, #0288d1, #1976d2);
+            background: linear-gradient(135deg, #1976d2, #1565c0);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 172, 193, 0.5);
-            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
         }
 
-        .project-link:active {
-            transform: translateY(0);
+        /* Smaller Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
-        /* Christmas Special Style */
+        .project-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            cursor: pointer;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Christmas Special Style - Kept distinct but cleaner */
         .christmas-card {
-            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(0, 100, 0, 0.15)) !important;
-            border: 1px solid rgba(255, 99, 71, 0.5) !important;
+            background: linear-gradient(135deg, rgba(50, 0, 0, 0.6), rgba(20, 0, 0, 0.6)) !important;
+            border: 1px solid rgba(255, 82, 82, 0.3) !important;
         }
         
         .christmas-card:hover {
-            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.4) !important;
-            border-color: rgba(255, 215, 0, 0.8) !important;
+            box-shadow: 0 10px 40px rgba(180, 0, 0, 0.3) !important;
+            border-color: rgba(255, 82, 82, 0.6) !important;
         }
 
         .christmas-card .project-title {
@@ -302,157 +349,23 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .christmas-card .tech-tag {
-            background: rgba(255, 0, 0, 0.15);
-            border-color: rgba(255, 0, 0, 0.3);
-            color: #ffcdd2;
-        }
-
-        .christmas-card .project-link {
-            background: linear-gradient(135deg, #d32f2f, #c62828);
-            border-color: rgba(255, 255, 255, 0.3);
+        .christmas-card .exec-summary-grid {
+            border-left-color: #ff5252;
+            background: rgba(0, 0, 0, 0.4);
         }
         
-        .christmas-card .project-link:hover {
-            background: linear-gradient(135deg, #b71c1c, #d32f2f);
-            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
-        }
-
-        /* Featured Project */
-        .featured-project {
-            background: linear-gradient(135deg, rgba(0, 172, 193, 0.15), rgba(0, 96, 100, 0.1));
-            border-radius: 24px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            border: 2px solid rgba(0, 172, 193, 0.4);
-            position: relative;
-            overflow: hidden;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .featured-project::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 172, 193, 0.2), rgba(79, 195, 247, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .featured-project:hover::before {
-            opacity: 1;
-        }
-
-        .featured-project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 172, 193, 0.4);
-            border-color: rgba(0, 172, 193, 0.6);
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: #00acc1;
-            color: #ffffff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
-        .value-points {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-
-        .value-points li {
-            color: #e1f5fe;
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .value-points li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #00acc1;
-            font-weight: bold;
-        }
-
-        .business-value {
-            margin: 2rem 0;
-        }
-
-        .business-value h4 {
-            color: #00acc1;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 4rem 0;
-            background: rgba(0, 60, 64, 0.5);
-        }
-
-        .skills-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 60, 64, 0.6);
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(0, 172, 193, 0.3);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-links a {
-            color: #00acc1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #4fc3f7;
+        .christmas-card .project-link {
+            background: linear-gradient(135deg, #c62828, #b71c1c);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .intro-sections {
-                grid-template-columns: 1fr;
-            }
-
-
+            .hero h1 { font-size: 2rem; }
+            .intro-sections { grid-template-columns: 1fr; }
+            .exec-summary-grid { grid-template-columns: 1fr; }
+            .exec-metric-row { gap: 1rem; }
+            .metric-badge { min-width: 45%; }
         }
     </style>
 </head>
@@ -461,35 +374,32 @@
     <div class="ocean-container">
         <video class="ocean-video" autoplay muted loop playsinline>
             <source src="https://raw.githubusercontent.com/arnav-ray/arnav-ray/main/assets/video/ocean-bg.mp4" type="video/mp4">
-            <!-- Fallback to alternative source if needed -->
             <source src="assets/video/ocean-bg.mp4" type="video/mp4">
         </video>
     </div>
 
-
-
     <!-- Header -->
     <header>
         <div class="container">
-            <h1 style="font-size: 1.5rem; color: #00acc1;">Arnav Amal Ray</h1>
+            <h1 style="font-size: 1.5rem; color: #ffffff; letter-spacing: 0.05em;">Arnav Amal Ray</h1>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Navigating the Blue Ocean of Innovation</h1>
-            <p class="tagline">Learning by doing through AI & creativity</p>
+            <h1>Building Real Solutions with AI</h1>
+            <p class="tagline">Agile Development • Rapid Prototyping • Enterprise Scale</p>
             
             <div class="intro-sections">
                 <div class="intro-block">
                     <h2>My Day Job</h2>
-                    <p>I am an SAP FI (Finance) consultant, specializing in helping large organizations navigate complex S/4HANA implementations. My work involves bridging the critical gap between finance, tax compliance, and technology to design and optimize key business processes.</p>
+                    <p>I am an SAP FI (Finance) consultant, helping large organizations navigate complex S/4HANA implementations. I bridge the gap between finance, compliance, and technology to optimize key business processes.</p>
                 </div>
                 
                 <div class="intro-block">
-                    <h2>Learning by Doing</h2>
-                    <p>I believe the best way to understand something is to build it. Every project here started with a question: "How does this actually work?" Whether it's credit scoring algorithms, automated content generation, or enterprise treasury systems - I learn by creating, testing, and iterating until I truly understand the mechanics.</p>
+                    <h2>My Dev Philosophy</h2>
+                    <p><strong>Speed wins.</strong> I don't just write specs; I build working prototypes. Using modern AI tools and DevOps practices, I go from "Problem Statement" to "Deployed Solution" in hours, not months. This portfolio proves it.</p>
                 </div>
             </div>
         </div>
@@ -498,159 +408,205 @@
     <!-- Projects Section -->
     <section class="projects">
         <div class="container">
-            <h2 class="section-title">Product Portfolio: Built with AI Collaboration</h2>
+            <h2 class="section-title">Portfolio: Concept to Production</h2>
             
             <!-- Featured Project: TreasuryFlow -->
             <div class="featured-project" onclick="window.open('https://treasuryflow.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge">FLAGSHIP PROJECT</span>
+                <span class="featured-badge" style="background: #2962ff;">ENTERPRISE ARCHITECTURE</span>
                 <div class="project-icon">🏦</div>
                 <h3 class="project-title">TreasuryFlow</h3>
-                <p class="project-subtitle">Next-Generation ERP-Agnostic Financial Command Center</p>
-                <p class="project-description">
-                    <strong>Beyond dashboards.</strong> TreasuryFlow isn't just another financial interface - it's a comprehensive analytics and transaction layer that sits above any ERP system. Think of it as the "operating system" for global finance teams, combining my SAP S/4HANA expertise with modern AI capabilities to solve real enterprise challenges.
-                </p>
+                <p class="project-subtitle">From "Data Silos" to "Unified Command" in 3 Weeks</p>
                 
-                <div class="business-value">
-                    <h4>🎯 Enterprise Value Proposition:</h4>
-                    <ul class="value-points">
-                        <li><strong>Universal ERP Bridge:</strong> Works with SAP, Oracle, NetSuite, or any backend system via API abstraction</li>
-                        <li><strong>Live Transaction Processing:</strong> Not just reporting - actual payment execution and cash positioning</li>
-                        <li><strong>Intelligent Risk Management:</strong> AI-powered FX exposure analysis and automated hedging recommendations</li>
-                        <li><strong>Cross-System Master Data:</strong> Unified vendor/customer management across multiple ERPs and subsidiaries</li>
-                        <li><strong>Regulatory Compliance Engine:</strong> Built-in IFRS, GAAP, and tax compliance workflows</li>
-                        <li><strong>Zero-Trust Security:</strong> Enterprise-grade RBAC with complete audit trails and SOX compliance</li>
-                    </ul>
+                <!-- Executive Metrics -->
+                <div class="exec-metric-row">
+                    <div class="metric-badge">
+                        <span class="metric-label">Dev Time</span>
+                        <span class="metric-value">3 Week Sprint</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Tech Stack</span>
+                        <span class="metric-value">SAP + Gemini</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Architecture</span>
+                        <span class="metric-value">API-First</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Security</span>
+                        <span class="metric-value">Zero-Trust</span>
+                    </div>
                 </div>
 
-                <div class="business-value">
-                    <h4>🚀 Current Capabilities (Live Demo):</h4>
-                    <ul class="value-points">
-                        <li><strong>Multi-Currency Treasury Operations:</strong> Real-time cash positioning across global bank accounts</li>
-                        <li><strong>AI Financial Assistant:</strong> Gemini-powered insights that understand your actual financial data</li>
-                        <li><strong>Smart Process Orchestration:</strong> Visual P2P and O2C workflows with document tracking</li>
-                        <li><strong>Live Market Integration:</strong> TradingView widgets for real-time FX and commodity data</li>
-                        <li><strong>Advanced Analytics:</strong> Predictive cash flow modeling and AR aging analysis</li>
-                        <li><strong>Role-Based Access:</strong> Different user experiences for CFOs, Controllers, and Approvers</li>
-                    </ul>
-                </div>
-
-                <div class="business-value">
-                    <h4>🔮 Future Roadmap (Next 12 Months):</h4>
-                    <ul class="value-points">
-                        <li><strong>SAP S/4HANA Connector:</strong> Direct FIORI-style integration with real-time data synchronization</li>
-                        <li><strong>Smart Contract Automation:</strong> Blockchain-based payment rails for instant B2B settlements</li>
-                        <li><strong>Predictive Analytics Engine:</strong> Machine learning models for cash flow forecasting and credit risk</li>
-                        <li><strong>Mobile Treasury App:</strong> Executive mobile interface for approval workflows and KPI monitoring</li>
-                        <li><strong>Open Banking Integration:</strong> Direct bank API connections for real-time balance updates</li>
-                        <li><strong>ESG Reporting Module:</strong> Sustainability metrics and carbon accounting for treasury operations</li>
-                    </ul>
-                </div>
-
-                <div class="business-value">
-                    <h4>💼 My SAP S/4HANA Expertise Applied:</h4>
-                    <ul class="value-points">
-                        <li><strong>Financial Process Design:</strong> Deep understanding of FI/CO module integration points</li>
-                        <li><strong>Master Data Architecture:</strong> Customer/Vendor hierarchies and chart of accounts optimization</li>
-                        <li><strong>Compliance Framework:</strong> Tax jurisdiction handling and regulatory reporting requirements</li>
-                        <li><strong>Integration Patterns:</strong> API design that mirrors SAP's REST/OData standards</li>
-                    </ul>
+                <!-- Problem / Solution Grid -->
+                <div class="exec-summary-grid">
+                    <div class="exec-col">
+                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
+                        <p>Enterprise ERPs (SAP, Oracle) are rigid and siloed. CFOs rely on Excel because getting real-time, cross-system cash visibility is technically painful and expensive.</p>
+                    </div>
+                    <div class="exec-col">
+                        <h4 style="color: #00e676;">✅ The Solution</h4>
+                        <p>I built an <strong>ERP-agnostic overlay</strong>. It pulls data via API without touching the core, using AI to normalize transactions and predict cash flow instantly.</p>
+                    </div>
                 </div>
 
                 <div class="tech-stack">
                     <span class="tech-tag">SAP S/4HANA Ready</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">Agile DevOps</span>
                     <span class="tech-tag">Google Gemini API</span>
+                    <span class="tech-tag">Chart.js</span>
                     <span class="tech-tag">TradingView API</span>
-                    <span class="tech-tag">Enterprise Security</span>
                 </div>
 
                 <a href="https://treasuryflow.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    Experience the Future of Finance →
+                    Launch TreasuryFlow →
+                </a>
+            </div>
+
+            <!-- Featured Project: Family Finance Bot -->
+            <div class="featured-project" onclick="window.open('https://github.com/arnav-ray/family-bot', '_blank')" style="cursor: pointer;">
+                <span class="featured-badge" style="background: #00e676; color: #000;">AI AUTOMATION • ZERO COST</span>
+                <div class="project-icon">🧾</div>
+                <h3 class="project-title">Family Finance AI Bot</h3>
+                <p class="project-subtitle">From "I have a problem" to "Deployed Agent" in 10 Hours</p>
+                
+                <!-- Executive Metrics -->
+                <div class="exec-metric-row">
+                    <div class="metric-badge">
+                        <span class="metric-label">Time to Build</span>
+                        <span class="metric-value">10 Hours</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">OpEx Cost</span>
+                        <span class="metric-value">$0.00 / mo</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Tech Stack</span>
+                        <span class="metric-value">Llama 4 Vision</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Latency</span>
+                        <span class="metric-value">&lt; 1 Second</span>
+                    </div>
+                </div>
+
+                <!-- Problem / Solution Grid -->
+                <div class="exec-summary-grid">
+                    <div class="exec-col">
+                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
+                        <p>Personal finance apps require too much manual entry. Friction leads to bad data. I needed a way to log complex expenses without opening a dedicated app.</p>
+                    </div>
+                    <div class="exec-col">
+                        <h4 style="color: #00e676;">✅ The Solution</h4>
+                        <p><strong>No UI is the best UI.</strong> A Telegram bot using Computer Vision. I snap a photo of a receipt, and the AI extracts merchant, date, and total into Sheets instantly.</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Python Serverless</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">Groq AI</span>
+                    <span class="tech-tag">Google Sheets API</span>
+                </div>
+
+                <a href="https://github.com/arnav-ray/family-bot" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                    View Code & Architecture →
                 </a>
             </div>
 
             <!-- Featured Project: OpenCredit Platform -->
             <div class="featured-project" onclick="window.open('https://credit.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge">FINANCIAL INNOVATION</span>
+                <span class="featured-badge" style="background: #6200ea;">FINTECH • EXPLAINABLE AI</span>
                 <div class="project-icon">💳</div>
                 <h3 class="project-title">OpenCredit Platform</h3>
-                <p class="project-subtitle">Transparent Credit Risk Analysis Engine</p>
-                <p class="project-description">
-                    <strong>Demystifying the black box.</strong> Ever wonder how credit scores actually work? I built this to understand the mechanics behind financial risk assessment. A fully transparent, educational platform that incorporates behavioral economics, alternative data, and FICO-aligned methodology - with every calculation step visible and explained.
-                </p>
+                <p class="project-subtitle">From "Black Box" to "Transparent Logic" in 1 Sprint</p>
                 
-                <div class="business-value">
-                    <h4>🔍 What Makes This Special:</h4>
-                    <ul class="value-points">
-                        <li><strong>Complete Transparency:</strong> Every calculation step is visible and explained in detail</li>
-                        <li><strong>Behavioral Economics Integration:</strong> Goes beyond traditional metrics to analyze spending patterns and financial habits</li>
-                        <li><strong>Alternative Data Sources:</strong> Incorporates utility payments, bank cash flow, and lifestyle factors</li>
-                        <li><strong>Multi-Country Risk Models:</strong> PPP-adjusted calculations for USA, Germany, and India</li>
-                        <li><strong>FICO-Aligned Methodology:</strong> Professional-grade scoring system with educational focus</li>
-                        <li><strong>Interactive Peer Comparison:</strong> Bell curve visualization against country-specific populations</li>
-                    </ul>
+                <!-- Executive Metrics -->
+                <div class="exec-metric-row">
+                    <div class="metric-badge">
+                        <span class="metric-label">Dev Time</span>
+                        <span class="metric-value">4 Days</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Logic Model</span>
+                        <span class="metric-value">Basel III</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Tech Stack</span>
+                        <span class="metric-value">React + ML</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Compliance</span>
+                        <span class="metric-value">GDPR Ready</span>
+                    </div>
                 </div>
 
-                <div class="business-value">
-                    <h4>🎯 Educational Impact:</h4>
-                    <ul class="value-points">
-                        <li><strong>Personalized Improvement Plans:</strong> Actionable steps to improve your financial profile</li>
-                        <li><strong>Risk Metrics Explained:</strong> Basel III aligned calculations for PD, LGD, and Expected Loss</li>
-                        <li><strong>Financial Literacy:</strong> Understand how lenders actually assess creditworthiness</li>
-                        <li><strong>Open Source Approach:</strong> Complete methodology transparency for educational use</li>
-                    </ul>
-                </div>
-
-                <div class="business-value">
-                    <h4>💼 My Financial Expertise Applied:</h4>
-                    <ul class="value-points">
-                        <li><strong>Risk Assessment Models:</strong> Enterprise-grade financial modeling and analytics</li>
-                        <li><strong>Regulatory Compliance:</strong> Understanding of Basel III and financial risk frameworks</li>
-                        <li><strong>Multi-Currency Analysis:</strong> PPP adjustments and country-specific risk factors</li>
-                        <li><strong>Behavioral Finance:</strong> Integration of psychological factors in financial decision-making</li>
-                    </ul>
+                <!-- Problem / Solution Grid -->
+                <div class="exec-summary-grid">
+                    <div class="exec-col">
+                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
+                        <p>Credit scores are opaque algorithms. Consumers are judged by a number they cannot audit, explain, or effectively optimize.</p>
+                    </div>
+                    <div class="exec-col">
+                        <h4 style="color: #00e676;">✅ The Solution</h4>
+                        <p>A <strong>fully transparent risk engine</strong>. By integrating behavioral economics and FICO methodology, I built a tool where every calculation is visible and interactive.</p>
+                    </div>
                 </div>
 
                 <div class="tech-stack">
-                    <span class="tech-tag">React</span>
                     <span class="tech-tag">Financial Modeling</span>
                     <span class="tech-tag">Risk Analytics</span>
-                    <span class="tech-tag">Basel III</span>
                     <span class="tech-tag">Data Visualization</span>
-                    <span class="tech-tag">Behavioral Economics</span>
+                    <span class="tech-tag">React</span>
                 </div>
 
                 <a href="https://credit.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    Analyze Credit Risk →
+                    Analyze Risk Models →
                 </a>
             </div>
 
-            <!-- Featured Project: Curse of the Frozen North (Swapped from Grid) -->
+            <!-- Featured Project: Curse of the Frozen North -->
             <div class="featured-project christmas-card" onclick="window.open('https://game.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge" style="background: #d32f2f;">LATEST INNOVATION</span>
+                <span class="featured-badge" style="background: #d32f2f;">REAL-TIME SYNC • ZERO LATENCY</span>
                 <div class="project-icon">🎄</div>
                 <h3 class="project-title">The Curse of the Frozen North</h3>
-                <p class="project-subtitle">Real-Time Multiplayer Christmas Adventure</p>
-                <p class="project-description">
-                    <strong>A festive party game where phones become controllers!</strong> This project explores complex real-time state synchronization. One device hosts the game on a big screen while players join via QR code/room code on their phones to vote and battle in real-time.
-                </p>
+                <p class="project-subtitle">From "Console Required" to "Browser Native" Experience</p>
                 
-                <div class="business-value">
-                    <h4>🎯 Technical Challenges Solved:</h4>
-                    <ul class="value-points">
-                        <li><strong>Real-Time Synchronization:</strong> Instant state propagation across all devices using Firebase Firestore</li>
-                        <li><strong>Latency Handling:</strong> Optimistic UI updates for voting and boss battle interactions</li>
-                        <li><strong>Device Orchestration:</strong> Separation of Host (Display) and Client (Controller) logic</li>
-                        <li><strong>Game Loop Physics:</strong> Custom JavaScript physics for random 3D boss movement</li>
-                    </ul>
+                <!-- Executive Metrics -->
+                <div class="exec-metric-row">
+                    <div class="metric-badge">
+                        <span class="metric-label">Sync Speed</span>
+                        <span class="metric-value">&lt; 50ms</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Scalability</span>
+                        <span class="metric-value">100+ Players</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">Tech Stack</span>
+                        <span class="metric-value">Firestore</span>
+                    </div>
+                    <div class="metric-badge">
+                        <span class="metric-label">User Exp</span>
+                        <span class="metric-value">Zero Install</span>
+                    </div>
+                </div>
+
+                <!-- Problem / Solution Grid -->
+                <div class="exec-summary-grid">
+                    <div class="exec-col">
+                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
+                        <p>Multiplayer party games usually require expensive consoles or complex app installations, killing the momentum of casual gatherings.</p>
+                    </div>
+                    <div class="exec-col">
+                        <h4 style="color: #00e676;">✅ The Solution</h4>
+                        <p>A <strong>"Bring Your Own Device" architecture</strong>. The browser is the console, phones are controllers. State is synced instantly via Firestore for seamless play.</p>
+                    </div>
                 </div>
 
                 <div class="tech-stack">
                     <span class="tech-tag">React</span>
                     <span class="tech-tag">Firebase Firestore</span>
                     <span class="tech-tag">Real-Time DB</span>
-                    <span class="tech-tag">Interactive UI</span>
                     <span class="tech-tag">Tailwind CSS</span>
                 </div>
 
@@ -659,106 +615,52 @@
                 </a>
             </div>
 
-            <!-- Other Projects Grid -->
+            <!-- Smaller Projects Grid (Rapid Prototypes) -->
             <div class="projects-grid">
-                <!-- Automated Podcast (Swapped from Featured) -->
+                
+                <!-- Automated Podcast -->
                 <div class="project-card" onclick="window.open('https://podcast.arnavray.ca/', '_blank')">
                     <div class="project-icon">🎙️</div>
-                    <h3 class="project-title">The Automated Podcast</h3>
-                    <p class="project-subtitle">Zero-Budget AI Content Engine</p>
-                    <p class="project-description">
-                        A fully automated system that ingests RSS feeds, curates stories using custom algorithms, and generates engaging dialogue between AI personalities. Runs entirely on free-tier services.
-                    </p>
-                    
+                    <h3 class="project-title" style="font-size: 1.5rem;">Automated Podcast</h3>
+                    <p class="project-subtitle">Zero-Budget Content Engine</p>
+                    <div style="margin-top: auto;">
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Content creation is manual & slow.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> A 100% automated pipeline using GitHub Actions & Edge-TTS to generate daily episodes.</p>
+                    </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Node.js</span>
                         <span class="tech-tag">GitHub Actions</span>
-                        <span class="tech-tag">Edge-TTS</span>
-                        <span class="tech-tag">AI Content</span>
                     </div>
-
-                    <a href="https://podcast.arnavray.ca/" class="project-link">
-                        Listen to AI Hosts →
-                    </a>
                 </div>
 
+                <!-- Daily German -->
                 <div class="project-card" onclick="window.open('https://german.arnavray.ca/', '_blank')">
                     <div class="project-icon">🇩🇪</div>
-                    <h3 class="project-title">Daily German Learning</h3>
-                    <p class="project-subtitle">From zero coding experience to interactive language platform</p>
-                    <p class="project-description">
-                        Started as a personal challenge to learn German, evolved into a sophisticated learning platform. Features drag-and-drop exercises, memory games, and a color-coded grammar analyzer that makes complex German structure visual.
-                    </p>
-                    
+                    <h3 class="project-title" style="font-size: 1.5rem;">Daily German</h3>
+                    <p class="project-subtitle">Gamified Learning Platform</p>
+                    <div style="margin-top: auto;">
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Textbooks are boring & static.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> Interactive visual grammar and memory games powered by simple Serverless functions.</p>
+                    </div>
                     <div class="tech-stack">
-                        <span class="tech-tag">Google Sheets API</span>
-                        <span class="tech-tag">Serverless Functions</span>
+                        <span class="tech-tag">Serverless</span>
                         <span class="tech-tag">Interactive UI</span>
                     </div>
-
-                    <a href="https://german.arnavray.ca/" class="project-link">
-                        Start Learning German →
-                    </a>
                 </div>
 
-                <!-- Visit Germany -->
-                <div class="project-card" onclick="window.open('https://visitgermany.arnavray.ca/', '_blank')">
-                    <div class="project-icon">🗺️</div>
-                    <h3 class="project-title">German for Visitors</h3>
-                    <p class="project-subtitle">Interactive cultural immersion tool</p>
-                    <p class="project-description">
-                        More than a travel guide - this is cultural preparation. Interactive maps powered by Leaflet.js, contextual dialogue practice for real situations, and a D3.js mind map that visualizes language connections. Available in multiple Indian languages.
-                    </p>
-                    
-                    <div class="tech-stack">
-                        <span class="tech-tag">Leaflet.js</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Translation API</span>
-                    </div>
-
-                    <a href="https://visitgermany.arnavray.ca/" class="project-link">
-                        Explore Germany Tours →
-                    </a>
-                </div>
-
-                <!-- Personal AI Interface -->
+                <!-- Personal AI Portal -->
                 <div class="project-card" onclick="window.open('https://arnav-personal-sandbox.uc.r.appspot.com/', '_blank')">
                     <div class="project-icon">🤖</div>
-                    <h3 class="project-title">Personal AI Portal</h3>
-                    <p class="project-subtitle">Direct line to Google's Gemini intelligence</p>
-                    <p class="project-description">
-                        A clean, no-frills interface to Google's most advanced AI. Built to understand how conversational AI really works under the hood - from API calls to streaming responses. Sometimes the simplest tools are the most powerful.
-                    </p>
-                    
+                    <h3 class="project-title" style="font-size: 1.5rem;">AI Portal</h3>
+                    <p class="project-subtitle">Direct API Interface</p>
+                    <div style="margin-top: auto;">
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Chat UI wrappers mask capability.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> A raw interface to Google's Gemini to test limits and understand streaming responses.</p>
+                    </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Gemini API</span>
-                        <span class="tech-tag">React</span>
                         <span class="tech-tag">Google Cloud</span>
                     </div>
-
-                    <a href="https://arnav-personal-sandbox.uc.r.appspot.com/" class="project-link">
-                        Try AI Assistant →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills">
-        <div class="container">
-            <h2 class="section-title">Technology Stack</h2>
-            <div class="skills-content">
-                <p style="font-size: 1.2rem; color: #b3e5fc; margin-bottom: 2rem;">
-                    A toolkit assembled through hands-on building and AI-assisted development
-                </p>
-                <div class="tech-stack" style="justify-content: center; gap: 1rem;">
-                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">SAP S/4HANA</span>
-                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">JavaScript/Node.js</span>
-                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">React</span>
-                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">AI/ML Integration</span>
-                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">Cloud Architecture</span>
-                    <span class="tech-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">Process Automation</span>
                 </div>
             </div>
         </div>
@@ -768,15 +670,15 @@
     <footer>
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 2rem;">Let's Connect</h2>
-            <p style="font-size: 1.2rem; color: #b3e5fc; max-width: 600px; margin: 0 auto 2rem;">
-                Interested in AI-assisted development, enterprise software innovation, or want to chat about learning by building?
+            <p style="font-size: 1.2rem; color: #e3f2fd; max-width: 600px; margin: 0 auto 2rem;">
+                Interested in how Rapid Prototyping and AI can solve your enterprise challenges?
             </p>
             <div class="footer-links">
                 <a href="https://github.com/arnav-ray" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/arnavray" target="_blank">LinkedIn</a>
                 <a href="mailto:arnav@arnavray.ca">Email</a>
             </div>
-            <p style="color: #b3e5fc;">&copy; 2025 Arnav Amal Ray. Navigating innovation, one project at a time.</p>
+            <p style="color: #90caf9;">&copy; 2026 Arnav Amal Ray. Building projects, one sprint at a time.</p>
         </div>
     </footer>
 </body>
