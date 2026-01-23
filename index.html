@@ -45,7 +45,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.8; /* Slightly dimmed for readability */
+            opacity: 0.4; /* Dimmed further for readability & focus */
         }
 
         /* Header */
@@ -93,9 +93,18 @@
         .tagline {
             font-size: 1.5rem;
             color: #e3f2fd; /* Very light blue */
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             font-weight: 300;
             opacity: 0.9;
+        }
+
+        .ai-positioning {
+            font-size: 1.1rem;
+            color: #b0bec5;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            opacity: 0.8;
         }
 
         .intro-sections {
@@ -138,6 +147,65 @@
             font-size: 1.1rem;
             line-height: 1.8;
             color: #cfd8dc; /* Light gray-blue */
+        }
+
+        /* Methodology Section (Redesigned) */
+        .methodology {
+            padding: 5rem 0;
+            background: rgba(10, 20, 35, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        /* Workflow Visual Pipeline */
+        .workflow-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(130, 177, 255, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: #b0bec5;
+            line-height: 1.4;
+        }
+
+        .step-arrow {
+            font-size: 2rem;
+            color: #546e7a;
+            font-weight: bold;
         }
 
         /* Projects Section */
@@ -209,6 +277,17 @@
             margin-bottom: 2rem;
             font-style: italic;
             font-size: 1.1rem;
+        }
+
+        .depth-signal {
+            font-size: 0.9rem;
+            color: #cfd8dc;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #82b1ff;
+            margin-bottom: 2rem;
+            display: inline-block;
         }
 
         /* Executive Summary Grid (Problem/Solution) */
@@ -360,20 +439,54 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .christmas-card .exec-summary-grid {
-            border-left-color: #ff5252;
-            background: rgba(0, 0, 0, 0.4);
+        /* AI Badge in Footer */
+        .ai-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: #90caf9;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
-        
-        .christmas-card .project-link {
-            background: linear-gradient(135deg, #c62828, #b71c1c);
-            border-color: rgba(255, 255, 255, 0.1);
+
+        /* Footer Links Styling */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #ffffff; /* Explicitly White */
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: #82b1ff; /* Light blue on hover */
+            text-decoration: underline;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .intro-sections { grid-template-columns: 1fr; }
+            .method-grid { grid-template-columns: 1fr; gap: 2rem; }
+            
+            /* Workflow Mobile */
+            .workflow-steps { flex-direction: column; gap: 1rem; }
+            .step-arrow { transform: rotate(90deg); margin: 0; }
+            .step-card { width: 100%; max-width: 300px; }
+            
             .exec-summary-grid { grid-template-columns: 1fr; }
             .exec-metric-row { gap: 1rem; }
             .metric-badge { min-width: 45%; }
@@ -402,6 +515,9 @@
             <h1>Building Real Solutions with AI</h1>
             <p class="tagline">Agile Development • Rapid Prototyping • Enterprise Scale</p>
             
+            <!-- Positioning Statement -->
+            <p class="ai-positioning">AI-native product builder — from idea → prompt → prototype → production.</p>
+            
             <div class="intro-sections">
                 <div class="intro-block">
                     <h2>My Day Job</h2>
@@ -409,8 +525,41 @@
                 </div>
                 
                 <div class="intro-block">
-                    <h2>My Dev Philosophy</h2>
-                    <p><strong>Speed wins.</strong> I don't just write specs; I build working prototypes. Using modern AI tools and DevOps practices, I go from "Problem Statement" to "Deployed Solution" in hours, not months. This portfolio proves it.</p>
+                    <h2>My Approach</h2>
+                    <p><strong>I design systems and validate decisions.</strong> AI handles implementation speed. I handle direction, constraints, testing, and deployment. I focus on Product Logic—steering the engine to build reliable software faster.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section (Visual Story) -->
+    <section class="methodology">
+        <div class="container">
+            <h2 class="section-title">The Workflow</h2>
+            
+            <!-- Visual Pipeline -->
+            <div class="workflow-steps">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-icon">🎯</div>
+                    <h3>Frame</h3>
+                    <p>Define the goal. What is the core problem? What is the simplest solution?</p>
+                </div>
+                <div class="step-arrow">→</div>
+                
+                <!-- Step 2 -->
+                <div class="step-card ai-step">
+                    <div class="step-icon">⚡</div>
+                    <h3>Generate</h3>
+                    <p>Prompt. Test. Refine. Use AI to rapidly build, break, and fix the implementation.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-icon">🚀</div>
+                    <h3>Launch</h3>
+                    <p>Get a live URL. Real value only comes from software people can actually use.</p>
                 </div>
             </div>
         </div>
@@ -428,6 +577,11 @@
                 <h3 class="project-title">TreasuryFlow</h3>
                 <p class="project-subtitle">From "Data Silos" to "Unified Command" in 3 Weeks</p>
                 
+                <!-- Depth Signal -->
+                <div class="depth-signal">
+                    <strong>Architecture Note:</strong> Chose real-time API aggregation over cached batch processing to ensure instant liquidity visibility.
+                </div>
+
                 <!-- Executive Metrics -->
                 <div class="exec-metric-row">
                     <div class="metric-badge">
@@ -480,6 +634,11 @@
                 <h3 class="project-title">Family Finance AI Bot</h3>
                 <p class="project-subtitle">From "I have a problem" to "Deployed Agent" in 5 Days</p>
                 
+                <!-- Depth Signal -->
+                <div class="depth-signal">
+                    <strong>Architecture Note:</strong> Implemented a serverless webhook pattern (Vercel) to ensure zero cost during idle time.
+                </div>
+
                 <!-- Executive Metrics -->
                 <div class="exec-metric-row">
                     <div class="metric-badge">
@@ -532,6 +691,11 @@
                 <h3 class="project-title">OpenCredit Platform</h3>
                 <p class="project-subtitle">From "Black Box" to "Transparent Logic" in 1 Sprint</p>
                 
+                <!-- Depth Signal -->
+                <div class="depth-signal">
+                    <strong>Key Tradeoff:</strong> Prioritized rule-based explainability over deep learning to satisfy strict financial audit requirements.
+                </div>
+
                 <!-- Executive Metrics -->
                 <div class="exec-metric-row">
                     <div class="metric-badge">
@@ -576,60 +740,26 @@
                 </a>
             </div>
 
-            <!-- Featured Project: Curse of the Frozen North -->
-            <div class="featured-project christmas-card" onclick="window.open('https://game.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge" style="background: #d32f2f;">REAL-TIME SYNC • ZERO LATENCY</span>
-                <div class="project-icon">🎄</div>
-                <h3 class="project-title">The Curse of the Frozen North</h3>
-                <p class="project-subtitle">From "Console Required" to "Browser Native" Experience</p>
-                
-                <!-- Executive Metrics -->
-                <div class="exec-metric-row">
-                    <div class="metric-badge">
-                        <span class="metric-label">Sync Speed</span>
-                        <span class="metric-value">&lt; 50ms</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Scalability</span>
-                        <span class="metric-value">100+ Players</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Tech Stack</span>
-                        <span class="metric-value">Firestore</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">User Exp</span>
-                        <span class="metric-value">Zero Install</span>
-                    </div>
-                </div>
-
-                <!-- Problem / Solution Grid -->
-                <div class="exec-summary-grid">
-                    <div class="exec-col">
-                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
-                        <p>Multiplayer party games usually require expensive consoles or complex app installations, killing the momentum of casual gatherings.</p>
-                    </div>
-                    <div class="exec-col">
-                        <h4 style="color: #00e676;">✅ The Solution</h4>
-                        <p>A <strong>"Bring Your Own Device" architecture</strong>. The browser is the console, phones are controllers. State is synced instantly via Firestore for seamless play.</p>
-                    </div>
-                </div>
-
-                <div class="tech-stack">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Firebase Firestore</span>
-                    <span class="tech-tag">Real-Time DB</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                </div>
-
-                <a href="https://game.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    Play Now →
-                </a>
-            </div>
-
-            <!-- Smaller Projects Grid (Rapid Prototypes) -->
+            <!-- Secondary Grid: Rapid Prototypes -->
+            <h3 class="section-title" style="font-size: 1.8rem; margin-top: 5rem; margin-bottom: 2rem; color: #b0bec5;">Rapid Prototypes</h3>
+            
             <div class="projects-grid">
                 
+                <!-- The Curse of the Frozen North (Moved here) -->
+                <div class="project-card christmas-card" onclick="window.open('https://game.arnavray.ca/', '_blank')">
+                    <div class="project-icon">🎄</div>
+                    <h3 class="project-title" style="font-size: 1.5rem;">Curse of the Frozen North</h3>
+                    <p class="project-subtitle">Zero-Install Multiplayer Game</p>
+                    <div style="margin-top: auto;">
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Party games require complex setup.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> A "Bring Your Own Device" architecture with <50ms Firestore sync.</p>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+
                 <!-- Automated Podcast -->
                 <div class="project-card" onclick="window.open('https://podcast.arnavray.ca/', '_blank')">
                     <div class="project-icon">🎙️</div>
@@ -690,7 +820,10 @@
                 <a href="https://linkedin.com/in/arnavray" target="_blank">LinkedIn</a>
                 <a href="mailto:arnav@arnavray.ca">Email</a>
             </div>
-            <p style="color: #90caf9;">&copy; 2026 Arnav Amal Ray. Building projects, one sprint at a time.</p>
+            
+            <span class="ai-badge">AI-Assisted Build • Human-Directed</span>
+            
+            <p style="color: #90caf9; margin-top: 1rem;">&copy; 2026 Arnav Amal Ray. Building projects, one sprint at a time.</p>
         </div>
     </footer>
 </body>
