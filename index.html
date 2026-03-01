@@ -417,48 +417,49 @@
             border-top: 1px solid var(--border);
         }
 
-        .workflow-strip {
-            display: flex;
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
             margin-top: 2.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
         }
 
         .wf-step {
-            flex: 1;
-            padding: 1.85rem 1.5rem;
-            border-right: 1px solid var(--border);
-            text-align: center;
-            transition: background 0.2s;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
         }
-
-        .wf-step:last-child { border-right: none; }
-        .wf-step:hover { background: rgba(255,255,255,0.03); }
 
         .wf-num {
             font-family: 'DM Serif Display', serif;
             font-size: 1.8rem;
             color: var(--amber);
-            opacity: 0.45;
+            opacity: 0.35;
             line-height: 1;
-            margin-bottom: 0.45rem;
+            flex-shrink: 0;
+            width: 2.2rem;
+            text-align: right;
         }
 
+        .wf-content { flex: 1; }
+
         .wf-title {
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             letter-spacing: 0.07em;
             text-transform: uppercase;
             color: #fff;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
         }
 
         .wf-desc {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--muted);
-            line-height: 1.55;
+            line-height: 1.7;
         }
 
         /* ═══════════════════════════════════════════════
@@ -628,9 +629,7 @@
         @media (max-width: 760px) {
             .hero-cards              { grid-template-columns: 1fr; }
             .card-body               { grid-template-columns: 1fr; }
-            .workflow-strip          { flex-direction: column; }
-            .wf-step                 { border-right: none; border-bottom: 1px solid var(--border); }
-            .wf-step:last-child      { border-bottom: none; }
+            .workflow-grid           { grid-template-columns: 1fr; }
             .other-builds-grid       { grid-template-columns: 1fr 1fr; }
             nav                      { gap: 1.1rem; }
             nav a                    { font-size: 0.82rem; }
@@ -662,8 +661,8 @@
             <span class="header-name">Arnav Amal Ray</span>
             <nav>
                 <a href="#about"    class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#workflow" class="nav-link">How I Work</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#connect"  class="nav-link">Connect</a>
             </nav>
         </div>
@@ -676,7 +675,7 @@
                 <span class="hero-label">AI-Native Product Builder</span>
                 <h1 class="hero-headline">
                     I build to learn.<br>
-                    I learn to <em>advise better.</em>
+                    I learn to solve <em>business problems better.</em>
                 </h1>
                 <p class="hero-sub">
                     Enterprise finance consultant by day. I use hands-on building
@@ -692,6 +691,46 @@
                     <div class="hero-card">
                         <p class="hero-card-label">How I Think</p>
                         <p>I define the problem, design the solution, and direct AI to build it. The decisions are mine. I own architecture, testing, and deployment. AI handles execution speed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── HOW I WORK ────────────────────────────────── -->
+    <section id="workflow">
+        <div class="container">
+            <p class="section-eyebrow reveal">How I Work</p>
+            <h2 class="section-heading reveal">From problem to production</h2>
+            <p class="section-intro reveal">The discipline is the same whether the problem is a broken finance process or a missing data pipeline. Define it clearly, then build the right thing - not just the obvious thing.</p>
+
+            <div class="workflow-grid reveal-stagger">
+                <div class="wf-step">
+                    <div class="wf-num">01</div>
+                    <div class="wf-content">
+                        <div class="wf-title">Frame the Problem</div>
+                        <p class="wf-desc">Most solutions fail because they solve the wrong problem. Before anything else, I separate the stated problem from the actual one. Who is affected and how? What does a good outcome look like versus a merely complete one? What constraints are real versus assumed? A well-framed problem is often half-solved.</p>
+                    </div>
+                </div>
+                <div class="wf-step">
+                    <div class="wf-num">02</div>
+                    <div class="wf-content">
+                        <div class="wf-title">Design the System</div>
+                        <p class="wf-desc">I define the architecture before touching any tool. What are the components? How do they connect? Where does data flow and where could it break? What edge cases will surface in production but not in demos? This is where most execution risk lives - and where thinking it through in advance pays off most.</p>
+                    </div>
+                </div>
+                <div class="wf-step">
+                    <div class="wf-num">03</div>
+                    <div class="wf-content">
+                        <div class="wf-title">Build and Validate</div>
+                        <p class="wf-desc">I direct AI tools to implement the design, then test against real conditions rather than ideal ones. Does it handle bad input? Does it fail gracefully? Does it actually solve the problem for someone who did not build it? Iteration here is fast because the design is already clear - I am validating assumptions, not discovering them.</p>
+                    </div>
+                </div>
+                <div class="wf-step">
+                    <div class="wf-num">04</div>
+                    <div class="wf-content">
+                        <div class="wf-title">Ship and Learn</div>
+                        <p class="wf-desc">A working deployment is the only honest test. I move from local to live quickly and treat the first real use as the start of learning, not the end of building. What did users actually do? What did the system do unexpectedly? The feedback from a live product is worth more than any pre-launch analysis.</p>
                     </div>
                 </div>
             </div>
@@ -799,38 +838,6 @@
         </div>
     </section>
 
-    <!-- ── HOW I WORK ────────────────────────────────── -->
-    <section id="workflow">
-        <div class="container">
-            <p class="section-eyebrow reveal">How I Work</p>
-            <h2 class="section-heading reveal">From problem to production</h2>
-            <p class="section-intro reveal">The same process every time. What changes is the problem.</p>
-
-            <div class="workflow-strip reveal-stagger">
-                <div class="wf-step">
-                    <div class="wf-num">01</div>
-                    <div class="wf-title">Frame</div>
-                    <p class="wf-desc">What is the actual problem? What is the simplest solution that would prove it is solvable?</p>
-                </div>
-                <div class="wf-step">
-                    <div class="wf-num">02</div>
-                    <div class="wf-title">Architect</div>
-                    <p class="wf-desc">Define the system. What connects to what? Where are the failure points and constraints?</p>
-                </div>
-                <div class="wf-step">
-                    <div class="wf-num">03</div>
-                    <div class="wf-title">Build</div>
-                    <p class="wf-desc">Prompt, test, break, fix. Use AI to move fast without losing control of the output.</p>
-                </div>
-                <div class="wf-step">
-                    <div class="wf-num">04</div>
-                    <div class="wf-title">Ship</div>
-                    <p class="wf-desc">Get it live. A working URL is the only honest measure of whether something is done.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ── OTHER BUILDS ──────────────────────────────── -->
     <section id="other-builds">
         <div class="container">
@@ -884,15 +891,15 @@
                 <a href="https://github.com/arnav-ray" target="_blank" class="connect-btn">
                     GitHub
                 </a>
-                <a href="mailto:arnav@arnavray.ca" class="connect-btn">
-                    arnav@arnavray.ca
+                <a href="/cdn-cgi/l/email-protection#c7a6b5a9a6b187a6b5a9a6b1b5a6bee9a4a6" class="connect-btn">
+                    <span class="__cf_email__" data-cfemail="7011021e11063011021e11060211095e1311">[email&#160;protected]</span>
                 </a>
             </div>
             <p class="footer-note">&copy; 2026 Arnav Amal Ray &nbsp;&bull;&nbsp; AI-Assisted Build &nbsp;&bull;&nbsp; Human-Directed</p>
         </div>
     </section>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ── Scroll progress bar ──────────────────────
         const progressBar = document.getElementById('progress-bar');
         function updateProgress() {
@@ -929,12 +936,10 @@
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.08 });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
-            revealObserver.observe(el);
-        });
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
+
     </script>
-
 </body>
 </html>
