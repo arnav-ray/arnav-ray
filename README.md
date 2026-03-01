@@ -1,123 +1,139 @@
 # Arnav Amal Ray - Portfolio
 
-**Navigating the Blue Ocean of Innovation**
+**AI-native product builder - from idea → prompt → prototype → production.**
 
 ## 👋 About Me
 
-I'm an SAP FI (Finance) consultant by day, AI-assisted builder by passion. I specialize in helping large organizations navigate complex S/4HANA implementations while exploring the cutting edge of what's possible when business expertise meets AI-powered development.
+I am an SAP FI (Finance) consultant by day, AI-assisted builder by passion. I bridge the gap between finance, compliance, and technology in large S/4HANA implementations - and apply the same structured thinking to building software from scratch.
 
-While AI tools handle the coding, I act as the architect, project manager, and creative director - providing the vision, logic, and prompts, then debugging the output. This hands-on approach allows me to understand technology, design, and usability from a practical perspective.
+My approach: I work as product and solution architect. I define the problem worth solving, design the system that solves it, and direct AI tools to build it. The idea, the logic, the constraints, and the decisions are mine. I handle system architecture, process, testing, and deployment. AI handles execution speed.
 
-## 🏦 Flagship Project: TreasuryFlow
+---
 
+## 🧠 The Workflow
+
+**Frame** → Define the core problem. What is worth solving and what is the simplest path?
+
+**Generate** → Prompt. Test. Refine. Use AI to rapidly build, break, and fix the implementation.
+
+**Launch** → Ship a live URL. Real value only comes from software people can actually use.
+
+---
+
+## 🗂 Portfolio: Concept to Production
+
+### 1. Local LLM (RAG) for Immigration Questions
+**[github.com/arnav-ray/immigration-rag](https://github.com/arnav-ray/immigration-rag)**
+
+> Local-first RAG system for querying German immigration law. Learning project - not legal advice.
+
+Runs entirely on local hardware. No API calls to cloud AI services, no data leaving the machine, full GDPR compliance by design. Every answer is cited to the exact section of the law.
+
+**The Challenge:** German immigration law is spread across multiple statutes totalling hundreds of individually numbered sections, sub-sections, clauses, and sentences that cross-reference each other. A single eligibility question can require reading five different parts of the law simultaneously. Generic AI assistants either refuse to engage with this complexity or confidently cite rules that do not exist.
+
+**The Solution:** Ask a question in plain English or German and get a direct answer - with the exact section of the law it comes from, so you can verify it yourself. Where the local legal database needs supplementing, the system searches the web and surfaces the latest official guidance in the same window.
+
+**RAG Pipeline:** Ingest → Chunk → Embed → Retrieve → Generate
+
+**Key metrics:**
+- Inference: 100% On-Premise
+- AI Models: Mistral NeMo 12B / Qwen 2.5 14B
+- Privacy: Zero Data Leaves Machine
+- Corpus: German Immigration, Residence, and Employment Laws
+
+**Tech Stack:** LlamaIndex · Ollama · Mistral NeMo 12B · Qwen 2.5 14B · nomic-embed-text-v2-moe · Docling · Streamlit · DuckDuckGo Web Search · RTX 5070 Ti
+
+---
+
+### 2. Family Finance and Goals AI Bot
+**[github.com/arnav-ray/family-bot](https://github.com/arnav-ray/family-bot)**
+
+Log expenses on the go, set family goals, and track everything live in Google Sheets - no app, no manual entry, just a message.
+
+**The Challenge:** Families lose track of spending because logging an expense means opening an app, finding a category, and typing it in - friction that guarantees gaps. Goals suffer the same fate: they get written down once and forgotten. There is no single place where the whole picture lives.
+
+**The Solution:** Send a message or a photo of a receipt on Telegram. The bot reads it, categorises it, and writes it directly into a shared Google Sheet in under a second. Goals work the same way - type "Trip to Japan 5000 by December" and the bot creates a tracked goal entry. The family's full financial picture stays current with zero manual effort.
+
+**Key metrics:**
+- Time to Build: 5 Days
+- OpEx Cost: $0.00 / month
+- AI Model: Llama 4 Vision (via Groq)
+- Latency: < 1 Second
+
+**Tech Stack:** Python Serverless · Groq AI · Llama 4 Vision · Computer Vision · NLP · Telegram Bot API · Google Sheets API · Vercel
+
+---
+
+### 3. TreasuryFlow
 **[Live Demo: treasuryflow.arnavray.ca](https://treasuryflow.arnavray.ca/)**
 
-### The Vision: Beyond Traditional Financial Software
+From "Data Silos" to "Unified Command" in 3 Weeks.
 
-TreasuryFlow isn't just another dashboard - it's a **next-generation analytics and transaction layer** that sits above any ERP system. Think of it as the "operating system" for global finance teams, combining deep SAP S/4HANA expertise with modern AI capabilities.
+**The Challenge:** Enterprise ERPs are rigid and siloed. CFOs rely on Excel because getting real-time, cross-system cash visibility is technically painful and expensive.
 
-### Why This Matters for Enterprises
+**The Solution:** An ERP-agnostic overlay that pulls data via API without touching the core system, using AI to normalize transactions and predict cash flow instantly.
 
-**The Problem:** Most companies struggle with financial data scattered across multiple systems - SAP in headquarters, Oracle in subsidiaries, legacy systems in acquired companies. Finance teams spend 60% of their time just gathering data instead of analyzing it.
+**Architecture Note:** Chose real-time API aggregation over cached batch processing to ensure instant liquidity visibility.
 
-**The Solution:** A universal financial command center that:
-- **Connects Everything:** Works with SAP, Oracle, NetSuite, or any backend via API abstraction
-- **Processes Transactions:** Not just reporting - actual payment execution and cash positioning
-- **Predicts Outcomes:** AI-powered risk management and automated hedging recommendations
-- **Ensures Compliance:** Built-in IFRS, GAAP, and tax compliance workflows
+**Key metrics:**
+- Dev Time: 3 Week Sprint
+- Architecture: API-First
+- Security: Zero-Trust
 
-### Current Live Capabilities
-
-✅ **Multi-Currency Treasury Operations** - Real-time cash positioning across global bank accounts  
-✅ **AI Financial Assistant** - Gemini-powered insights that understand your actual financial data  
-✅ **Smart Process Orchestration** - Visual P2P and O2C workflows with document tracking  
-✅ **Live Market Integration** - TradingView widgets for real-time FX and commodity data  
-✅ **Advanced Analytics** - Predictive cash flow modeling and AR aging analysis  
-✅ **Enterprise Security** - Role-based access with complete audit trails  
-
-### Roadmap: The Next 12 Months
-
-🚀 **SAP S/4HANA Direct Connector** - Native FIORI-style integration with real-time data sync  
-🚀 **Smart Contract Automation** - Blockchain-based payment rails for instant B2B settlements  
-🚀 **Predictive Analytics Engine** - ML models for cash flow forecasting and credit risk  
-🚀 **Mobile Treasury App** - Executive mobile interface for approval workflows  
-🚀 **Open Banking Integration** - Direct bank API connections for real-time balances  
-🚀 **ESG Reporting Module** - Sustainability metrics and carbon accounting  
-
-### My SAP S/4HANA Expertise Applied
-
-This project showcases real-world understanding of:
-- **Financial Process Design:** Deep FI/CO module integration knowledge
-- **Master Data Architecture:** Customer/Vendor hierarchies and chart of accounts optimization  
-- **Compliance Framework:** Tax jurisdiction handling and regulatory reporting
-- **Integration Patterns:** API design that mirrors SAP's REST/OData standards
-
-**Technology Stack:** SAP S/4HANA Ready • Tailwind CSS • Chart.js • Google Gemini API • TradingView API • Enterprise Security
+**Tech Stack:** Google Gemini API · Chart.js · TradingView API · Agile DevOps
 
 ---
 
-## 🎙️ The Automated Podcast - AI Content Generation
+### 4. OpenCredit Platform
+**[Live Demo: credit.arnavray.ca](https://credit.arnavray.ca/)**
 
-**[Live: podcast.arnavray.ca](https://podcast.arnavray.ca/)**
+From "Black Box" to "Transparent Logic" in 1 Sprint.
 
-**The Challenge:** Create a fully automated podcast system that generates engaging content daily - with zero operating costs.
+**The Challenge:** Credit scores are opaque algorithms. Consumers are judged by a number they cannot audit, explain, or effectively optimize.
 
-**The Innovation:** 
-- 🎯 **$0 Operating Cost** - Engineered around free-tier limitations with clever architecture
-- 🎯 **Personality Engine** - Creates unique dialogue between AI hosts, not just text-to-speech  
-- 🎯 **Smart Curation** - Custom scoring algorithm identifies the most engaging stories
-- 🎯 **Complete Automation** - GitHub Actions orchestrates the entire pipeline
+**The Solution:** A fully transparent risk engine. By integrating behavioral economics and FICO methodology, every calculation is visible and interactive.
 
-This demonstrates advanced problem-solving: how to build sophisticated systems within constraint limitations while maintaining quality output.
+**Key Tradeoff:** Prioritized rule-based explainability over deep learning to satisfy strict financial audit requirements.
 
----
+**Key metrics:**
+- Dev Time: 4 Days
+- Logic Model: Basel III
+- Compliance: GDPR Ready
 
-## 🇩🇪 Language Learning Ecosystem
-
-### Daily German Learning
-**[Experience: german.arnavray.ca](https://german.arnavray.ca/)**
-
-From zero coding experience to a sophisticated learning platform featuring:
-- Interactive drag-and-drop exercises and memory games
-- Color-coded grammar analyzer that makes complex German structure visual
-- Google Sheets API integration for dynamic content management
-
-### German for Visitors  
-**[Explore: visitgermany.arnavray.ca](https://visitgermany.arnavray.ca/)**
-
-Interactive cultural immersion tool with:
-- Leaflet.js-powered interactive maps and tours
-- Contextual dialogue practice for real-world scenarios  
-- D3.js mind map visualizing language connections
-- Multi-language support (Hindi, Bengali, Marathi)
+**Tech Stack:** React · Financial Modeling · Risk Analytics · Data Visualization
 
 ---
 
-## 🤖 Personal AI Portal
+## ⚡ Rapid Prototypes
 
-**[Chat: arnav-personal-sandbox.uc.r.appspot.com](https://arnav-personal-sandbox.uc.r.appspot.com/)**
-
-A clean, direct interface to Google's Gemini AI. Built to understand how conversational AI works under the hood - from API calls to streaming responses. Sometimes the simplest tools are the most powerful.
+| Project | Description | Stack |
+|---|---|---|
+| [Curse of the Frozen North](https://game.arnavray.ca/) | Zero-install multiplayer party game with <50ms Firestore sync | React · Firebase |
+| [Automated Podcast](https://podcast.arnavray.ca/) | 100% automated daily podcast pipeline, zero operating cost | Node.js · GitHub Actions |
+| [Daily German](https://german.arnavray.ca/) | Gamified German learning with interactive grammar and memory games | Serverless · Interactive UI |
+| [AI Portal](https://arnav-personal-sandbox.uc.r.appspot.com/) | Raw interface to Google Gemini for understanding streaming and API behaviour | Gemini API · Google Cloud |
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠 Technology Stack
 
-**Enterprise Systems:** SAP S/4HANA • Process Automation • Financial Compliance  
-**Development:** JavaScript/Node.js • React • Cloud Architecture  
-**AI Integration:** Google Gemini API • Content Curation AI • ML Integration  
-**Data Visualization:** Chart.js • D3.js • Interactive UI Design  
+**AI & ML:** LlamaIndex · Ollama · Groq AI · Google Gemini API · Computer Vision · NLP · Vector Embeddings
+
+**Infrastructure:** Python Serverless · Vercel · Google Cloud · GitHub Actions
+
+**Frontend:** React · Chart.js · TradingView API · Streamlit
+
+**Enterprise:** SAP FI/CO · S/4HANA · Financial Process Design · API Integration
 
 ---
 
 ## 📫 Let's Connect
 
-Interested in AI-assisted development, enterprise software innovation, or SAP S/4HANA implementations?
-
+- **Portfolio:** [arnavray.ca](https://arnavray.ca)
 - **GitHub:** [github.com/arnav-ray](https://github.com/arnav-ray)
-- **LinkedIn:** [linkedin.com/in/arnavray](https://linkedin.com/in/arnavray)  
+- **LinkedIn:** [linkedin.com/in/arnavray](https://linkedin.com/in/arnavray)
 - **Email:** arnav@arnavray.ca
 
 ---
 
-*"Navigating innovation, one project at a time."*
+*AI-Assisted Build · Human-Directed*
