@@ -11,7 +11,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-HCZ0SSXZKR');
     </script>
 
@@ -24,7 +23,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #05081a; /* Darker, cleaner base */
+            background-color: #05081a;
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -45,12 +44,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.4; /* Dimmed further for readability & focus */
+            opacity: 0.4;
         }
 
         /* Header */
         header {
-            background: rgba(5, 10, 25, 0.85); /* Dark navy glass */
+            background: rgba(5, 10, 25, 0.85);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             padding: 2rem 0;
@@ -75,14 +74,12 @@
             justify-content: center;
             text-align: center;
             padding: 4rem 0;
-            /* Cleaner gradient, less muddy */
             background: linear-gradient(to bottom, rgba(5, 10, 25, 0.4), rgba(5, 10, 25, 0.8));
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            /* Pure white to Ice Blue gradient */
             background: linear-gradient(135deg, #ffffff 0%, #82b1ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -92,7 +89,7 @@
 
         .tagline {
             font-size: 1.5rem;
-            color: #e3f2fd; /* Very light blue */
+            color: #e3f2fd;
             margin-bottom: 1rem;
             font-weight: 300;
             opacity: 0.9;
@@ -116,7 +113,6 @@
         }
 
         .intro-block {
-            /* Neutral Dark Glass */
             background: rgba(20, 30, 50, 0.6);
             padding: 2rem;
             border-radius: 16px;
@@ -138,7 +134,7 @@
 
         .intro-block h2 {
             font-size: 1.5rem;
-            color: #ffffff; /* Clean white */
+            color: #ffffff;
             margin-bottom: 1rem;
             font-weight: 600;
         }
@@ -146,10 +142,10 @@
         .intro-block p {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #cfd8dc; /* Light gray-blue */
+            color: #cfd8dc;
         }
 
-        /* Methodology Section (Redesigned) */
+        /* Methodology Section */
         .methodology {
             padding: 5rem 0;
             background: rgba(10, 20, 35, 0.6);
@@ -158,7 +154,6 @@
             text-align: center;
         }
 
-        /* Workflow Visual Pipeline */
         .workflow-steps {
             display: flex;
             justify-content: center;
@@ -178,35 +173,17 @@
             transition: transform 0.3s ease;
             position: relative;
         }
-        
+
         .step-card:hover {
             transform: translateY(-5px);
             border-color: rgba(130, 177, 255, 0.5);
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .step-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .step-card p {
-            font-size: 0.85rem;
-            color: #b0bec5;
-            line-height: 1.4;
-        }
-
-        .step-arrow {
-            font-size: 2rem;
-            color: #546e7a;
-            font-weight: bold;
-        }
+        .step-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .step-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff; }
+        .step-card p { font-size: 0.85rem; color: #b0bec5; line-height: 1.4; }
+        .step-arrow { font-size: 2rem; color: #546e7a; font-weight: bold; }
 
         /* Projects Section */
         .projects {
@@ -223,9 +200,7 @@
             letter-spacing: -0.01em;
         }
 
-        /* Featured Project Card Styles */
         .featured-project {
-            /* Dark Neutral Glass - No Teal Tint */
             background: rgba(15, 23, 42, 0.75);
             border-radius: 24px;
             padding: 3rem;
@@ -241,15 +216,22 @@
 
         .featured-project:hover {
             transform: translateY(-5px);
-            border-color: rgba(130, 177, 255, 0.3); /* Subtle blue glow on hover */
+            border-color: rgba(130, 177, 255, 0.3);
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* RAG card: amber/gold accent */
+        .rag-project { border-color: rgba(255, 183, 77, 0.2) !important; }
+        .rag-project:hover {
+            border-color: rgba(255, 183, 77, 0.45) !important;
+            box-shadow: 0 15px 50px rgba(255, 183, 77, 0.08) !important;
         }
 
         .featured-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #2962ff; /* Strong Royal Blue */
+            background: #2962ff;
             color: #ffffff;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -265,19 +247,8 @@
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
         }
 
-        .project-title {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff; /* Clean White */
-            font-weight: 700;
-        }
-
-        .project-subtitle {
-            color: #90caf9; /* Light Blue Accent */
-            margin-bottom: 2rem;
-            font-style: italic;
-            font-size: 1.1rem;
-        }
+        .project-title { font-size: 2rem; margin-bottom: 0.5rem; color: #ffffff; font-weight: 700; }
+        .project-subtitle { color: #90caf9; margin-bottom: 2rem; font-style: italic; font-size: 1.1rem; }
 
         .depth-signal {
             font-size: 0.9rem;
@@ -290,7 +261,8 @@
             display: inline-block;
         }
 
-        /* Executive Summary Grid (Problem/Solution) */
+        .depth-signal-amber { border-left-color: #ffb74d !important; }
+
         .exec-summary-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -299,30 +271,15 @@
             background: rgba(0, 0, 0, 0.3);
             padding: 2rem;
             border-radius: 16px;
-            border-left: 4px solid #448aff; /* Blue accent */
+            border-left: 4px solid #448aff;
         }
 
-        .exec-col h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        .exec-summary-grid-amber { border-left-color: #ffb74d !important; }
 
-        .exec-col p {
-            font-size: 1rem;
-            color: #eceff1;
-            line-height: 1.7;
-        }
+        .exec-col h4 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .exec-col p { font-size: 1rem; color: #eceff1; line-height: 1.7; }
 
-        /* Executive Metrics Row */
-        .exec-metric-row {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
+        .exec-metric-row { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
 
         .metric-badge {
             background: rgba(255, 255, 255, 0.03);
@@ -336,31 +293,10 @@
             flex: 1;
         }
 
-        .metric-label {
-            font-size: 0.75rem;
-            color: #b0bec5; /* Grey */
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.25rem;
-        }
+        .metric-label { font-size: 0.75rem; color: #b0bec5; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+        .metric-value { font-size: 1.2rem; font-weight: 700; color: #fff; }
 
-        .metric-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .highlight-text {
-            color: #82b1ff;
-            font-weight: 600;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
 
         .tech-tag {
             background: rgba(255, 255, 255, 0.05);
@@ -376,7 +312,6 @@
             align-items: center;
             gap: 0.5rem;
             color: #ffffff;
-            /* Deep Blue Gradient */
             background: linear-gradient(135deg, #1565c0, #0d47a1);
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -393,6 +328,46 @@
             background: linear-gradient(135deg, #1976d2, #1565c0);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+        }
+
+        .project-link-amber { background: linear-gradient(135deg, #e65100, #bf360c) !important; }
+        .project-link-amber:hover {
+            background: linear-gradient(135deg, #f57c00, #e65100) !important;
+            box-shadow: 0 8px 25px rgba(230, 81, 0, 0.4) !important;
+        }
+
+        /* RAG pipeline visualization */
+        .rag-pipeline {
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 183, 77, 0.2);
+        }
+
+        .rag-step {
+            flex: 1;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 183, 77, 0.15);
+            font-size: 0.8rem;
+            color: #cfd8dc;
+        }
+
+        .rag-step:last-child { border-right: none; }
+        .rag-step-icon { font-size: 1.4rem; display: block; margin-bottom: 0.4rem; }
+
+        .rag-step-label {
+            font-weight: 600;
+            color: #ffb74d;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
         /* Smaller Projects Grid */
@@ -422,12 +397,11 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Christmas Special Style - Kept distinct but cleaner */
         .christmas-card {
             background: linear-gradient(135deg, rgba(50, 0, 0, 0.6), rgba(20, 0, 0, 0.6)) !important;
             border: 1px solid rgba(255, 82, 82, 0.3) !important;
         }
-        
+
         .christmas-card:hover {
             box-shadow: 0 10px 40px rgba(180, 0, 0, 0.3) !important;
             border-color: rgba(255, 82, 82, 0.6) !important;
@@ -438,8 +412,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        /* AI Badge in Footer */
+
         .ai-badge {
             display: inline-block;
             margin-top: 1rem;
@@ -453,16 +426,10 @@
             text-transform: uppercase;
         }
 
-        /* Footer Links Styling */
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
 
         .footer-links a {
-            color: #ffffff; /* Explicitly White */
+            color: #ffffff;
             text-decoration: none;
             font-size: 1.1rem;
             opacity: 0.9;
@@ -470,108 +437,21 @@
             font-weight: 500;
         }
 
-        .footer-links a:hover {
-            opacity: 1;
-            color: #82b1ff; /* Light blue on hover */
-            text-decoration: underline;
-        }
-
-        /* --- CHAT WIDGET STYLES --- */
-        .chat-widget-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .chat-frame-wrapper {
-            width: 380px; /* Optimal mobile-view width */
-            height: 600px;
-            max-height: 80vh;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 5px 40px rgba(0,0,0,0.5);
-            overflow: hidden;
-            margin-bottom: 1rem;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-origin: bottom right;
-            transform: scale(0);
-            opacity: 0;
-            pointer-events: none; /* Prevent clicking when hidden */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-frame-wrapper.active {
-            transform: scale(1);
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .chat-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .chat-toggle-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2962ff, #1565c0);
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(41, 98, 255, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .chat-toggle-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .chat-toggle-btn span {
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .chat-toggle-btn.open span {
-            transform: rotate(45deg);
-        }
+        .footer-links a:hover { opacity: 1; color: #82b1ff; text-decoration: underline; }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .intro-sections { grid-template-columns: 1fr; }
-            .method-grid { grid-template-columns: 1fr; gap: 2rem; }
-            
-            /* Workflow Mobile */
             .workflow-steps { flex-direction: column; gap: 1rem; }
             .step-arrow { transform: rotate(90deg); margin: 0; }
             .step-card { width: 100%; max-width: 300px; }
-            
             .exec-summary-grid { grid-template-columns: 1fr; }
             .exec-metric-row { gap: 1rem; }
             .metric-badge { min-width: 45%; }
-
-            /* Chat Widget Mobile */
-            .chat-widget-container {
-                bottom: 1rem;
-                right: 1rem;
-            }
-            .chat-frame-wrapper {
-                width: calc(100vw - 2rem);
-                height: 70vh;
-                position: fixed;
-                bottom: 5rem;
-                right: 1rem;
-            }
+            .rag-pipeline { flex-direction: column; }
+            .rag-step { border-right: none; border-bottom: 1px solid rgba(255, 183, 77, 0.15); }
+            .rag-step:last-child { border-bottom: none; }
         }
     </style>
 </head>
@@ -595,51 +475,46 @@
     <section class="hero">
         <div class="container">
             <h1>Building Real Solutions with AI</h1>
-            <p class="tagline">Agile Development • Rapid Prototyping • Enterprise Scale</p>
-            
-            <!-- Positioning Statement -->
-            <p class="ai-positioning">AI-native product builder — from idea → prompt → prototype → production.</p>
-            
+            <p class="tagline">Agile Development &bull; Rapid Prototyping &bull; Enterprise Scale</p>
+
+            <p class="ai-positioning">AI-native product builder - from idea &rarr; prompt &rarr; prototype &rarr; production.</p>
+
             <div class="intro-sections">
                 <div class="intro-block">
                     <h2>My Day Job</h2>
                     <p>I am an SAP FI (Finance) consultant, helping large organizations navigate complex S/4HANA implementations. I bridge the gap between finance, compliance, and technology to optimize key business processes.</p>
                 </div>
-                
+
                 <div class="intro-block">
                     <h2>My Approach</h2>
-                    <p><strong>I design systems and validate decisions.</strong> AI handles implementation speed. I handle direction, constraints, testing, and deployment. I focus on Product Logic—steering the engine to build reliable software faster.</p>
+                    <p><strong>I work as product and solution architect.</strong> I define the problem worth solving, design the system that solves it, and direct AI tools to build it. The idea, the logic, the constraints, and the decisions are mine. I handle system architecture, process, testing, and deployment. AI handles execution speed.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Methodology Section (Visual Story) -->
+    <!-- Methodology Section -->
     <section class="methodology">
         <div class="container">
             <h2 class="section-title">The Workflow</h2>
-            
-            <!-- Visual Pipeline -->
+
             <div class="workflow-steps">
-                <!-- Step 1 -->
                 <div class="step-card">
-                    <div class="step-icon">🎯</div>
+                    <div class="step-icon">&#127919;</div>
                     <h3>Frame</h3>
                     <p>Define the goal. What is the core problem? What is the simplest solution?</p>
                 </div>
-                <div class="step-arrow">→</div>
-                
-                <!-- Step 2 -->
-                <div class="step-card ai-step">
-                    <div class="step-icon">⚡</div>
+                <div class="step-arrow">&rarr;</div>
+
+                <div class="step-card">
+                    <div class="step-icon">&#9889;</div>
                     <h3>Generate</h3>
                     <p>Prompt. Test. Refine. Use AI to rapidly build, break, and fix the implementation.</p>
                 </div>
-                <div class="step-arrow">→</div>
-                
-                <!-- Step 3 -->
+                <div class="step-arrow">&rarr;</div>
+
                 <div class="step-card">
-                    <div class="step-icon">🚀</div>
+                    <div class="step-icon">&#128640;</div>
                     <h3>Launch</h3>
                     <p>Get a live URL. Real value only comes from software people can actually use.</p>
                 </div>
@@ -651,105 +526,126 @@
     <section class="projects">
         <div class="container">
             <h2 class="section-title">Portfolio: Concept to Production</h2>
-            
-            <!-- Featured Project: TreasuryFlow -->
-            <div class="featured-project" onclick="window.open('https://treasuryflow.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge" style="background: #2962ff;">ENTERPRISE ARCHITECTURE</span>
-                <div class="project-icon">🏦</div>
-                <h3 class="project-title">TreasuryFlow</h3>
-                <p class="project-subtitle">From "Data Silos" to "Unified Command" in 3 Weeks</p>
-                
-                <!-- Depth Signal -->
-                <div class="depth-signal">
-                    <strong>Architecture Note:</strong> Chose real-time API aggregation over cached batch processing to ensure instant liquidity visibility.
+
+            <!-- ════════════════════════════════════════
+                 PROJECT 1: Local LLM (RAG) - Learning Project
+                 ════════════════════════════════════════ -->
+            <div class="featured-project rag-project" onclick="window.open('https://github.com/arnav-ray/immigration-rag', '_blank')" style="cursor: pointer;">
+                <span class="featured-badge" style="background: linear-gradient(135deg, #e65100, #bf360c); box-shadow: 0 2px 10px rgba(230,81,0,0.35);">LOCAL AI &bull; LEARNING PROJECT</span>
+                <div class="project-icon">&#9878;&#65039;</div>
+                <h3 class="project-title">Local LLM (RAG) for Immigration Questions</h3>
+                <p class="project-subtitle" style="color: #ffcc80;">
+                    Runs entirely on local hardware. No API calls to cloud AI services, no data leaving the machine, full GDPR compliance by design. Every answer is cited to the exact section of the law.
+                </p>
+
+                <div class="depth-signal depth-signal-amber">
+                    <strong>Solution Architecture:</strong> I conceived this as an on-premise legal knowledge system from scratch, defining the problem, the data strategy, the retrieval logic, and the user experience.
                 </div>
 
-                <!-- Executive Metrics -->
                 <div class="exec-metric-row">
                     <div class="metric-badge">
-                        <span class="metric-label">Dev Time</span>
-                        <span class="metric-value">3 Week Sprint</span>
+                        <span class="metric-label">Inference</span>
+                        <span class="metric-value">100% On-Premise</span>
                     </div>
                     <div class="metric-badge">
-                        <span class="metric-label">Tech Stack</span>
-                        <span class="metric-value">SAP + Gemini</span>
+                        <span class="metric-label">AI Models</span>
+                        <span class="metric-value">Mistral NeMo / Qwen 2.5</span>
                     </div>
                     <div class="metric-badge">
-                        <span class="metric-label">Architecture</span>
-                        <span class="metric-value">API-First</span>
+                        <span class="metric-label">Privacy</span>
+                        <span class="metric-value">Zero Data Leaves Machine</span>
                     </div>
                     <div class="metric-badge">
-                        <span class="metric-label">Security</span>
-                        <span class="metric-value">Zero-Trust</span>
+                        <span class="metric-label">Corpus</span>
+                        <span class="metric-value">Immigration, Residence + Employment Laws</span>
                     </div>
                 </div>
 
-                <!-- Problem / Solution Grid -->
-                <div class="exec-summary-grid">
+                <!-- Pipeline visualization -->
+                <div class="rag-pipeline">
+                    <div class="rag-step">
+                        <span class="rag-step-icon">&#128196;</span>
+                        <span class="rag-step-label">Ingest</span>
+                        Official German laws (e.g. from gesetze-im-internet.de) are loaded in their original published form
+                    </div>
+                    <div class="rag-step">
+                        <span class="rag-step-icon">&#9986;&#65039;</span>
+                        <span class="rag-step-label">Chunk</span>
+                        Each law is split into its natural legal units - sections, sub-sections, numbered clauses - so the system never reads a rule out of context or mid-thought
+                    </div>
+                    <div class="rag-step">
+                        <span class="rag-step-icon">&#129518;</span>
+                        <span class="rag-step-label">Embed</span>
+                        Each chunk is converted into a vector - a mathematical representation of its meaning - so the system can find conceptual matches, not just keyword hits
+                    </div>
+                    <div class="rag-step">
+                        <span class="rag-step-icon">&#128269;</span>
+                        <span class="rag-step-label">Retrieve</span>
+                        The question is embedded the same way, then matched against the vector store to surface the most relevant legal sections - like a researcher scanning a statute, not a keyword search
+                    </div>
+                    <div class="rag-step">
+                        <span class="rag-step-icon">&#128172;</span>
+                        <span class="rag-step-label">Generate</span>
+                        The LLM composes a plain-language answer grounded only in the retrieved sections, citing exactly where each point comes from
+                    </div>
+                </div>
+
+                <div class="exec-summary-grid exec-summary-grid-amber">
                     <div class="exec-col">
-                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
-                        <p>Enterprise ERPs (SAP, Oracle) are rigid and siloed. CFOs rely on Excel because getting real-time, cross-system cash visibility is technically painful and expensive.</p>
+                        <h4 style="color: #ff8a80;">&#128721; The Challenge</h4>
+                        <p>German immigration law is spread across multiple statutes totalling hundreds of individually numbered sections, sub-sections, clauses, and sentences that cross-reference each other. A single eligibility question can require reading five different parts of the law simultaneously. Generic AI assistants either refuse to engage with this complexity or confidently cite rules that do not exist.</p>
                     </div>
                     <div class="exec-col">
-                        <h4 style="color: #00e676;">✅ The Solution</h4>
-                        <p>I built an <strong>ERP-agnostic overlay</strong>. It pulls data via API without touching the core, using AI to normalize transactions and predict cash flow instantly.</p>
+                        <h4 style="color: #00e676;">&#10003; The Solution</h4>
+                        <p>Ask a question in plain English or German and get a direct answer - with the exact section of the law it comes from, so you can verify it yourself. Where the local legal database needs supplementing, the system searches the web and surfaces the latest official guidance in the same window. No switching tabs, no decoding legal jargon alone.</p>
                     </div>
                 </div>
 
                 <div class="tech-stack">
-                    <span class="tech-tag">SAP S/4HANA Ready</span>
-                    <span class="tech-tag">Agile DevOps</span>
-                    <span class="tech-tag">Google Gemini API</span>
-                    <span class="tech-tag">Chart.js</span>
-                    <span class="tech-tag">TradingView API</span>
+                    <span class="tech-tag">LlamaIndex</span>
+                    <span class="tech-tag">Ollama</span>
+                    <span class="tech-tag">Mistral NeMo 12B</span>
+                    <span class="tech-tag">Qwen 2.5 14B</span>
+                    <span class="tech-tag">nomic-embed-text-v2-moe</span>
+                    <span class="tech-tag">Docling</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">DuckDuckGo Web Search</span>
+                    <span class="tech-tag">RTX 5070 Ti</span>
                 </div>
 
-                <a href="https://treasuryflow.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    Launch TreasuryFlow →
+                <a href="https://github.com/arnav-ray/immigration-rag" class="project-link project-link-amber" target="_blank" onclick="event.stopPropagation();">
+                    View on GitHub &rarr;
                 </a>
             </div>
 
-            <!-- Featured Project: Family Finance Bot -->
+            <!-- ════════════════════════════════════════
+                 PROJECT 2: Family Finance and Goals Bot
+                 ════════════════════════════════════════ -->
             <div class="featured-project" onclick="window.open('https://github.com/arnav-ray/family-bot', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge" style="background: #00e676; color: #000;">AI AUTOMATION • ZERO COST</span>
-                <div class="project-icon">🧾</div>
-                <h3 class="project-title">Family Finance AI Bot</h3>
-                <p class="project-subtitle">From "I have a problem" to "Deployed Agent" in 5 Days</p>
-                
-                <!-- Depth Signal -->
+                <span class="featured-badge" style="background: #00e676; color: #000;">AI AUTOMATION &bull; ZERO COST</span>
+                <div class="project-icon">&#129534;</div>
+                <h3 class="project-title">Family Finance and Goals AI Bot</h3>
+                <p class="project-subtitle">Log expenses on the go, set family goals, and track everything live in Google Sheets - no app, no manual entry, just a message.</p>
+
                 <div class="depth-signal">
                     <strong>Architecture Note:</strong> Implemented a serverless webhook pattern (Vercel) to ensure zero cost during idle time.
                 </div>
 
-                <!-- Executive Metrics -->
                 <div class="exec-metric-row">
-                    <div class="metric-badge">
-                        <span class="metric-label">Time to Build</span>
-                        <span class="metric-value">5 Days</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">OpEx Cost</span>
-                        <span class="metric-value">$0.00 / mo</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Tech Stack</span>
-                        <span class="metric-value">Llama 4 Vision</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Latency</span>
-                        <span class="metric-value">&lt; 1 Second</span>
-                    </div>
+                    <div class="metric-badge"><span class="metric-label">Time to Build</span><span class="metric-value">5 Days</span></div>
+                    <div class="metric-badge"><span class="metric-label">OpEx Cost</span><span class="metric-value">$0.00 / mo</span></div>
+                    <div class="metric-badge"><span class="metric-label">AI Model</span><span class="metric-value">Llama 4 Vision</span></div>
+                    <div class="metric-badge"><span class="metric-label">Latency</span><span class="metric-value">&lt; 1 Second</span></div>
                 </div>
 
-                <!-- Problem / Solution Grid -->
                 <div class="exec-summary-grid">
                     <div class="exec-col">
-                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
-                        <p>Family finance suffers from two distinct problems: 1) <strong>Expense Friction:</strong> Manual entry is tedious, leading to data gaps. 2) <strong>Goal Disconnect:</strong> Long-term planning usually lives in separate, forgotten spreadsheets.</p>
+                        <h4 style="color: #ff8a80;">&#128721; The Challenge</h4>
+                        <p>Families lose track of spending because logging an expense means opening an app, finding a category, and typing it in - friction that guarantees gaps. Goals suffer the same fate: they get written down once and forgotten. There is no single place where the whole picture lives.</p>
                     </div>
                     <div class="exec-col">
-                        <h4 style="color: #00e676;">✅ The Solution</h4>
-                        <p><strong>A Unified Conversational Interface.</strong> <br>• <strong>For Spending:</strong> Computer Vision extracts data from receipt photos instantly. <br>• <strong>For Planning:</strong> NLP transforms natural language (e.g., "Save 5k by July") into structured goals.</p>
+                        <h4 style="color: #00e676;">&#10003; The Solution</h4>
+                        <p>Send a message or a photo of a receipt on Telegram. The bot reads it, categorises it, and writes it directly into a shared Google Sheet in under a second. Goals work the same way - type "Trip to Japan 5000 by December" and the bot creates a tracked goal entry. The family's full financial picture stays current with zero manual effort.</p>
                     </div>
                 </div>
 
@@ -758,54 +654,85 @@
                     <span class="tech-tag">Computer Vision</span>
                     <span class="tech-tag">NLP</span>
                     <span class="tech-tag">Groq AI</span>
+                    <span class="tech-tag">Telegram Bot API</span>
                     <span class="tech-tag">Google Sheets API</span>
                 </div>
 
                 <a href="https://github.com/arnav-ray/family-bot" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    View Code & Architecture →
+                    View on GitHub &rarr;
                 </a>
             </div>
 
-            <!-- Featured Project: OpenCredit Platform -->
+            <!-- ════════════════════════════════════════
+                 PROJECT 3: TreasuryFlow
+                 ════════════════════════════════════════ -->
+            <div class="featured-project" onclick="window.open('https://treasuryflow.arnavray.ca/', '_blank')" style="cursor: pointer;">
+                <span class="featured-badge" style="background: #2962ff;">ENTERPRISE ARCHITECTURE</span>
+                <div class="project-icon">&#127974;</div>
+                <h3 class="project-title">TreasuryFlow</h3>
+                <p class="project-subtitle">From "Data Silos" to "Unified Command" in 3 Weeks</p>
+
+                <div class="depth-signal">
+                    <strong>Architecture Note:</strong> Chose real-time API aggregation over cached batch processing to ensure instant liquidity visibility.
+                </div>
+
+                <div class="exec-metric-row">
+                    <div class="metric-badge"><span class="metric-label">Dev Time</span><span class="metric-value">3 Week Sprint</span></div>
+                    <div class="metric-badge"><span class="metric-label">Tech Stack</span><span class="metric-value">ERP + Gemini AI</span></div>
+                    <div class="metric-badge"><span class="metric-label">Architecture</span><span class="metric-value">API-First</span></div>
+                    <div class="metric-badge"><span class="metric-label">Security</span><span class="metric-value">Zero-Trust</span></div>
+                </div>
+
+                <div class="exec-summary-grid">
+                    <div class="exec-col">
+                        <h4 style="color: #ff8a80;">&#128721; The Challenge</h4>
+                        <p>Enterprise ERPs are rigid and siloed. CFOs rely on Excel because getting real-time, cross-system cash visibility is technically painful and expensive.</p>
+                    </div>
+                    <div class="exec-col">
+                        <h4 style="color: #00e676;">&#10003; The Solution</h4>
+                        <p>I built an <strong>ERP-agnostic overlay</strong>. It pulls data via API without touching the core, using AI to normalize transactions and predict cash flow instantly.</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Agile DevOps</span>
+                    <span class="tech-tag">Google Gemini API</span>
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">TradingView API</span>
+                </div>
+
+                <a href="https://treasuryflow.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                    Launch TreasuryFlow &rarr;
+                </a>
+            </div>
+
+            <!-- ════════════════════════════════════════
+                 PROJECT 4: OpenCredit Platform
+                 ════════════════════════════════════════ -->
             <div class="featured-project" onclick="window.open('https://credit.arnavray.ca/', '_blank')" style="cursor: pointer;">
-                <span class="featured-badge" style="background: #6200ea;">FINTECH • EXPLAINABLE AI</span>
-                <div class="project-icon">💳</div>
+                <span class="featured-badge" style="background: #6200ea;">FINTECH &bull; EXPLAINABLE AI</span>
+                <div class="project-icon">&#128179;</div>
                 <h3 class="project-title">OpenCredit Platform</h3>
                 <p class="project-subtitle">From "Black Box" to "Transparent Logic" in 1 Sprint</p>
-                
-                <!-- Depth Signal -->
+
                 <div class="depth-signal">
                     <strong>Key Tradeoff:</strong> Prioritized rule-based explainability over deep learning to satisfy strict financial audit requirements.
                 </div>
 
-                <!-- Executive Metrics -->
                 <div class="exec-metric-row">
-                    <div class="metric-badge">
-                        <span class="metric-label">Dev Time</span>
-                        <span class="metric-value">4 Days</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Logic Model</span>
-                        <span class="metric-value">Basel III</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Tech Stack</span>
-                        <span class="metric-value">React + ML</span>
-                    </div>
-                    <div class="metric-badge">
-                        <span class="metric-label">Compliance</span>
-                        <span class="metric-value">GDPR Ready</span>
-                    </div>
+                    <div class="metric-badge"><span class="metric-label">Dev Time</span><span class="metric-value">4 Days</span></div>
+                    <div class="metric-badge"><span class="metric-label">Logic Model</span><span class="metric-value">Basel III</span></div>
+                    <div class="metric-badge"><span class="metric-label">Tech Stack</span><span class="metric-value">React + ML</span></div>
+                    <div class="metric-badge"><span class="metric-label">Compliance</span><span class="metric-value">GDPR Ready</span></div>
                 </div>
 
-                <!-- Problem / Solution Grid -->
                 <div class="exec-summary-grid">
                     <div class="exec-col">
-                        <h4 style="color: #ff8a80;">🛑 The Challenge</h4>
+                        <h4 style="color: #ff8a80;">&#128721; The Challenge</h4>
                         <p>Credit scores are opaque algorithms. Consumers are judged by a number they cannot audit, explain, or effectively optimize.</p>
                     </div>
                     <div class="exec-col">
-                        <h4 style="color: #00e676;">✅ The Solution</h4>
+                        <h4 style="color: #00e676;">&#10003; The Solution</h4>
                         <p>A <strong>fully transparent risk engine</strong>. By integrating behavioral economics and FICO methodology, I built a tool where every calculation is visible and interactive.</p>
                     </div>
                 </div>
@@ -818,23 +745,21 @@
                 </div>
 
                 <a href="https://credit.arnavray.ca/" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                    Analyze Risk Models →
+                    Analyze Risk Models &rarr;
                 </a>
             </div>
 
             <!-- Secondary Grid: Rapid Prototypes -->
             <h3 class="section-title" style="font-size: 1.8rem; margin-top: 5rem; margin-bottom: 2rem; color: #b0bec5;">Rapid Prototypes</h3>
-            
+
             <div class="projects-grid">
-                
-                <!-- The Curse of the Frozen North (Moved here) -->
                 <div class="project-card christmas-card" onclick="window.open('https://game.arnavray.ca/', '_blank')">
-                    <div class="project-icon">🎄</div>
+                    <div class="project-icon">&#127876;</div>
                     <h3 class="project-title" style="font-size: 1.5rem;">Curse of the Frozen North</h3>
                     <p class="project-subtitle">Zero-Install Multiplayer Game</p>
                     <div style="margin-top: auto;">
-                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Party games require complex setup.</p>
-                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> A "Bring Your Own Device" architecture with <50ms Firestore sync.</p>
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">&#128721; <strong>Challenge:</strong> Party games require complex setup.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">&#10003; <strong>Solution:</strong> A "Bring Your Own Device" architecture with &lt;50ms Firestore sync.</p>
                     </div>
                     <div class="tech-stack">
                         <span class="tech-tag">React</span>
@@ -842,14 +767,13 @@
                     </div>
                 </div>
 
-                <!-- Automated Podcast -->
                 <div class="project-card" onclick="window.open('https://podcast.arnavray.ca/', '_blank')">
-                    <div class="project-icon">🎙️</div>
+                    <div class="project-icon">&#127897;&#65039;</div>
                     <h3 class="project-title" style="font-size: 1.5rem;">Automated Podcast</h3>
                     <p class="project-subtitle">Zero-Budget Content Engine</p>
                     <div style="margin-top: auto;">
-                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Content creation is manual & slow.</p>
-                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> A 100% automated pipeline using GitHub Actions & Edge-TTS to generate daily episodes.</p>
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">&#128721; <strong>Challenge:</strong> Content creation is manual &amp; slow.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">&#10003; <strong>Solution:</strong> A 100% automated pipeline using GitHub Actions &amp; Edge-TTS to generate daily episodes.</p>
                     </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Node.js</span>
@@ -857,14 +781,13 @@
                     </div>
                 </div>
 
-                <!-- Daily German -->
                 <div class="project-card" onclick="window.open('https://german.arnavray.ca/', '_blank')">
-                    <div class="project-icon">🇩🇪</div>
+                    <div class="project-icon">&#127465;&#127466;</div>
                     <h3 class="project-title" style="font-size: 1.5rem;">Daily German</h3>
                     <p class="project-subtitle">Gamified Learning Platform</p>
                     <div style="margin-top: auto;">
-                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Textbooks are boring & static.</p>
-                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> Interactive visual grammar and memory games powered by simple Serverless functions.</p>
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">&#128721; <strong>Challenge:</strong> Textbooks are boring &amp; static.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">&#10003; <strong>Solution:</strong> Interactive visual grammar and memory games powered by simple Serverless functions.</p>
                     </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Serverless</span>
@@ -872,14 +795,13 @@
                     </div>
                 </div>
 
-                <!-- Personal AI Portal -->
                 <div class="project-card" onclick="window.open('https://arnav-personal-sandbox.uc.r.appspot.com/', '_blank')">
-                    <div class="project-icon">🤖</div>
+                    <div class="project-icon">&#129302;</div>
                     <h3 class="project-title" style="font-size: 1.5rem;">AI Portal</h3>
                     <p class="project-subtitle">Direct API Interface</p>
                     <div style="margin-top: auto;">
-                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">🛑 <strong>Challenge:</strong> Chat UI wrappers mask capability.</p>
-                        <p style="font-size: 0.9rem; color: #fff;">✅ <strong>Solution:</strong> A raw interface to Google's Gemini to test limits and understand streaming responses.</p>
+                        <p style="font-size: 0.9rem; color: #b0bec5; margin-bottom: 0.5rem;">&#128721; <strong>Challenge:</strong> Chat UI wrappers mask capability.</p>
+                        <p style="font-size: 0.9rem; color: #fff;">&#10003; <strong>Solution:</strong> A raw interface to Google's Gemini to test limits and understand streaming responses.</p>
                     </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Gemini API</span>
@@ -900,41 +822,9 @@
             <div class="footer-links">
                 <a href="https://github.com/arnav-ray" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/arnavray" target="_blank">LinkedIn</a>
-                <a href="mailto:arnav@arnavray.ca">Email</a>
+                <a href="/cdn-cgi/l/email-protection#e485968a8592a485968a859296859dca8785">Email</a>
             </div>
-            
-            <span class="ai-badge">AI-Assisted Build • Human-Directed</span>
-            
+
+            <span class="ai-badge">AI-Assisted Build &bull; Human-Directed</span>
+
             <p style="color: #90caf9; margin-top: 1rem;">&copy; 2026 Arnav Amal Ray. Building projects, one sprint at a time.</p>
-        </div>
-    </footer>
-
-    <!-- Chat Widget (Added by Gemini) -->
-    <div class="chat-widget-container">
-        <div class="chat-frame-wrapper" id="chatFrame">
-            <!-- Loading lazy to speed up main site load -->
-            <iframe src="https://arnav-personal-sandbox.uc.r.appspot.com/" class="chat-frame" title="Arnav AI Assistant" loading="lazy"></iframe>
-        </div>
-        <button class="chat-toggle-btn" onclick="toggleChat()" title="Chat with AI Agent">
-            <span>💬</span>
-        </button>
-    </div>
-
-    <script>
-        function toggleChat() {
-            const chatFrame = document.getElementById('chatFrame');
-            const btn = document.querySelector('.chat-toggle-btn');
-            const span = btn.querySelector('span');
-            
-            chatFrame.classList.toggle('active');
-            btn.classList.toggle('open');
-            
-            if (chatFrame.classList.contains('active')) {
-                span.textContent = '✕'; // Close icon
-            } else {
-                span.textContent = '💬'; // Chat icon
-            }
-        }
-    </script>
-</body>
-</html>
