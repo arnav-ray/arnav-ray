@@ -111,7 +111,6 @@ From "Data Silos" to "Unified Command" in 3 Weeks.
 | [Curse of the Frozen North](https://game.arnavray.ca/) | Zero-install multiplayer party game with <50ms Firestore sync | React · Firebase |
 | [Automated Podcast](https://podcast.arnavray.ca/) | 100% automated daily podcast pipeline, zero operating cost | Node.js · GitHub Actions |
 | [Daily German](https://german.arnavray.ca/) | Gamified German learning with interactive grammar and memory games | Serverless · Interactive UI |
-| [AI Portal](https://arnav-personal-sandbox.uc.r.appspot.com/) | Raw interface to Google Gemini for understanding streaming and API behaviour | Gemini API · Google Cloud |
 | [LocalSnap](https://github.com/arnav-ray/LocalSnap) | Offline photo library manager with local face recognition — no cloud dependency | Python · OpenCV · Flask |
 
 ---
