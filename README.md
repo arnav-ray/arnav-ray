@@ -46,7 +46,7 @@ Runs entirely on local hardware. No API calls to cloud AI services, no data leav
 ---
 
 ### 2. Family Finance and Goals AI Bot
-**[github.com/arnav-ray/family-bot](https://github.com/arnav-ray/family-bot)**
+**[github.com/arnav-ray/Finance-and-Goals-bot](https://github.com/arnav-ray/Finance-and-Goals-bot)**
 
 Log expenses on the go, set family goals, and track everything live in Google Sheets - no app, no manual entry, just a message.
 
@@ -64,27 +64,7 @@ Log expenses on the go, set family goals, and track everything live in Google Sh
 
 ---
 
-### 3. TreasuryFlow
-**[Live Demo: treasuryflow.arnavray.ca](https://treasuryflow.arnavray.ca/)**
-
-From "Data Silos" to "Unified Command" in 3 Weeks.
-
-**The Challenge:** Enterprise ERPs are rigid and siloed. CFOs rely on Excel because getting real-time, cross-system cash visibility is technically painful and expensive.
-
-**The Solution:** An ERP-agnostic overlay that pulls data via API without touching the core system, using AI to normalize transactions and predict cash flow instantly.
-
-**Architecture Note:** Chose real-time API aggregation over cached batch processing to ensure instant liquidity visibility.
-
-**Key metrics:**
-- Dev Time: 3 Week Sprint
-- Architecture: API-First
-- Security: Zero-Trust
-
-**Tech Stack:** Google Gemini API · Chart.js · TradingView API · Agile DevOps
-
----
-
-### 4. OpenCredit Platform
+### 3. OpenCredit Platform
 **[Live Demo: credit.arnavray.ca](https://credit.arnavray.ca/)**
 
 From "Black Box" to "Transparent Logic" in 1 Sprint.
@@ -104,6 +84,26 @@ From "Black Box" to "Transparent Logic" in 1 Sprint.
 
 ---
 
+### 4. TreasuryFlow
+**[Live Demo: treasuryflow.arnavray.ca](https://treasuryflow.arnavray.ca/)**
+
+From "Data Silos" to "Unified Command" in 3 Weeks.
+
+**The Challenge:** Enterprise ERPs are rigid and siloed. CFOs rely on Excel because getting real-time, cross-system cash visibility is technically painful and expensive.
+
+**The Solution:** An ERP-agnostic overlay that pulls data via API without touching the core system, using AI to normalize transactions and predict cash flow instantly.
+
+**Architecture Note:** Chose real-time API aggregation over cached batch processing to ensure instant liquidity visibility.
+
+**Key metrics:**
+- Dev Time: 3 Week Sprint
+- Architecture: API-First
+- Security: Zero-Trust
+
+**Tech Stack:** Google Gemini API · Chart.js · TradingView API · Agile DevOps
+
+---
+
 ## ⚡ Rapid Prototypes
 
 | Project | Description | Stack |
@@ -112,6 +112,7 @@ From "Black Box" to "Transparent Logic" in 1 Sprint.
 | [Automated Podcast](https://podcast.arnavray.ca/) | 100% automated daily podcast pipeline, zero operating cost | Node.js · GitHub Actions |
 | [Daily German](https://german.arnavray.ca/) | Gamified German learning with interactive grammar and memory games | Serverless · Interactive UI |
 | [AI Portal](https://arnav-personal-sandbox.uc.r.appspot.com/) | Raw interface to Google Gemini for understanding streaming and API behaviour | Gemini API · Google Cloud |
+| [LocalSnap](https://github.com/arnav-ray/LocalSnap) | Offline photo library manager with local face recognition — no cloud dependency | Python · OpenCV · Flask |
 
 ---
 
