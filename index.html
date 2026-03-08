@@ -297,7 +297,15 @@
             box-shadow: 0 14px 45px rgba(240,130,0,0.07);
         }
 
-        /* Badge */
+        /* Badge row */
+        .card-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
         .card-badge {
             display: inline-block;
             font-size: 0.7rem;
@@ -306,12 +314,25 @@
             text-transform: uppercase;
             padding: 0.32rem 0.8rem;
             border-radius: 20px;
-            margin-bottom: 1.25rem;
         }
 
         .badge-green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,199,123,0.22); }
         .badge-amber  { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,160,80,0.22); }
         .badge-blue   { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(74,144,232,0.22); }
+
+        /* Tier tag — small secondary pill */
+        .card-tier {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.26rem 0.7rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
 
         /* Card text */
         .card-title {
@@ -466,47 +487,63 @@
            OTHER BUILDS
         ════════════════════════════════════════════════ */
         #other-builds {
-            padding: 3.5rem 0;
+            padding: 5rem 0;
             border-top: 1px solid var(--border);
-        }
-
-        .other-builds-eyebrow {
-            font-size: 0.73rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 1.4rem;
         }
 
         .other-builds-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            overflow: hidden;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            margin-top: 3.5rem;
         }
+
+        /* 3 + 2 layout */
+        .other-builds-grid .other-build-item:nth-child(1),
+        .other-builds-grid .other-build-item:nth-child(2),
+        .other-builds-grid .other-build-item:nth-child(3) { grid-column: span 2; }
+
+        .other-builds-grid .other-build-item:nth-child(4) { grid-column: 2 / span 2; }
+        .other-builds-grid .other-build-item:nth-child(5) { grid-column: 4 / span 2; }
 
         .other-build-item {
-            background: var(--bg);
-            padding: 1.3rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1.6rem;
             text-decoration: none;
             display: block;
-            transition: background 0.18s;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
         }
 
-        .other-build-item:hover { background: rgba(255,255,255,0.03); }
+        .other-build-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.11);
+            transform: translateY(-2px);
+        }
+
+        .other-build-badge {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.22rem 0.65rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        .ob-badge-live  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,199,123,0.2); }
+        .ob-badge-demo  { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(74,144,232,0.2); }
+        .ob-badge-local { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,160,80,0.2); }
 
         .other-build-name {
-            font-size: 0.93rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.35rem;
             display: flex;
             align-items: center;
-            gap: 0;
         }
 
         .other-build-arrow {
@@ -525,9 +562,27 @@
         }
 
         .other-build-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Inline hover reveal */
+        .other-build-problem {
             font-size: 0.8rem;
             color: var(--muted);
-            line-height: 1.45;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            margin-top: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+        }
+
+        .other-build-item:hover .other-build-problem {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 0.6rem;
         }
 
         /* ═══════════════════════════════════════════════
@@ -622,17 +677,20 @@
         .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.08s; }
         .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.16s; }
         .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.24s; }
+        .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.32s; }
 
         /* ═══════════════════════════════════════════════
            RESPONSIVE
         ════════════════════════════════════════════════ */
         @media (max-width: 760px) {
-            .hero-cards              { grid-template-columns: 1fr; }
-            .card-body               { grid-template-columns: 1fr; }
-            .workflow-grid           { grid-template-columns: 1fr; }
-            .other-builds-grid       { grid-template-columns: 1fr 1fr; }
-            nav                      { gap: 1.1rem; }
-            nav a                    { font-size: 0.82rem; }
+            .hero-cards    { grid-template-columns: 1fr; }
+            .card-body     { grid-template-columns: 1fr; }
+            .workflow-grid { grid-template-columns: 1fr; }
+            nav            { gap: 1.1rem; }
+            nav a          { font-size: 0.82rem; }
+
+            .other-builds-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .other-builds-grid .other-build-item:nth-child(n) { grid-column: span 1; }
         }
 
         @media (max-width: 480px) {
@@ -751,37 +809,14 @@
 
             <div class="project-stack">
 
-                <!-- PROJECT 1: Family Finance Bot -->
-                <div class="project-card reveal"
-                     onclick="window.open('https://github.com/arnav-ray/family-bot','_blank')"
-                     style="cursor:pointer;">
-                    <span class="card-badge badge-green">Actively Used</span>
-                    <h3 class="card-title">Family Finance and Goals AI Bot</h3>
-                    <p class="card-subtitle">Log expenses and track family goals - from any device, with just a message.</p>
-                    <div class="card-body">
-                        <div class="card-col col-problem">
-                            <h4>The Problem</h4>
-                            <p>Logging a family expense means opening an app, finding the right category, and typing it manually. The friction is small enough to skip - until weeks of spending disappear. Goals suffer the same way: written down once, never revisited.</p>
-                        </div>
-                        <div class="card-col col-solution">
-                            <h4>What I Built</h4>
-                            <p>A Telegram bot that reads a message or a photo of a receipt and writes the expense directly into a shared Google Sheet in under a second. Goals work the same way - one natural-language message creates a tracked entry. Zero apps, zero manual effort.</p>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/arnav-ray/family-bot"
-                           class="btn btn-amber" target="_blank"
-                           onclick="event.stopPropagation();">
-                            View on GitHub &rarr;
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PROJECT 2: RAG -->
+                <!-- PROJECT 1: RAG -->
                 <div class="project-card amber-accent reveal"
                      onclick="window.open('https://github.com/arnav-ray/immigration-rag','_blank')"
                      style="cursor:pointer;">
-                    <span class="card-badge badge-amber">Learning in Public</span>
+                    <div class="card-badge-row">
+                        <span class="card-badge badge-amber">Learning in Public</span>
+                        <span class="card-tier">Local &middot; On Premise</span>
+                    </div>
                     <h3 class="card-title">Local LLM (RAG) for Immigration Questions</h3>
                     <p class="card-subtitle">On-premise AI that retrieves and cites exact sections of law - no cloud, no hallucinations.</p>
                     <div class="card-body">
@@ -803,11 +838,43 @@
                     </div>
                 </div>
 
+                <!-- PROJECT 2: Family Finance Bot -->
+                <div class="project-card reveal"
+                     onclick="window.open('https://github.com/arnav-ray/Finance-and-Goals-bot','_blank')"
+                     style="cursor:pointer;">
+                    <div class="card-badge-row">
+                        <span class="card-badge badge-green">Actively Used</span>
+                        <span class="card-tier">Live &middot; Serverless</span>
+                    </div>
+                    <h3 class="card-title">Family Finance and Goals AI Bot</h3>
+                    <p class="card-subtitle">Log expenses and track family goals - from any device, with just a message.</p>
+                    <div class="card-body">
+                        <div class="card-col col-problem">
+                            <h4>The Problem</h4>
+                            <p>Logging a family expense means opening an app, finding the right category, and typing it manually. The friction is small enough to skip - until weeks of spending disappear. Goals suffer the same way: written down once, never revisited.</p>
+                        </div>
+                        <div class="card-col col-solution">
+                            <h4>What I Built</h4>
+                            <p>A Telegram bot that reads a message or a photo of a receipt and writes the expense directly into a shared Google Sheet in under a second. Goals work the same way - one natural-language message creates a tracked entry. Zero apps, zero manual effort.</p>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/arnav-ray/Finance-and-Goals-bot"
+                           class="btn btn-amber" target="_blank"
+                           onclick="event.stopPropagation();">
+                            View on GitHub &rarr;
+                        </a>
+                    </div>
+                </div>
+
                 <!-- PROJECT 3: TreasuryFlow -->
                 <div class="project-card reveal"
                      onclick="window.open('https://treasuryflow.arnavray.ca/','_blank')"
                      style="cursor:pointer;">
-                    <span class="card-badge badge-blue">Concept Demo</span>
+                    <div class="card-badge-row">
+                        <span class="card-badge badge-blue">Concept Demo</span>
+                        <span class="card-tier">Live &middot; Demo</span>
+                    </div>
                     <h3 class="card-title">TreasuryFlow</h3>
                     <p class="card-subtitle">What enterprise cash visibility could look like if it were built today, not fifteen years ago.</p>
                     <div class="card-body">
@@ -826,7 +893,7 @@
                            onclick="event.stopPropagation();">
                             View Live Demo &rarr;
                         </a>
-                        <a href="https://github.com/arnav-ray"
+                        <a href="https://github.com/arnav-ray/TreasuryFlow"
                            class="btn" target="_blank"
                            onclick="event.stopPropagation();">
                             GitHub &rarr;
@@ -841,36 +908,60 @@
     <!-- ── OTHER BUILDS ──────────────────────────────── -->
     <section id="other-builds">
         <div class="container">
-            <p class="other-builds-eyebrow reveal">Other things I have built</p>
+            <p class="section-eyebrow reveal">More Work</p>
+            <h2 class="section-heading reveal">Other things I have built</h2>
             <div class="other-builds-grid reveal-stagger">
-                <a href="https://game.arnavray.ca/" target="_blank" class="other-build-item">
-                    <div class="other-build-name">
-                        Curse of the Frozen North
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">Multiplayer party game. No install, no account - just a link and your phone.</p>
-                </a>
+
                 <a href="https://podcast.arnavray.ca/" target="_blank" class="other-build-item">
+                    <span class="other-build-badge ob-badge-live">Live</span>
                     <div class="other-build-name">
                         Automated Podcast
                         <span class="other-build-arrow">&#8599;</span>
                     </div>
-                    <p class="other-build-desc">Fully automated daily episodes. AI-generated content, zero operating cost.</p>
+                    <p class="other-build-desc">100% automated daily episodes. AI-generated, zero operating cost.</p>
+                    <p class="other-build-problem">Podcast production requires daily manual effort. This pipeline generates, voices, and publishes episodes automatically — no intervention at any step.</p>
                 </a>
-                <a href="https://german.arnavray.ca/" target="_blank" class="other-build-item">
-                    <div class="other-build-name">
-                        Daily German
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">Gamified German learning with interactive grammar exercises and memory games.</p>
-                </a>
+
                 <a href="https://credit.arnavray.ca/" target="_blank" class="other-build-item">
+                    <span class="other-build-badge ob-badge-demo">Demo</span>
                     <div class="other-build-name">
                         OpenCredit Platform
                         <span class="other-build-arrow">&#8599;</span>
                     </div>
                     <p class="other-build-desc">Transparent credit scoring engine. Every calculation visible and interactive.</p>
+                    <p class="other-build-problem">Credit scores are black boxes. This makes every calculation visible and interactive — Basel III methodology, fully auditable by anyone.</p>
                 </a>
+
+                <a href="https://github.com/arnav-ray/LocalSnap" target="_blank" class="other-build-item">
+                    <span class="other-build-badge ob-badge-local">Local</span>
+                    <div class="other-build-name">
+                        LocalSnap
+                        <span class="other-build-arrow">&#8599;</span>
+                    </div>
+                    <p class="other-build-desc">Offline photo library manager with local face recognition. No cloud.</p>
+                    <p class="other-build-problem">Cloud photo exports strip all metadata — timestamps, GPS, and face tags vanish. This recovers everything locally using offline OpenCV models.</p>
+                </a>
+
+                <a href="https://german.arnavray.ca/" target="_blank" class="other-build-item">
+                    <span class="other-build-badge ob-badge-live">Live</span>
+                    <div class="other-build-name">
+                        Daily German
+                        <span class="other-build-arrow">&#8599;</span>
+                    </div>
+                    <p class="other-build-desc">Gamified German learning with interactive grammar and memory games.</p>
+                    <p class="other-build-problem">Language learning apps are passive. This uses interactive games and spaced repetition to make German genuinely engaging to learn.</p>
+                </a>
+
+                <a href="https://game.arnavray.ca/" target="_blank" class="other-build-item">
+                    <span class="other-build-badge ob-badge-live">Live</span>
+                    <div class="other-build-name">
+                        Curse of the Frozen North
+                        <span class="other-build-arrow">&#8599;</span>
+                    </div>
+                    <p class="other-build-desc">Zero-install multiplayer party game with &lt;50ms Firestore sync.</p>
+                    <p class="other-build-problem">Party games require downloads, accounts, and setup. This runs instantly in any browser — share a link, pick up your phone, start playing.</p>
+                </a>
+
             </div>
         </div>
     </section>
@@ -943,4 +1034,3 @@
     </script>
 </body>
 </html>
-
