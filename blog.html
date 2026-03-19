@@ -167,6 +167,7 @@
     font-weight: normal; margin: 2.5rem 0 0.85rem; line-height: 1.25;
   }
   .rule { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0 0; }
+  .s-anchor { display: block; height: 0; visibility: hidden; }
 
   /* ── Diagram (light) ── */
   .diagram-section { margin: 2.5rem 0; }
@@ -248,6 +249,7 @@
   <!-- Section TOC -->
   <nav class="toc" aria-label="Article sections">
     <div class="toc-label">In this article</div>
+    <a href="#intro"   class="toc-link">Three tabs, no answers</a>
     <a href="#q"       class="toc-link">The obvious question</a>
     <a href="#brief"   class="toc-link">The design brief</a>
     <a href="#arch"    class="toc-link">Architecture</a>
@@ -272,6 +274,7 @@
       <h1>When AI Gets Immigration Law Wrong, the Cost Is Not a Bad Essay</h1>
       <p class="sub">How I built a local AI legal assistant for German immigration law, what it took to get it right, and why &ldquo;good enough&rdquo; was never an option.</p>
 
+      <span id="intro" class="s-anchor"></span>
       <p>There is a moment most foreigners living in Germany will recognise. You are trying to understand a statutory condition for your visa or residence permit. You have the official government page open in one tab. You have a forum thread from 2021 open in another. You have asked a general-purpose AI assistant, which gave you a confident, well-structured answer citing a section of law that was amended two years ago.</p>
       <p>None of these three sources agrees with the others.</p>
       <p>I came from India, did my MBA in Germany, and stayed to build a career in Frankfurt. The immigration system I have navigated is genuinely complex. German residence law spans multiple statutes, each with distinct scopes and cross-referencing conditions. It is updated by legislation. And it is misrepresented constantly, both by outdated internet sources and by AI systems trained on data that predates the most recent reforms.</p>
@@ -397,7 +400,7 @@
 
 <script>
   const pane = document.getElementById('pane');
-  const headings = Array.from(document.querySelectorAll('h2[id]'));
+  const headings = Array.from(document.querySelectorAll('.s-anchor[id], h2[id]'));
   const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
 
   // Smooth scroll within the pane on TOC click
