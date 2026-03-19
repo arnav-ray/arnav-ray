@@ -19,7 +19,6 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 
     <style>
-        /* ── Variables ─────────────────────────────── */
         :root {
             --bg:        #070b18;
             --surface:   rgba(255,255,255,0.03);
@@ -45,666 +44,208 @@
             overflow-x: hidden;
         }
 
-        /* ── Ocean video background ─────────────────── */
-        .bg-video {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            overflow: hidden;
-        }
-        .bg-video video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.22;
-        }
+        .bg-video { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+        .bg-video video { width: 100%; height: 100%; object-fit: cover; opacity: 0.22; }
         .bg-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: linear-gradient(
-                to bottom,
-                rgba(7,11,24,0.45) 0%,
-                rgba(7,11,24,0.78) 60%,
-                rgba(7,11,24,0.92) 100%
-            );
+            position: fixed; inset: 0; z-index: -1;
+            background: linear-gradient(to bottom, rgba(7,11,24,0.45) 0%, rgba(7,11,24,0.78) 60%, rgba(7,11,24,0.92) 100%);
         }
 
-        /* ── Scroll progress bar ────────────────────── */
         #progress-bar {
-            position: fixed;
-            top: 0; left: 0;
-            height: 3px;
-            width: 0%;
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
             background: linear-gradient(90deg, var(--amber), #d95000);
-            z-index: 300;
-            transition: width 0.08s linear;
-            border-radius: 0 2px 2px 0;
+            z-index: 300; transition: width 0.08s linear; border-radius: 0 2px 2px 0;
         }
 
-        /* ── Sticky header + nav ────────────────────── */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            background: rgba(7, 11, 24, 0.88);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            position: sticky; top: 0; z-index: 200;
+            background: rgba(7,11,24,0.88);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border);
         }
-
         .header-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+            height: 62px; display: flex; align-items: center; justify-content: space-between;
         }
-
         .header-name {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem;
-            color: #fff;
-            letter-spacing: 0.01em;
-            text-decoration: none;
+            font-size: 1.1rem; color: #fff; letter-spacing: 0.01em; text-decoration: none;
         }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
+        nav { display: flex; gap: 2rem; align-items: center; }
         nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            padding-bottom: 2px;
-            border-bottom: 2px solid transparent;
-            transition: color 0.2s, border-color 0.2s;
+            color: var(--muted); text-decoration: none; font-size: 0.88rem;
+            font-weight: 500; letter-spacing: 0.03em; padding-bottom: 2px;
+            border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
         }
-
         nav a:hover { color: var(--text); }
+        nav a.active { color: var(--amber); border-bottom-color: var(--amber); }
 
-        nav a.active {
-            color: var(--amber);
-            border-bottom-color: var(--amber);
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-        /* ── Layout container ───────────────────────── */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ═══════════════════════════════════════════════
-           HERO / ABOUT
-        ════════════════════════════════════════════════ */
-        #about {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 7rem 0 5rem;
-        }
-
+        #about { min-height: 100vh; display: flex; align-items: center; padding: 7rem 0 5rem; }
         .hero-inner { max-width: 780px; }
-
         .hero-label {
-            display: inline-block;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 0.5s 0.1s ease forwards;
+            display: inline-block; font-size: 0.78rem; font-weight: 600;
+            letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber);
+            margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.5s 0.1s ease forwards;
         }
-
         .hero-headline {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.8rem, 5.5vw, 5rem);
-            line-height: 1.08;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 0.5s 0.2s ease forwards;
+            font-family: 'DM Serif Display', serif; font-size: clamp(2.8rem,5.5vw,5rem);
+            line-height: 1.08; color: #fff; margin-bottom: 1.5rem;
+            opacity: 0; animation: fadeUp 0.5s 0.2s ease forwards;
         }
-
-        .hero-headline em {
-            font-style: italic;
-            color: var(--amber);
-        }
-
+        .hero-headline em { font-style: italic; color: var(--amber); }
         .hero-sub {
-            font-size: 1.1rem;
-            color: var(--muted);
-            max-width: 580px;
-            line-height: 1.85;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            opacity: 0;
-            animation: fadeUp 0.5s 0.3s ease forwards;
+            font-size: 1.1rem; color: var(--muted); max-width: 580px;
+            line-height: 1.85; margin-bottom: 3rem; font-weight: 300;
+            opacity: 0; animation: fadeUp 0.5s 0.3s ease forwards;
         }
-
         .hero-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            max-width: 660px;
-            opacity: 0;
-            animation: fadeUp 0.5s 0.4s ease forwards;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+            max-width: 660px; opacity: 0; animation: fadeUp 0.5s 0.4s ease forwards;
         }
-
         .hero-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.5rem;
-            transition: background 0.2s, border-color 0.2s;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.5rem; transition: background 0.2s, border-color 0.2s;
         }
-
-        .hero-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.13);
-        }
-
+        .hero-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.13); }
         .hero-card-label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.55rem;
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--muted); margin-bottom: 0.55rem;
         }
+        .hero-card p { font-size: 0.93rem; color: var(--text); line-height: 1.65; }
 
-        .hero-card p {
-            font-size: 0.93rem;
-            color: var(--text);
-            line-height: 1.65;
-        }
-
-        /* ═══════════════════════════════════════════════
-           SHARED SECTION STYLES
-        ════════════════════════════════════════════════ */
-        .section-block {
-            padding: 6rem 0;
-            border-top: 1px solid var(--border);
-        }
-
+        .section-block { padding: 6rem 0; border-top: 1px solid var(--border); }
         .section-eyebrow {
-            font-size: 0.73rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin-bottom: 0.85rem;
+            font-size: 0.73rem; font-weight: 600; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--amber); margin-bottom: 0.85rem;
         }
-
         .section-heading {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.9rem, 3vw, 2.7rem);
-            color: #fff;
-            margin-bottom: 0.75rem;
-            line-height: 1.15;
+            font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem,3vw,2.7rem);
+            color: #fff; margin-bottom: 0.75rem; line-height: 1.15;
         }
-
         .section-intro {
-            font-size: 1.02rem;
-            color: var(--muted);
-            max-width: 560px;
-            line-height: 1.85;
-            margin-bottom: 3.5rem;
-            font-weight: 300;
+            font-size: 1.02rem; color: var(--muted); max-width: 560px;
+            line-height: 1.85; margin-bottom: 3.5rem; font-weight: 300;
         }
 
-        /* ═══════════════════════════════════════════════
-           PROJECT CARDS
-        ════════════════════════════════════════════════ */
-        .project-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
+        .project-stack { display: flex; flex-direction: column; gap: 2rem; }
         .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            cursor: pointer;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 20px; padding: 2.5rem; cursor: pointer;
             transition: transform 0.22s ease, border-color 0.22s, background 0.22s, box-shadow 0.22s;
-            position: relative;
         }
-
         .project-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.04);
-            box-shadow: 0 14px 45px rgba(0,0,0,0.38);
+            transform: translateY(-3px); border-color: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04); box-shadow: 0 14px 45px rgba(0,0,0,0.38);
         }
+        .project-card.amber-accent { border-color: rgba(240,160,80,0.17); }
+        .project-card.amber-accent:hover { border-color: rgba(240,160,80,0.32); box-shadow: 0 14px 45px rgba(240,130,0,0.07); }
 
-        .project-card.amber-accent {
-            border-color: rgba(240,160,80,0.17);
-        }
-        .project-card.amber-accent:hover {
-            border-color: rgba(240,160,80,0.32);
-            box-shadow: 0 14px 45px rgba(240,130,0,0.07);
-        }
-
-        /* Badge row */
-        .card-badge-row {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 0.32rem 0.8rem;
-            border-radius: 20px;
-        }
-
+        .card-badge-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+        .card-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.32rem 0.8rem; border-radius: 20px; }
         .badge-green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,199,123,0.22); }
         .badge-amber  { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,160,80,0.22); }
         .badge-blue   { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(74,144,232,0.22); }
-
-        /* Tier tag — small secondary pill */
         .card-tier {
-            display: inline-block;
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
-            padding: 0.26rem 0.7rem;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.04);
-            color: var(--muted);
-            border: 1px solid var(--border);
+            display: inline-block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.09em;
+            text-transform: uppercase; padding: 0.26rem 0.7rem; border-radius: 20px;
+            background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border);
         }
-
-        /* Card text */
-        .card-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            color: #fff;
-            margin-bottom: 0.45rem;
-            line-height: 1.18;
-        }
-
-        .card-subtitle {
-            font-size: 1rem;
-            color: var(--muted);
-            margin-bottom: 2rem;
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        /* Problem / Solution columns */
-        .card-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .card-col {
-            background: rgba(0,0,0,0.22);
-            border-radius: 12px;
-            padding: 1.2rem 1.4rem;
-        }
-
-        .card-col h4 {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 0.55rem;
-        }
-
-        .col-problem h4  { color: #e07070; }
+        .card-title { font-family: 'DM Serif Display', serif; font-size: 1.75rem; color: #fff; margin-bottom: 0.45rem; line-height: 1.18; }
+        .card-subtitle { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; font-style: italic; font-weight: 300; }
+        .card-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+        .card-col { background: rgba(0,0,0,0.22); border-radius: 12px; padding: 1.2rem 1.4rem; }
+        .card-col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.55rem; }
+        .col-problem h4 { color: #e07070; }
         .col-solution h4 { color: var(--green); }
-
-        .card-col p {
-            font-size: 0.93rem;
-            color: #c5cad4;
-            line-height: 1.72;
-        }
-
-        /* Buttons */
+        .card-col p { font-size: 0.93rem; color: #c5cad4; line-height: 1.72; }
         .card-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text);
-            text-decoration: none;
-            padding: 0.65rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.04);
-            transition: all 0.2s;
-            white-space: nowrap;
+            display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.88rem;
+            font-weight: 600; color: var(--text); text-decoration: none; padding: 0.65rem 1.5rem;
+            border-radius: 50px; border: 1px solid var(--border); background: rgba(255,255,255,0.04);
+            transition: all 0.2s; white-space: nowrap;
         }
+        .btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); transform: translateY(-1px); color: #fff; }
+        .btn-amber { background: linear-gradient(135deg,#bf4800,#962e00); border-color: transparent; color: #fff; }
+        .btn-amber:hover { background: linear-gradient(135deg,#d55200,#b03800); box-shadow: 0 5px 18px rgba(190,70,0,0.32); transform: translateY(-1px); }
+        .btn-blue { background: linear-gradient(135deg,#1758b8,#0f3a85); border-color: transparent; color: #fff; }
+        .btn-blue:hover { background: linear-gradient(135deg,#1e65cc,#1448a0); box-shadow: 0 5px 18px rgba(25,80,190,0.32); transform: translateY(-1px); }
 
-        .btn:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.18);
-            transform: translateY(-1px);
-            color: #fff;
-        }
-
-        .btn-amber {
-            background: linear-gradient(135deg, #bf4800, #962e00);
-            border-color: transparent;
-            color: #fff;
-        }
-        .btn-amber:hover {
-            background: linear-gradient(135deg, #d55200, #b03800);
-            box-shadow: 0 5px 18px rgba(190,70,0,0.32);
-            transform: translateY(-1px);
-        }
-
-        .btn-blue {
-            background: linear-gradient(135deg, #1758b8, #0f3a85);
-            border-color: transparent;
-            color: #fff;
-        }
-        .btn-blue:hover {
-            background: linear-gradient(135deg, #1e65cc, #1448a0);
-            box-shadow: 0 5px 18px rgba(25,80,190,0.32);
-            transform: translateY(-1px);
-        }
-
-        /* ═══════════════════════════════════════════════
-           HOW I WORK
-        ════════════════════════════════════════════════ */
-        #workflow {
-            padding: 5.5rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .workflow-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-            margin-top: 2.5rem;
-        }
-
-        .wf-step {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem 1.75rem;
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-        }
-
-        .wf-num {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8rem;
-            color: var(--amber);
-            opacity: 0.35;
-            line-height: 1;
-            flex-shrink: 0;
-            width: 2.2rem;
-            text-align: right;
-        }
-
+        #workflow { padding: 5.5rem 0; border-top: 1px solid var(--border); }
+        .workflow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+        .wf-step { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start; }
+        .wf-num { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--amber); opacity: 0.35; line-height: 1; flex-shrink: 0; width: 2.2rem; text-align: right; }
         .wf-content { flex: 1; }
+        .wf-title { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; margin-bottom: 0.6rem; }
+        .wf-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
-        .wf-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 0.6rem;
-        }
-
-        .wf-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        /* ═══════════════════════════════════════════════
-           OTHER BUILDS
-        ════════════════════════════════════════════════ */
-        #other-builds {
-            padding: 5rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .other-builds-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1rem;
-            margin-top: 3.5rem;
-        }
-
-        /* 3 + 2 layout */
+        #other-builds { padding: 5rem 0; border-top: 1px solid var(--border); }
+        .other-builds-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 1rem; margin-top: 3.5rem; }
         .other-builds-grid .other-build-item:nth-child(1),
         .other-builds-grid .other-build-item:nth-child(2),
         .other-builds-grid .other-build-item:nth-child(3) { grid-column: span 2; }
-
         .other-builds-grid .other-build-item:nth-child(4) { grid-column: 2 / span 2; }
         .other-builds-grid .other-build-item:nth-child(5) { grid-column: 4 / span 2; }
-
         .other-build-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem 1.6rem;
-            text-decoration: none;
-            display: block;
+            background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.5rem 1.6rem; text-decoration: none; display: block;
             transition: background 0.2s, border-color 0.2s, transform 0.2s;
         }
-
-        .other-build-item:hover {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(255,255,255,0.11);
-            transform: translateY(-2px);
-        }
-
-        .other-build-badge {
-            display: inline-block;
-            font-size: 0.62rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 0.22rem 0.65rem;
-            border-radius: 20px;
-            margin-bottom: 0.8rem;
-        }
-
+        .other-build-item:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.11); transform: translateY(-2px); }
+        .other-build-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 20px; margin-bottom: 0.8rem; }
         .ob-badge-live  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,199,123,0.2); }
         .ob-badge-demo  { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(74,144,232,0.2); }
         .ob-badge-local { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,160,80,0.2); }
+        .other-build-name { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; display: flex; align-items: center; }
+        .other-build-arrow { font-size: 0.78rem; color: var(--muted); margin-left: 0.3rem; opacity: 0; transform: translate(-3px,-1px); transition: all 0.18s; display: inline-block; }
+        .other-build-item:hover .other-build-arrow { opacity: 1; transform: translate(1px,-2px); }
+        .other-build-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+        .other-build-problem { font-size: 0.8rem; color: var(--muted); line-height: 1.6; max-height: 0; overflow: hidden; opacity: 0; margin-top: 0; transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease; }
+        .other-build-item:hover .other-build-problem { max-height: 100px; opacity: 1; margin-top: 0.6rem; }
 
-        .other-build-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.35rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .other-build-arrow {
-            font-size: 0.78rem;
-            color: var(--muted);
-            margin-left: 0.3rem;
-            opacity: 0;
-            transform: translate(-3px, -1px);
-            transition: all 0.18s;
-            display: inline-block;
-        }
-
-        .other-build-item:hover .other-build-arrow {
-            opacity: 1;
-            transform: translate(1px, -2px);
-        }
-
-        .other-build-desc {
-            font-size: 0.82rem;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-
-        /* Inline hover reveal */
-        .other-build-problem {
-            font-size: 0.8rem;
-            color: var(--muted);
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            margin-top: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-        }
-
-        .other-build-item:hover .other-build-problem {
-            max-height: 100px;
-            opacity: 1;
-            margin-top: 0.6rem;
-        }
-
-        /* ═══════════════════════════════════════════════
-           CONNECT / FOOTER
-        ════════════════════════════════════════════════ */
-        #connect {
-            padding: 6rem 0 4.5rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .connect-headline {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 4vw, 3.4rem);
-            color: #fff;
-            margin-bottom: 1rem;
-            line-height: 1.15;
-        }
-
-        .connect-sub {
-            font-size: 1.02rem;
-            color: var(--muted);
-            max-width: 460px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.78;
-            font-weight: 300;
-        }
-
-        .connect-links {
-            display: flex;
-            justify-content: center;
-            gap: 0.85rem;
-            flex-wrap: wrap;
-            margin-bottom: 3.5rem;
-        }
-
+        #connect { padding: 6rem 0 4.5rem; border-top: 1px solid var(--border); text-align: center; }
+        .connect-headline { font-family: 'DM Serif Display', serif; font-size: clamp(2rem,4vw,3.4rem); color: #fff; margin-bottom: 1rem; line-height: 1.15; }
+        .connect-sub { font-size: 1.02rem; color: var(--muted); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.78; font-weight: 300; }
+        .connect-links { display: flex; justify-content: center; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
         .connect-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.93rem;
-            font-weight: 500;
-            padding: 0.72rem 1.7rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 0.45rem; color: var(--text);
+            text-decoration: none; font-size: 0.93rem; font-weight: 500; padding: 0.72rem 1.7rem;
+            border-radius: 50px; border: 1px solid var(--border); background: var(--surface); transition: all 0.2s;
         }
+        .connect-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.17); transform: translateY(-2px); color: #fff; }
+        .footer-note { font-size: 0.78rem; color: var(--muted); opacity: 0.55; }
 
-        .connect-btn:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: rgba(255,255,255,0.17);
-            transform: translateY(-2px);
-            color: #fff;
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.52s ease, transform 0.52s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-stagger > * { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
+        .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+        .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
+        .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
+        .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
+        .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.32s; }
 
-        .footer-note {
-            font-size: 0.78rem;
-            color: var(--muted);
-            opacity: 0.55;
-        }
-
-        /* ═══════════════════════════════════════════════
-           ANIMATIONS
-        ════════════════════════════════════════════════ */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.52s ease, transform 0.52s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* stagger children inside a revealed parent */
-        .reveal-stagger > * {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.45s ease, transform 0.45s ease;
-        }
-
-        .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0s; }
-        .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.08s; }
-        .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.16s; }
-        .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.24s; }
-        .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.32s; }
-
-        /* ═══════════════════════════════════════════════
-           RESPONSIVE
-        ════════════════════════════════════════════════ */
         @media (max-width: 760px) {
-            .hero-cards    { grid-template-columns: 1fr; }
-            .card-body     { grid-template-columns: 1fr; }
+            .hero-cards { grid-template-columns: 1fr; }
+            .card-body { grid-template-columns: 1fr; }
             .workflow-grid { grid-template-columns: 1fr; }
-            nav            { gap: 1.1rem; }
-            nav a          { font-size: 0.82rem; }
-
+            nav { gap: 1.1rem; }
+            nav a { font-size: 0.82rem; }
             .other-builds-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
             .other-builds-grid .other-build-item:nth-child(n) { grid-column: span 1; }
         }
-
         @media (max-width: 480px) {
             .other-builds-grid { grid-template-columns: 1fr; }
-            .card-actions      { flex-direction: column; }
+            .card-actions { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Scroll progress bar -->
     <div id="progress-bar"></div>
 
-    <!-- Ocean background -->
     <div class="bg-video">
         <video autoplay muted loop playsinline>
             <source src="https://raw.githubusercontent.com/arnav-ray/arnav-ray/main/assets/video/ocean-bg.mp4" type="video/mp4">
@@ -713,7 +254,6 @@
     </div>
     <div class="bg-overlay"></div>
 
-    <!-- ── HEADER ───────────────────────────────────── -->
     <header>
         <div class="header-inner">
             <span class="header-name">Arnav Amal Ray</span>
@@ -721,27 +261,18 @@
                 <a href="#about"    class="nav-link">About</a>
                 <a href="#workflow" class="nav-link">How I Work</a>
                 <a href="#projects" class="nav-link">Projects</a>
-                <a href="blog.html" target="_blank" class="nav-link">Blog</a>
+                <a href="blog.html" class="nav-link">Blog</a>
                 <a href="#connect"  class="nav-link">Connect</a>
             </nav>
         </div>
     </header>
 
-    <!-- ── ABOUT / HERO ─────────────────────────────── -->
     <section id="about">
         <div class="container">
             <div class="hero-inner">
                 <span class="hero-label">AI-Native Product Builder</span>
-                <h1 class="hero-headline">
-                    I build to learn.<br>
-                    I learn to solve <em>business problems better.</em>
-                </h1>
-                <p class="hero-sub">
-                    Enterprise finance consultant by day. I use hands-on building
-                    with AI to stay ahead of what I advise clients on - not as a
-                    developer, but as someone who needs to understand the tools
-                    well enough to direct them.
-                </p>
+                <h1 class="hero-headline">I build to learn.<br>I learn to solve <em>business problems better.</em></h1>
+                <p class="hero-sub">Enterprise finance consultant by day. I use hands-on building with AI to stay ahead of what I advise clients on - not as a developer, but as someone who needs to understand the tools well enough to direct them.</p>
                 <div class="hero-cards">
                     <div class="hero-card">
                         <p class="hero-card-label">Day Job</p>
@@ -756,292 +287,91 @@
         </div>
     </section>
 
-    <!-- ── HOW I WORK ────────────────────────────────── -->
     <section id="workflow">
         <div class="container">
             <p class="section-eyebrow reveal">How I Work</p>
             <h2 class="section-heading reveal">From problem to production</h2>
             <p class="section-intro reveal">The discipline is the same whether the problem is a broken finance process or a missing data pipeline. Define it clearly, then build the right thing - not just the obvious thing.</p>
-
             <div class="workflow-grid reveal-stagger">
-                <div class="wf-step">
-                    <div class="wf-num">01</div>
-                    <div class="wf-content">
-                        <div class="wf-title">Frame the Problem</div>
-                        <p class="wf-desc">Most solutions fail because they solve the wrong problem. Before anything else, I separate the stated problem from the actual one. Who is affected and how? What does a good outcome look like versus a merely complete one? What constraints are real versus assumed? A well-framed problem is often half-solved.</p>
-                    </div>
-                </div>
-                <div class="wf-step">
-                    <div class="wf-num">02</div>
-                    <div class="wf-content">
-                        <div class="wf-title">Design the System</div>
-                        <p class="wf-desc">I define the architecture before touching any tool. What are the components? How do they connect? Where does data flow and where could it break? What edge cases will surface in production but not in demos? This is where most execution risk lives - and where thinking it through in advance pays off most.</p>
-                    </div>
-                </div>
-                <div class="wf-step">
-                    <div class="wf-num">03</div>
-                    <div class="wf-content">
-                        <div class="wf-title">Build and Validate</div>
-                        <p class="wf-desc">I direct AI tools to implement the design, then test against real conditions rather than ideal ones. Does it handle bad input? Does it fail gracefully? Does it actually solve the problem for someone who did not build it? Iteration here is fast because the design is already clear - I am validating assumptions, not discovering them.</p>
-                    </div>
-                </div>
-                <div class="wf-step">
-                    <div class="wf-num">04</div>
-                    <div class="wf-content">
-                        <div class="wf-title">Ship and Learn</div>
-                        <p class="wf-desc">A working deployment is the only honest test. I move from local to live quickly and treat the first real use as the start of learning, not the end of building. What did users actually do? What did the system do unexpectedly? The feedback from a live product is worth more than any pre-launch analysis.</p>
-                    </div>
-                </div>
+                <div class="wf-step"><div class="wf-num">01</div><div class="wf-content"><div class="wf-title">Frame the Problem</div><p class="wf-desc">Most solutions fail because they solve the wrong problem. Before anything else, I separate the stated problem from the actual one. Who is affected and how? What does a good outcome look like versus a merely complete one? What constraints are real versus assumed? A well-framed problem is often half-solved.</p></div></div>
+                <div class="wf-step"><div class="wf-num">02</div><div class="wf-content"><div class="wf-title">Design the System</div><p class="wf-desc">I define the architecture before touching any tool. What are the components? How do they connect? Where does data flow and where could it break? What edge cases will surface in production but not in demos? This is where most execution risk lives - and where thinking it through in advance pays off most.</p></div></div>
+                <div class="wf-step"><div class="wf-num">03</div><div class="wf-content"><div class="wf-title">Build and Validate</div><p class="wf-desc">I direct AI tools to implement the design, then test against real conditions rather than ideal ones. Does it handle bad input? Does it fail gracefully? Does it actually solve the problem for someone who did not build it? Iteration here is fast because the design is already clear - I am validating assumptions, not discovering them.</p></div></div>
+                <div class="wf-step"><div class="wf-num">04</div><div class="wf-content"><div class="wf-title">Ship and Learn</div><p class="wf-desc">A working deployment is the only honest test. I move from local to live quickly and treat the first real use as the start of learning, not the end of building. What did users actually do? What did the system do unexpectedly? The feedback from a live product is worth more than any pre-launch analysis.</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- ── PROJECTS ─────────────────────────────────── -->
     <section id="projects" class="section-block">
         <div class="container">
             <p class="section-eyebrow reveal">Projects</p>
             <h2 class="section-heading reveal">Proof over theory</h2>
-            <p class="section-intro reveal">
-                Every project here started with a real problem. One is actively
-                used every day. The others are deliberate learning exercises -
-                the fastest way to understand a technology is to build something
-                that would break without it.
-            </p>
-
+            <p class="section-intro reveal">Every project here started with a real problem. One is actively used every day. The others are deliberate learning exercises - the fastest way to understand a technology is to build something that would break without it.</p>
             <div class="project-stack">
-
-                <!-- PROJECT 1: RAG -->
-                <div class="project-card amber-accent reveal"
-                     onclick="window.open('https://github.com/arnav-ray/immigration-rag','_blank')"
-                     style="cursor:pointer;">
-                    <div class="card-badge-row">
-                        <span class="card-badge badge-amber">Learning in Public</span>
-                        <span class="card-tier">Local &middot; On Premise</span>
-                    </div>
+                <div class="project-card amber-accent reveal" onclick="window.open('https://github.com/arnav-ray/immigration-rag','_blank')" style="cursor:pointer;">
+                    <div class="card-badge-row"><span class="card-badge badge-amber">Learning in Public</span><span class="card-tier">Local &middot; On Premise</span></div>
                     <h3 class="card-title">Local LLM (RAG) for Immigration Questions</h3>
                     <p class="card-subtitle">On-premise AI that retrieves and cites exact sections of law - no cloud, no hallucinations.</p>
                     <div class="card-body">
-                        <div class="card-col col-problem">
-                            <h4>The Problem</h4>
-                            <p>Standard AI assistants either refuse to answer legal questions or invent rules that do not exist. German immigration law spans multiple statutes with hundreds of cross-referenced sections - a single eligibility question can require reading five different parts of the law at once.</p>
-                        </div>
-                        <div class="card-col col-solution">
-                            <h4>What I Built</h4>
-                            <p>A system that runs entirely on local hardware - no data ever leaves the machine, full GDPR compliance by design. It retrieves the most relevant legal sections for any question and generates an answer grounded only in those sections, citing exactly where each point comes from.</p>
-                        </div>
+                        <div class="card-col col-problem"><h4>The Problem</h4><p>Standard AI assistants either refuse to answer legal questions or invent rules that do not exist. German immigration law spans multiple statutes with hundreds of cross-referenced sections - a single eligibility question can require reading five different parts of the law at once.</p></div>
+                        <div class="card-col col-solution"><h4>What I Built</h4><p>A system that runs entirely on local hardware - no data ever leaves the machine, full GDPR compliance by design. It retrieves the most relevant legal sections for any question and generates an answer grounded only in those sections, citing exactly where each point comes from.</p></div>
                     </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/arnav-ray/immigration-rag"
-                           class="btn btn-amber" target="_blank"
-                           onclick="event.stopPropagation();">
-                            View on GitHub &rarr;
-                        </a>
-                    </div>
+                    <div class="card-actions"><a href="https://github.com/arnav-ray/immigration-rag" class="btn btn-amber" target="_blank" onclick="event.stopPropagation();">View on GitHub &rarr;</a></div>
                 </div>
-
-                <!-- PROJECT 2: Family Finance Bot -->
-                <div class="project-card reveal"
-                     onclick="window.open('https://github.com/arnav-ray/Finance-and-Goals-bot','_blank')"
-                     style="cursor:pointer;">
-                    <div class="card-badge-row">
-                        <span class="card-badge badge-green">Actively Used</span>
-                        <span class="card-tier">Live &middot; Serverless</span>
-                    </div>
+                <div class="project-card reveal" onclick="window.open('https://github.com/arnav-ray/Finance-and-Goals-bot','_blank')" style="cursor:pointer;">
+                    <div class="card-badge-row"><span class="card-badge badge-green">Actively Used</span><span class="card-tier">Live &middot; Serverless</span></div>
                     <h3 class="card-title">Family Finance and Goals AI Bot</h3>
                     <p class="card-subtitle">Log expenses and track family goals - from any device, with just a message.</p>
                     <div class="card-body">
-                        <div class="card-col col-problem">
-                            <h4>The Problem</h4>
-                            <p>Logging a family expense means opening an app, finding the right category, and typing it manually. The friction is small enough to skip - until weeks of spending disappear. Goals suffer the same way: written down once, never revisited.</p>
-                        </div>
-                        <div class="card-col col-solution">
-                            <h4>What I Built</h4>
-                            <p>A Telegram bot that reads a message or a photo of a receipt and writes the expense directly into a shared Google Sheet in under a second. Goals work the same way - one natural-language message creates a tracked entry. Zero apps, zero manual effort.</p>
-                        </div>
+                        <div class="card-col col-problem"><h4>The Problem</h4><p>Logging a family expense means opening an app, finding the right category, and typing it manually. The friction is small enough to skip - until weeks of spending disappear. Goals suffer the same way: written down once, never revisited.</p></div>
+                        <div class="card-col col-solution"><h4>What I Built</h4><p>A Telegram bot that reads a message or a photo of a receipt and writes the expense directly into a shared Google Sheet in under a second. Goals work the same way - one natural-language message creates a tracked entry. Zero apps, zero manual effort.</p></div>
                     </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/arnav-ray/Finance-and-Goals-bot"
-                           class="btn btn-amber" target="_blank"
-                           onclick="event.stopPropagation();">
-                            View on GitHub &rarr;
-                        </a>
-                    </div>
+                    <div class="card-actions"><a href="https://github.com/arnav-ray/Finance-and-Goals-bot" class="btn btn-amber" target="_blank" onclick="event.stopPropagation();">View on GitHub &rarr;</a></div>
                 </div>
-
-                <!-- PROJECT 3: TreasuryFlow -->
-                <div class="project-card reveal"
-                     onclick="window.open('https://treasuryflow.arnavray.ca/','_blank')"
-                     style="cursor:pointer;">
-                    <div class="card-badge-row">
-                        <span class="card-badge badge-blue">Concept Demo</span>
-                        <span class="card-tier">Live &middot; Demo</span>
-                    </div>
+                <div class="project-card reveal" onclick="window.open('https://treasuryflow.arnavray.ca/','_blank')" style="cursor:pointer;">
+                    <div class="card-badge-row"><span class="card-badge badge-blue">Concept Demo</span><span class="card-tier">Live &middot; Demo</span></div>
                     <h3 class="card-title">TreasuryFlow</h3>
                     <p class="card-subtitle">What enterprise cash visibility could look like if it were built today, not fifteen years ago.</p>
                     <div class="card-body">
-                        <div class="card-col col-problem">
-                            <h4>The Problem</h4>
-                            <p>Enterprise finance teams spend more time gathering data than analysing it. Cash sits across multiple systems and geographies with no single view. The tools that exist were designed for a world before real-time data and AI.</p>
-                        </div>
-                        <div class="card-col col-solution">
-                            <h4>What I Built</h4>
-                            <p>A working prototype of an ERP-agnostic treasury layer that pulls data via API without touching the underlying system, uses AI to surface insights, and gives a finance team a live command centre instead of a weekly Excel report.</p>
-                        </div>
+                        <div class="card-col col-problem"><h4>The Problem</h4><p>Enterprise finance teams spend more time gathering data than analysing it. Cash sits across multiple systems and geographies with no single view. The tools that exist were designed for a world before real-time data and AI.</p></div>
+                        <div class="card-col col-solution"><h4>What I Built</h4><p>A working prototype of an ERP-agnostic treasury layer that pulls data via API without touching the underlying system, uses AI to surface insights, and gives a finance team a live command centre instead of a weekly Excel report.</p></div>
                     </div>
                     <div class="card-actions">
-                        <a href="https://treasuryflow.arnavray.ca/"
-                           class="btn btn-blue" target="_blank"
-                           onclick="event.stopPropagation();">
-                            View Live Demo &rarr;
-                        </a>
-                        <a href="https://github.com/arnav-ray/TreasuryFlow"
-                           class="btn" target="_blank"
-                           onclick="event.stopPropagation();">
-                            GitHub &rarr;
-                        </a>
+                        <a href="https://treasuryflow.arnavray.ca/" class="btn btn-blue" target="_blank" onclick="event.stopPropagation();">View Live Demo &rarr;</a>
+                        <a href="https://github.com/arnav-ray/TreasuryFlow" class="btn" target="_blank" onclick="event.stopPropagation();">GitHub &rarr;</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- ── OTHER BUILDS ──────────────────────────────── -->
     <section id="other-builds">
         <div class="container">
             <p class="section-eyebrow reveal">More Work</p>
             <h2 class="section-heading reveal">Other things I have built</h2>
             <div class="other-builds-grid reveal-stagger">
-
-                <a href="https://podcast.arnavray.ca/" target="_blank" class="other-build-item">
-                    <span class="other-build-badge ob-badge-live">Live</span>
-                    <div class="other-build-name">
-                        Automated Podcast
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">100% automated daily episodes. AI-generated, zero operating cost.</p>
-                    <p class="other-build-problem">Podcast production requires daily manual effort. This pipeline generates, voices, and publishes episodes automatically — no intervention at any step.</p>
-                </a>
-
-                <a href="https://credit.arnavray.ca/" target="_blank" class="other-build-item">
-                    <span class="other-build-badge ob-badge-demo">Demo</span>
-                    <div class="other-build-name">
-                        OpenCredit Platform
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">Transparent credit scoring engine. Every calculation visible and interactive.</p>
-                    <p class="other-build-problem">Credit scores are black boxes. This makes every calculation visible and interactive — Basel III methodology, fully auditable by anyone.</p>
-                </a>
-
-                <a href="https://github.com/arnav-ray/LocalSnap" target="_blank" class="other-build-item">
-                    <span class="other-build-badge ob-badge-local">Local</span>
-                    <div class="other-build-name">
-                        LocalSnap
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">Offline photo library manager with local face recognition. No cloud.</p>
-                    <p class="other-build-problem">Cloud photo exports strip all metadata — timestamps, GPS, and face tags vanish. This recovers everything locally using offline OpenCV models.</p>
-                </a>
-
-                <a href="https://german.arnavray.ca/" target="_blank" class="other-build-item">
-                    <span class="other-build-badge ob-badge-live">Live</span>
-                    <div class="other-build-name">
-                        Daily German
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">Gamified German learning with interactive grammar and memory games.</p>
-                    <p class="other-build-problem">Language learning apps are passive. This uses interactive games and spaced repetition to make German genuinely engaging to learn.</p>
-                </a>
-
-                <a href="https://game.arnavray.ca/" target="_blank" class="other-build-item">
-                    <span class="other-build-badge ob-badge-live">Live</span>
-                    <div class="other-build-name">
-                        Curse of the Frozen North
-                        <span class="other-build-arrow">&#8599;</span>
-                    </div>
-                    <p class="other-build-desc">Zero-install multiplayer party game with &lt;50ms Firestore sync.</p>
-                    <p class="other-build-problem">Party games require downloads, accounts, and setup. This runs instantly in any browser — share a link, pick up your phone, start playing.</p>
-                </a>
-
+                <a href="https://podcast.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Automated Podcast<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">100% automated daily episodes. AI-generated, zero operating cost.</p><p class="other-build-problem">Podcast production requires daily manual effort. This pipeline generates, voices, and publishes episodes automatically &mdash; no intervention at any step.</p></a>
+                <a href="https://credit.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-demo">Demo</span><div class="other-build-name">OpenCredit Platform<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Transparent credit scoring engine. Every calculation visible and interactive.</p><p class="other-build-problem">Credit scores are black boxes. This makes every calculation visible and interactive &mdash; Basel III methodology, fully auditable by anyone.</p></a>
+                <a href="https://github.com/arnav-ray/LocalSnap" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-local">Local</span><div class="other-build-name">LocalSnap<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Offline photo library manager with local face recognition. No cloud.</p><p class="other-build-problem">Cloud photo exports strip all metadata &mdash; timestamps, GPS, and face tags vanish. This recovers everything locally using offline OpenCV models.</p></a>
+                <a href="https://german.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Daily German<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Gamified German learning with interactive grammar and memory games.</p><p class="other-build-problem">Language learning apps are passive. This uses interactive games and spaced repetition to make German genuinely engaging to learn.</p></a>
+                <a href="https://game.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Curse of the Frozen North<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Zero-install multiplayer party game with &lt;50ms Firestore sync.</p><p class="other-build-problem">Party games require downloads, accounts, and setup. This runs instantly in any browser &mdash; share a link, pick up your phone, start playing.</p></a>
             </div>
         </div>
     </section>
 
-    <!-- ── BLOG ─────────────────────────────────────── -->
-    <section id="blog" style="padding:5rem 0;border-top:1px solid var(--border)">
-      <div class="container">
-
-        <p class="section-eyebrow reveal">Writing</p>
-        <h2 class="section-heading reveal">Decisions, mistakes, and what I learned</h2>
-        <p class="section-intro reveal">Not polished thought leadership. Notes from building in public, written while the details are still fresh.</p>
-
-        <div class="reveal-stagger" style="display:flex;flex-direction:column;gap:1rem;max-width:780px">
-
-          <!-- Article card -->
-          <a href="blog.html" target="_blank"
-             style="display:block;text-decoration:none;background:var(--surface);border:1px solid rgba(240,160,80,0.17);border-radius:16px;padding:1.75rem 2rem;transition:transform 0.22s ease,border-color 0.22s,background 0.22s,box-shadow 0.22s"
-             onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='rgba(240,160,80,0.32)';this.style.background='rgba(255,255,255,0.04)';this.style.boxShadow='0 14px 45px rgba(240,130,0,0.07)'"
-             onmouseout="this.style.transform='';this.style.borderColor='rgba(240,160,80,0.17)';this.style.background='var(--surface)';this.style.boxShadow=''">
-            <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;margin-bottom:0.9rem">
-              <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.75rem;border-radius:20px;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(240,160,80,0.22)">AI / RAG</span>
-              <span style="font-size:0.75rem;color:var(--muted)">March 2026</span>
-              <span style="color:var(--muted);font-size:0.65rem">·</span>
-              <span style="font-size:0.75rem;color:var(--muted)">12 min read</span>
-            </div>
-            <div style="font-family:'DM Serif Display',serif;font-size:1.35rem;color:#fff;line-height:1.2;margin-bottom:0.5rem">When AI Gets Immigration Law Wrong, the Cost Is Not a Bad Essay</div>
-            <p style="font-size:0.88rem;color:var(--muted);font-style:italic;font-weight:300;line-height:1.65;margin-bottom:1.1rem">How I built a local AI legal assistant for German immigration law, what it took to get it right, and why &ldquo;good enough&rdquo; was never an option.</p>
-            <span style="font-size:0.85rem;font-weight:600;color:var(--amber)">Read article &#8594;</span>
-          </a>
-
-          <!-- More coming soon -->
-          <div style="border:1px dashed rgba(255,255,255,0.07);border-radius:16px;padding:1.4rem 2rem;display:flex;align-items:center;gap:1.25rem">
-            <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.65rem;border-radius:20px;background:rgba(255,255,255,0.04);color:var(--muted);border:1px solid var(--border);white-space:nowrap;flex-shrink:0">Coming next</span>
-            <div>
-              <div style="font-size:0.92rem;font-weight:500;color:rgba(255,255,255,0.3);line-height:1.3">Building a Legal Knowledge Graph: Why Vector Search Has a Ceiling</div>
-              <div style="font-size:0.78rem;color:rgba(122,132,153,0.5);margin-top:0.25rem">Graph-based retrieval, ReAct agents, and why flat vector indexes fail at multi-hop legal reasoning.</div>
-            </div>
-          </div>
-
-        </div>
-
-        <div style="margin-top:2rem" class="reveal">
-          <a href="blog.html" target="_blank"
-             style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.88rem;font-weight:600;color:var(--text);text-decoration:none;padding:0.65rem 1.5rem;border-radius:50px;border:1px solid var(--border);background:var(--surface);transition:all 0.2s"
-             onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='#fff'"
-             onmouseout="this.style.background='var(--surface)';this.style.borderColor='var(--border)';this.style.color='var(--text)'">
-            View all posts &#8594;
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── CONNECT ───────────────────────────────────── -->
     <section id="connect">
         <div class="container">
-            <h2 class="connect-headline reveal">Let's connect</h2>
-            <p class="connect-sub reveal">
-                Whether you are building an AI-enabled product, thinking about
-                how AI changes enterprise finance, or looking for someone who
-                bridges both worlds.
-            </p>
+            <h2 class="connect-headline reveal">Let&rsquo;s connect</h2>
+            <p class="connect-sub reveal">Whether you are building an AI-enabled product, thinking about how AI changes enterprise finance, or looking for someone who bridges both worlds.</p>
             <div class="connect-links reveal">
-                <a href="https://linkedin.com/in/arnavray" target="_blank" class="connect-btn">
-                    LinkedIn
-                </a>
-                <a href="https://github.com/arnav-ray" target="_blank" class="connect-btn">
-                    GitHub
-                </a>
-                <a href="/cdn-cgi/l/email-protection#c7a6b5a9a6b187a6b5a9a6b1b5a6bee9a4a6" class="connect-btn">
-                    <span class="__cf_email__" data-cfemail="7011021e11063011021e11060211095e1311">[email&#160;protected]</span>
-                </a>
+                <a href="https://linkedin.com/in/arnavray" target="_blank" class="connect-btn">LinkedIn</a>
+                <a href="https://github.com/arnav-ray" target="_blank" class="connect-btn">GitHub</a>
+                <a href="/cdn-cgi/l/email-protection#c7a6b5a9a6b187a6b5a9a6b1b5a6bee9a4a6" class="connect-btn"><span class="__cf_email__" data-cfemail="7011021e11063011021e11060211095e1311">[email&#160;protected]</span></a>
             </div>
             <p class="footer-note">&copy; 2026 Arnav Amal Ray &nbsp;&bull;&nbsp; AI-Assisted Build &nbsp;&bull;&nbsp; Human-Directed</p>
         </div>
     </section>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // ── Scroll progress bar ──────────────────────
         const progressBar = document.getElementById('progress-bar');
         function updateProgress() {
             const scrolled = window.scrollY;
@@ -1050,37 +380,25 @@
         }
         window.addEventListener('scroll', updateProgress, { passive: true });
 
-        // ── Active nav link on scroll ────────────────
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('nav a.nav-link');
-
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     navLinks.forEach(link => {
-                        link.classList.toggle(
-                            'active',
-                            link.getAttribute('href') === '#' + entry.target.id
-                        );
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
                     });
                 }
             });
         }, { rootMargin: '-35% 0px -60% 0px' });
-
         sections.forEach(s => navObserver.observe(s));
 
-        // ── Scroll reveal ────────────────────────────
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
-
     </script>
 </body>
 </html>
