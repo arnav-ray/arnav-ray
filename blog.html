@@ -54,9 +54,9 @@
     padding-top: 58px;
   }
 
-  /* ── Sidebar ── */
+  /* ── Article list sidebar ── */
   .sidebar {
-    width: 272px; flex-shrink: 0;
+    width: 240px; flex-shrink: 0;
     background: var(--sidebar-bg);
     border-right: 1px solid var(--border);
     overflow-y: auto;
@@ -87,6 +87,38 @@
     line-height: 1.35; margin-bottom: 0.35rem;
   }
   .sb-meta { font-size: 0.68rem; color: var(--muted2); }
+
+  /* ── TOC column ── */
+  .toc {
+    width: 172px; flex-shrink: 0;
+    background: #fafaf8;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 1.75rem 0 2rem;
+  }
+  .toc-label {
+    padding: 0 1.1rem 0.85rem;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted2);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.6rem;
+  }
+  .toc-link {
+    display: block;
+    padding: 0.42rem 1.1rem;
+    font-size: 0.75rem; color: var(--muted);
+    text-decoration: none; line-height: 1.45;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .toc-link:hover { color: var(--text); background: rgba(0,0,0,0.02); }
+  .toc-link.active {
+    color: var(--amber);
+    border-left-color: var(--amber);
+    font-weight: 500;
+    background: rgba(184,94,0,0.04);
+  }
 
   /* ── Article pane ── */
   .pane {
@@ -180,6 +212,9 @@
   }
   .gh-link:hover { background: #fef0d8; border-color: rgba(184,94,0,0.4); transform: translateY(-1px); }
 
+  @media (max-width: 900px) {
+    .toc { display: none; }
+  }
   @media (max-width: 680px) {
     body { overflow: auto; }
     .layout { flex-direction: column; height: auto; }
@@ -200,6 +235,7 @@
 
 <div class="layout">
 
+  <!-- Article list -->
   <aside class="sidebar">
     <div class="sb-label">Writing</div>
     <div class="sb-item">
@@ -209,7 +245,20 @@
     </div>
   </aside>
 
-  <main class="pane">
+  <!-- Section TOC -->
+  <nav class="toc" aria-label="Article sections">
+    <div class="toc-label">In this article</div>
+    <a href="#q"       class="toc-link">The obvious question</a>
+    <a href="#brief"   class="toc-link">The design brief</a>
+    <a href="#arch"    class="toc-link">Architecture</a>
+    <a href="#how"     class="toc-link">How it works</a>
+    <a href="#quality" class="toc-link">The quality gate</a>
+    <a href="#next"    class="toc-link">What comes next</a>
+    <a href="#learned" class="toc-link">What I learned</a>
+  </nav>
+
+  <!-- Article content -->
+  <main class="pane" id="pane">
     <div class="body">
 
       <div class="eyebrow">
@@ -229,7 +278,7 @@
       <p>I built this project because I needed it. I also built it because the problem it addresses does not stop with my personal situation.</p>
 
       <hr class="rule">
-      <h2>The obvious question</h2>
+      <h2 id="q">The obvious question</h2>
       <p>The first thing anyone asks when I describe this project is why I did not just upload the law to Claude or ChatGPT and ask my question.</p>
       <p>It is a fair question. A frontier model with a large context window can ingest a legal document and answer questions about it reasonably well. For a one-off query, that is a perfectly rational approach.</p>
       <p>But it is not the right architecture for anything that needs to be trusted, repeated, or used at scale. Here is why.</p>
@@ -240,7 +289,7 @@
       <p>Those four constraints together defined the architecture before a single line of code was written.</p>
 
       <hr class="rule">
-      <h2>The design brief</h2>
+      <h2 id="brief">The design brief</h2>
       <p>The requirements that came out of that thinking were straightforward.</p>
       <p>The system had to run entirely on local hardware. No query, no document, and no personal detail should ever leave the machine. This is not a performance optimisation. It is a data architecture decision grounded in GDPR, professional liability, and the basic principle that a legal query deserves the same confidentiality as a legal consultation.</p>
       <p>The system had to be grounded in current statute text rather than trained on historical summaries. The actual law was downloaded directly from the German government&rsquo;s statutory publication source, indexed, and made retrievable at the section level. When the law changes, you rebuild the index. The system&rsquo;s knowledge does not drift.</p>
@@ -249,7 +298,7 @@
       <p>That last point matters more than it sounds. A system that knows its limits and communicates them clearly is much more trustworthy than one that attempts to answer everything.</p>
 
       <hr class="rule">
-      <h2>Architecture decisions</h2>
+      <h2 id="arch">Architecture decisions</h2>
       <p>The core architecture is a retrieval-augmented generation pipeline. The concept is straightforward. Instead of relying on a model&rsquo;s training memory, you retrieve the relevant text from a controlled corpus first. You then generate a response grounded only in what was retrieved. The model is not guessing. It is reading.</p>
       <p><strong>Chunking at the section boundary.</strong> Legal text cannot be chunked the way prose is chunked. A statutory condition often spans multiple subsections within a single paragraph. Requirements for a given permit type might state the qualification condition in one subsection, the salary threshold in another, and the exceptions in a third. If a chunk boundary falls between them, any retrieval that returns only one subsection is retrieving half a legal condition. The chunking strategy here splits the corpus at section headers. This guarantees one complete statutory section per chunk. The integrity of the legal unit is non-negotiable.</p>
       <p><strong>Cross-lingual retrieval.</strong> The corpus is in German. A user asking in English needs to retrieve chunks using German statutory vocabulary. The solution is a two-step approach. The query is first expanded into the German legal terms, section numbers, and statutory vocabulary that correspond to the question. That expanded query is what gets embedded and matched against the corpus.</p>
@@ -257,7 +306,7 @@
       <p><strong>Model choice is infrastructure, not identity.</strong> The language model is not the product here. It is just a component. The system is designed to run any locally-served model. The corpus coverage and retrieval quality remain constant regardless of which model generates the final response. The true intelligence of the system lives in the retrieval pipeline, not in the model weights.</p>
 
       <hr class="rule">
-      <h2>How it works</h2>
+      <h2 id="how">How it works</h2>
 
       <div class="diagram-section">
         <p class="dlabel">Pipeline: offline build and per-query flow</p>
@@ -313,7 +362,7 @@
       <p>The RAG insight panel exists for one reason: transparency. It shows similarity scores and reranking scores side by side for every retrieved section. A user should be able to see exactly why a section was or was not included in the answer. That visibility is a core part of the trust contract.</p>
 
       <hr class="rule">
-      <h2>The quality gate</h2>
+      <h2 id="quality">The quality gate</h2>
       <p>Building a system is one thing. Knowing whether it works is another. Testing it requires stepping outside the builder&rsquo;s perspective entirely.</p>
       <p>I ran the system through a structured cross-evaluation using a set of questions a real user would ask. I checked these against the actual statute text to look for where the answers failed. This was not a test of latency or token throughput. It was a test of legal accuracy. Does the answer cite the right provision? Does it state the conditions correctly? Does it avoid inventing requirements that do not exist in the retrieved text?</p>
       <p>The results were instructive. For straightforward queries, the system performed well. Eligibility conditions, the distinction between different legal regimes for EU versus non-EU nationals, and the routing between different statutes all came back with accurate citations and appropriate legal framing.</p>
@@ -322,14 +371,14 @@
       <p>The principle this established is worth naming clearly. Accuracy evaluation in a regulated domain cannot be done by the builder alone. The test questions need to come from someone who knows the domain well enough to catch a plausible but wrong answer. Technical benchmarks measure technical performance. They do not measure whether the answer is legally correct.</p>
 
       <hr class="rule">
-      <h2>What comes next</h2>
+      <h2 id="next">What comes next</h2>
       <p>Retrieval-augmented generation with vector similarity search is effective for straightforward queries. It is not sufficient for complex legal reasoning.</p>
       <p>The limitation is structural. A flat vector index retrieves sections based on semantic proximity to the query. It does not model how sections relate to each other. One provision might establish a general condition that another provision qualifies. A right established in one statute may be constrained by a cross-reference to another. A correct answer to a complex question sometimes requires reasoning across multiple sections in a specific sequence. Vector search alone cannot do that.</p>
       <p>The next architectural layer will address this. A graph-based retrieval approach can explicitly represent the relationships between statutory sections. It tracks which sections cross-reference which, which provisions depend on conditions established elsewhere, and which legal regimes take precedence. By combining this with a reasoning agent that plans a multi-step retrieval strategy before generating an answer, the system can begin to handle the kind of multi-condition questions that currently expose the ceiling of the vector approach.</p>
       <p>This is not a complete redesign. The existing pipeline remains intact: the chunking strategy, the embeddings, and the reranking logic. The graph layer will sit alongside the vector store, and a reasoning layer will decide which retrieval path is appropriate for each query. When you build the foundation right, extending it becomes a product decision rather than a total rebuild.</p>
 
       <hr class="rule">
-      <h2>What this taught me about AI in regulated domains</h2>
+      <h2 id="learned">What this taught me about AI in regulated domains</h2>
       <p>Coming from a background in business and finance rather than software engineering, I had to approach this architecture from first principles. I asked not how to build each component, but what each component needed to achieve. That constraint turned out to be useful. A few things are worth stating directly, because they get lost in most AI project write-ups.</p>
       <p><strong>The model is not the product.</strong> The retrieval architecture, the chunking strategy, the evaluation framework, and the honesty about scope: those are the product. The language model is one swappable component.</p>
       <p><strong>Demo quality and production quality are not the same thing.</strong> A system that produces plausible-looking answers in a demo can fail systematic accuracy review. The only way to know is to test it against the domain. There is no shortcut.</p>
@@ -345,5 +394,43 @@
   </main>
 
 </div>
+
+<script>
+  const pane = document.getElementById('pane');
+  const headings = Array.from(document.querySelectorAll('h2[id]'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+
+  // Smooth scroll within the pane on TOC click
+  tocLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      const paneRect = pane.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      pane.scrollBy({ top: targetRect.top - paneRect.top - 40, behavior: 'smooth' });
+    });
+  });
+
+  // Highlight active TOC item on scroll
+  pane.addEventListener('scroll', () => {
+    const paneTop = pane.getBoundingClientRect().top;
+    let active = headings[0]?.id || '';
+    headings.forEach(h => {
+      if (h.getBoundingClientRect().top - paneTop <= 80) active = h.id;
+    });
+    tocLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + active);
+    });
+  }, { passive: true });
+
+  // Set initial active state
+  if (headings.length) {
+    const first = tocLinks.find(l => l.getAttribute('href') === '#' + headings[0].id);
+    if (first) first.classList.add('active');
+  }
+</script>
+
 </body>
 </html>
