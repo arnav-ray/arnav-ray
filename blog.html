@@ -3,7 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog - Arnav Amal Ray</title>
+<title>Blog — Arnav Amal Ray</title>
+
+<!-- ── Canonical & indexing ── -->
+<link rel="canonical" href="https://arnavray.ca/blog.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Arnav Amal Ray">
+<meta name="keywords" content="RAG, retrieval augmented generation, German immigration law, LlamaIndex, local LLM, bge-m3, GDPR AI, Telegram bot, serverless finance, Groq, Google Sheets bot, AI product building">
+
+<!-- ── Primary meta ── -->
+<meta name="description" content="Two build logs by Arnav Amal Ray: a local RAG system for German immigration law (GDPR-compliant, on-premise, two-stage retrieval) and a serverless Telegram bot for family expense tracking using Groq and Google Sheets.">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arnav Amal Ray">
+<meta property="og:url" content="https://arnavray.ca/blog.html">
+<meta property="og:title" content="Blog — Arnav Amal Ray">
+<meta property="og:description" content="Two build logs: a local RAG system for German immigration law and a serverless Telegram bot for household finance tracking. Real decisions, real tradeoffs, real failures.">
+<meta property="og:image" content="https://arnavray.ca/assets/blog/RAG_v2.png">
+<meta property="og:locale" content="en_GB">
+
+<!-- ── Twitter / X card ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Arnav Amal Ray">
+<meta name="twitter:description" content="Two build logs: a local RAG system for German immigration law and a serverless Telegram bot for household finance tracking.">
+<meta name="twitter:image" content="https://arnavray.ca/assets/blog/RAG_v2.png">
+
+<!-- ── JSON-LD: two articles on one page ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "When AI gets immigration law wrong, the cost is not a bad essay",
+      "description": "How I built a local AI legal assistant for German immigration law using LlamaIndex, bge-m3 embeddings, cross-encoder reranking, and Mistral NeMo — running entirely on local hardware for GDPR compliance.",
+      "author": { "@type": "Person", "name": "Arnav Amal Ray", "url": "https://arnavray.ca" },
+      "datePublished": "2026-03-01",
+      "url": "https://arnavray.ca/blog.html#art-rag",
+      "keywords": ["RAG", "LlamaIndex", "German immigration law", "local LLM", "bge-m3", "GDPR", "vector search", "cross-encoder reranking"],
+      "image": "https://arnavray.ca/assets/blog/RAG_v2.png",
+      "publisher": { "@type": "Person", "name": "Arnav Amal Ray" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Building the finance bot our family actually uses every day",
+      "description": "A serverless Telegram bot for household expense tracking built with Groq (Llama 4 Vision), Google Sheets, and Vercel — parsing natural language and receipt photos into structured data with zero friction.",
+      "author": { "@type": "Person", "name": "Arnav Amal Ray", "url": "https://arnavray.ca" },
+      "datePublished": "2026-03-01",
+      "url": "https://arnavray.ca/blog.html#art-finance",
+      "keywords": ["Telegram bot", "Groq", "Google Sheets", "serverless", "Vercel", "expense tracking", "natural language parsing", "family finance"],
+      "publisher": { "@type": "Person", "name": "Arnav Amal Ray" }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -257,12 +312,12 @@
     <div class="sb-label">Articles</div>
     <div class="sb-item active" data-article="rag">
       <div class="sb-tag">AI / RAG</div>
-      <div class="sb-title">When AI Gets Immigration Law Wrong, the Cost Is Not a Bad Essay</div>
+      <div class="sb-title">When AI gets immigration law wrong, the cost is not a bad essay</div>
       <div class="sb-meta">March 2026 &middot; 12 min read</div>
     </div>
     <div class="sb-item" data-article="finance">
       <div class="sb-tag">AI / Productivity</div>
-      <div class="sb-title">Building the Finance Bot Our Family Actually Uses Every Day</div>
+      <div class="sb-title">Building the finance bot our family actually uses every day</div>
       <div class="sb-meta">March 2026 &middot; 10 min read</div>
     </div>
   </aside>
@@ -303,7 +358,7 @@
         <span class="dot">&middot;</span>
         <span class="meta">12 min read</span>
       </div>
-      <h1>When AI Gets Immigration Law Wrong, the Cost Is Not a Bad Essay</h1>
+      <h1>When AI gets immigration law wrong, the cost is not a bad essay</h1>
       <p class="sub">How I built a local AI legal assistant for German immigration law, what it took to get it right, and why &ldquo;good enough&rdquo; was never an option.</p>
 
       <span id="rag-intro" class="s-anchor"></span>
@@ -433,7 +488,7 @@
         <span class="dot">&middot;</span>
         <span class="meta">10 min read</span>
       </div>
-      <h1>Building the Finance Bot Our Family Actually Uses Every Day</h1>
+      <h1>Building the finance bot our family actually uses every day</h1>
       <p class="sub">How a simple frustration with household expense tracking led to a serverless AI bot, and what it took to make something genuinely reliable rather than just technically interesting.</p>
 
       <span id="fin-intro" class="s-anchor"></span>
