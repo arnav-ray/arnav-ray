@@ -4,16 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog - Arnav Amal Ray</title>
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/favicon.svg" sizes="any">
-<style>
-  @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300; font-display: swap; src: url('/assets/fonts/dm-sans-latin-300-normal.woff2') format('woff2'); }
-  @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
-  @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
-  @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/dm-sans-latin-600-normal.woff2') format('woff2'); }
-  @font-face { font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-serif-display-latin-400-normal.woff2') format('woff2'); }
-  @font-face { font-family: 'DM Serif Display'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-serif-display-latin-400-italic.woff2') format('woff2'); }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --border:     #e8e6e0;
@@ -61,7 +54,7 @@
     padding-top: 58px;
   }
 
-  /* ── Article list sidebar ── */
+  /* ── Sidebar ── */
   .sidebar {
     width: 240px; flex-shrink: 0;
     background: var(--sidebar-bg);
@@ -79,23 +72,36 @@
   }
   .sb-item {
     padding: 1rem 1.4rem;
-    border-left: 3px solid var(--amber);
-    background: #fff;
-    cursor: default;
+    border-left: 3px solid transparent;
+    border-bottom: 1px solid var(--border);
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.15s;
   }
+  .sb-item:hover { background: #f0ede8; }
+  .sb-item:hover .sb-title { color: var(--amber); }
+  .sb-item.active {
+    border-left-color: var(--amber);
+    background: #fff;
+  }
+  .sb-item.active .sb-tag { color: var(--amber); }
+  .sb-item.active .sb-title { color: #111; }
+  .sb-item:not(.active) .sb-title { color: var(--muted); }
+  .sb-item:not(.active) .sb-tag { color: var(--muted2); }
   .sb-tag {
     font-size: 0.6rem; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 0.35rem;
+    margin-bottom: 0.35rem;
   }
   .sb-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 0.9rem; color: #111;
+    font-size: 0.9rem;
     line-height: 1.35; margin-bottom: 0.35rem;
   }
   .sb-meta { font-size: 0.68rem; color: var(--muted2); }
 
-  /* ── TOC column ── */
+  /* ── TOC ── */
   .toc {
     width: 172px; flex-shrink: 0;
     background: #fafaf8;
@@ -111,6 +117,8 @@
     border-bottom: 1px solid var(--border);
     margin-bottom: 0.6rem;
   }
+  .toc-group { display: none; }
+  .toc-group.active { display: block; }
   .toc-link {
     display: block;
     padding: 0.42rem 1.1rem;
@@ -127,16 +135,16 @@
     background: rgba(184,94,0,0.04);
   }
 
-  /* ── Article pane ── */
-  .pane {
-    flex: 1; overflow-y: auto; background: #fff;
-  }
+  /* ── Pane ── */
+  .pane { flex: 1; overflow-y: auto; background: #fff; }
+  article { display: none; }
+  article.active { display: block; }
   .body {
     max-width: 660px; margin: 0 auto;
     padding: 3.5rem 2.5rem 6rem;
   }
 
-  /* ── Article typography ── */
+  /* ── Typography ── */
   .eyebrow {
     display: flex; align-items: center; gap: 0.6rem;
     flex-wrap: wrap; margin-bottom: 1.4rem;
@@ -150,7 +158,6 @@
   }
   .dot { color: var(--muted2); font-size: 0.7rem; }
   .meta { font-size: 0.76rem; color: var(--muted); }
-
   h1 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(1.7rem, 3vw, 2.3rem);
@@ -175,8 +182,19 @@
   }
   .rule { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0 0; }
   .s-anchor { display: block; height: 0; visibility: hidden; }
+  figure { margin: 2rem 0 0; }
+  figure img, figure video { width: 100%; border: 1px solid var(--border); border-radius: 8px; display: block; }
+  figcaption { margin-top: 7px; font-size: 0.71rem; color: var(--muted2); line-height: 1.5; font-style: italic; }
+  .gh-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 2.5rem; font-size: 0.84rem; font-weight: 600;
+    color: var(--amber); text-decoration: none;
+    padding: 0.58rem 1.35rem; border-radius: 50px;
+    border: 1px solid var(--amber-bd); background: var(--amber-bg); transition: all 0.2s;
+  }
+  .gh-link:hover { background: #fef0d8; border-color: rgba(184,94,0,0.4); transform: translateY(-1px); }
 
-  /* ── Diagram (light) ── */
+  /* ── Diagram shared ── */
   .diagram-section { margin: 2.5rem 0; }
   .dlabel { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.7rem; }
   .diagram { background: #f5f4f0; border: 1px solid var(--border); border-radius: 10px; padding: 18px 15px 15px; }
@@ -188,6 +206,7 @@
   .d-box-sub { font-size: 0.57rem; color: var(--muted); display: block; margin-top: 2px; line-height: 1.3; }
   .d-arrow { width: 18px; min-width: 18px; text-align: center; color: var(--muted2); font-size: 10px; flex-shrink: 0; }
   .d-feed-note { font-size: 0.57rem; color: var(--muted2); text-align: right; margin-top: 7px; }
+  .d-feed-note-center { font-size: 0.57rem; color: var(--muted2); text-align: center; margin: 6px 0 14px; }
   .d-online-label { font-size: 0.59rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 11px; }
   .d-step { display: flex; align-items: stretch; }
   .d-spine { width: 2px; background: var(--border); flex-shrink: 0; margin: 0 15px; position: relative; }
@@ -195,6 +214,7 @@
   .d-body { flex: 1; padding: 10px 11px; border: 1px solid var(--border); border-radius: 5px; background: #fff; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; }
   .d-body.pill { border-radius: 22px; background: #edecea; border-color: #d5d3cc; }
   .d-body.output { border-radius: 22px; background: var(--amber-bg); border-color: var(--amber-bd); }
+  .d-body.branch { background: #f5f4f0; border-style: dashed; }
   .d-left { flex: 1; }
   .d-title { font-size: 0.74rem; font-weight: 600; color: var(--text); display: block; line-height: 1.3; }
   .d-sub { font-size: 0.63rem; color: var(--muted); display: block; margin-top: 2px; line-height: 1.3; }
@@ -206,31 +226,21 @@
   .d-leg { display: flex; align-items: center; gap: 4px; font-size: 0.59rem; color: var(--muted2); }
   .d-leg-line { width: 11px; height: 1px; border-top: 1px dashed #ccc; flex-shrink: 0; }
   .d-leg-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .d-trigger-row { display: flex; align-items: stretch; gap: 6px; margin-bottom: 14px; }
+  .d-trigger-box { flex: 1; border: 1px solid var(--border); border-radius: 5px; padding: 8px 8px 9px; background: #fff; text-align: center; }
+  .d-trigger-title { font-size: 0.67rem; font-weight: 600; color: var(--text); display: block; line-height: 1.3; }
+  .d-trigger-sub { font-size: 0.57rem; color: var(--muted); display: block; margin-top: 2px; line-height: 1.3; }
+  .d-trigger-label { font-size: 0.59rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-bottom: 8px; }
 
-  figure { margin: 2rem 0 0; }
-  figure img, figure video { width: 100%; border: 1px solid var(--border); border-radius: 8px; display: block; }
-  figcaption { margin-top: 7px; font-size: 0.71rem; color: var(--muted2); line-height: 1.5; font-style: italic; }
-
-  .gh-link {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    margin-top: 2.5rem; font-size: 0.84rem; font-weight: 600;
-    color: var(--amber); text-decoration: none;
-    padding: 0.58rem 1.35rem; border-radius: 50px;
-    border: 1px solid var(--amber-bd); background: var(--amber-bg); transition: all 0.2s;
-  }
-  .gh-link:hover { background: #fef0d8; border-color: rgba(184,94,0,0.4); transform: translateY(-1px); }
-
-  @media (max-width: 900px) {
-    .toc { display: none; }
-  }
+  @media (max-width: 900px) { .toc { display: none; } }
   @media (max-width: 680px) {
     body { overflow: auto; }
     .layout { flex-direction: column; height: auto; }
     .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
     .pane { overflow: visible; }
-    .d-offline-row { flex-wrap: wrap; gap: 4px; }
+    .d-offline-row, .d-trigger-row { flex-wrap: wrap; gap: 4px; }
     .d-arrow { display: none; }
-    .d-box { flex: 0 0 calc(50% - 3px); }
+    .d-box, .d-trigger-box { flex: 0 0 calc(50% - 3px); }
   }
 </style>
 </head>
@@ -243,32 +253,49 @@
 
 <div class="layout">
 
-  <!-- Article list -->
   <aside class="sidebar">
-    <div class="sb-item">
+    <div class="sb-label">Articles</div>
+    <div class="sb-item active" data-article="rag">
       <div class="sb-tag">AI / RAG</div>
       <div class="sb-title">When AI Gets Immigration Law Wrong, the Cost Is Not a Bad Essay</div>
       <div class="sb-meta">March 2026 &middot; 12 min read</div>
     </div>
+    <div class="sb-item" data-article="finance">
+      <div class="sb-tag">AI / Productivity</div>
+      <div class="sb-title">Building the Finance Bot Our Family Actually Uses Every Day</div>
+      <div class="sb-meta">March 2026 &middot; 10 min read</div>
+    </div>
   </aside>
 
-  <!-- Section TOC -->
   <nav class="toc" aria-label="Article sections">
     <div class="toc-label">In this article</div>
-    <a href="#intro"   class="toc-link">What drove this</a>
-    <a href="#q"       class="toc-link">The obvious question</a>
-    <a href="#brief"   class="toc-link">The design brief</a>
-    <a href="#arch"    class="toc-link">Architecture</a>
-    <a href="#how"     class="toc-link">How it works</a>
-    <a href="#quality" class="toc-link">The quality gate</a>
-    <a href="#next"    class="toc-link">What comes next</a>
-    <a href="#learned" class="toc-link">What I learned</a>
+    <div class="toc-group active" id="toc-rag">
+      <a href="#rag-intro"   class="toc-link">What drove this</a>
+      <a href="#rag-q"       class="toc-link">The obvious question</a>
+      <a href="#rag-brief"   class="toc-link">The design brief</a>
+      <a href="#rag-arch"    class="toc-link">Architecture</a>
+      <a href="#rag-how"     class="toc-link">How it works</a>
+      <a href="#rag-quality" class="toc-link">The quality gate</a>
+      <a href="#rag-next"    class="toc-link">What comes next</a>
+      <a href="#rag-learned" class="toc-link">What I learned</a>
+    </div>
+    <div class="toc-group" id="toc-finance">
+      <a href="#fin-intro"   class="toc-link">What drove this</a>
+      <a href="#fin-q"       class="toc-link">The obvious question</a>
+      <a href="#fin-brief"   class="toc-link">The design brief</a>
+      <a href="#fin-arch"    class="toc-link">Architecture</a>
+      <a href="#fin-how"     class="toc-link">How it works</a>
+      <a href="#fin-quality" class="toc-link">The quality gate</a>
+      <a href="#fin-next"    class="toc-link">What comes next</a>
+      <a href="#fin-learned" class="toc-link">What I learned</a>
+    </div>
   </nav>
 
-  <!-- Article content -->
   <main class="pane" id="pane">
-    <div class="body">
 
+    <!-- ═══════════ ARTICLE 1: Immigration RAG ═══════════ -->
+    <article id="art-rag" class="active">
+    <div class="body">
       <div class="eyebrow">
         <span class="tag">AI / RAG</span>
         <span class="dot">&middot;</span>
@@ -276,18 +303,17 @@
         <span class="dot">&middot;</span>
         <span class="meta">12 min read</span>
       </div>
-
       <h1>When AI Gets Immigration Law Wrong, the Cost Is Not a Bad Essay</h1>
       <p class="sub">How I built a local AI legal assistant for German immigration law, what it took to get it right, and why &ldquo;good enough&rdquo; was never an option.</p>
 
-      <span id="intro" class="s-anchor"></span>
+      <span id="rag-intro" class="s-anchor"></span>
       <p>There is a moment most foreigners living in Germany will recognise. You are trying to understand a statutory condition for your visa or residence permit. You have the official government page open in one tab. You have a forum thread from 2021 open in another. You have asked a general-purpose AI assistant, which gave you a confident, well-structured answer citing a section of law that was amended two years ago.</p>
       <p>None of these three sources agrees with the others.</p>
       <p>I came from India, did my MBA in Germany, and stayed to build a career in Frankfurt. The immigration system I have navigated is genuinely complex. German residence law spans multiple statutes, each with distinct scopes and cross-referencing conditions. It is updated by legislation. And it is misrepresented constantly, both by outdated internet sources and by AI systems trained on data that predates the most recent reforms.</p>
       <p>I built this project because I needed it. I also built it because the problem it addresses does not stop with my personal situation.</p>
 
       <hr class="rule">
-      <h2 id="q">The obvious question</h2>
+      <h2 id="rag-q">The obvious question</h2>
       <p>The first thing anyone asks when I describe this project is why I did not just upload the law to Claude or ChatGPT and ask my question.</p>
       <p>It is a fair question. A frontier model with a large context window can ingest a legal document and answer questions about it reasonably well. For a one-off query, that is a perfectly rational approach.</p>
       <p>But it is not the right architecture for anything that needs to be trusted, repeated, or used at scale. Here is why.</p>
@@ -298,7 +324,7 @@
       <p>Those four constraints together defined the architecture before a single line of code was written.</p>
 
       <hr class="rule">
-      <h2 id="brief">The design brief</h2>
+      <h2 id="rag-brief">The design brief</h2>
       <p>The requirements that came out of that thinking were straightforward.</p>
       <p>The system had to run entirely on local hardware. No query, no document, and no personal detail should ever leave the machine. This is not a performance optimisation. It is a data architecture decision grounded in GDPR, professional liability, and the basic principle that a legal query deserves the same confidentiality as a legal consultation.</p>
       <p>The system had to be grounded in current statute text rather than trained on historical summaries. The actual law was downloaded directly from the German government&rsquo;s statutory publication source, indexed, and made retrievable at the section level. When the law changes, you rebuild the index. The system&rsquo;s knowledge does not drift.</p>
@@ -307,7 +333,7 @@
       <p>That last point matters more than it sounds. A system that knows its limits and communicates them clearly is much more trustworthy than one that attempts to answer everything.</p>
 
       <hr class="rule">
-      <h2 id="arch">Architecture decisions</h2>
+      <h2 id="rag-arch">Architecture decisions</h2>
       <p>The core architecture is a retrieval-augmented generation pipeline. The concept is straightforward. Instead of relying on a model&rsquo;s training memory, you retrieve the relevant text from a controlled corpus first. You then generate a response grounded only in what was retrieved. The model is not guessing. It is reading.</p>
       <p><strong>Chunking at the section boundary.</strong> Legal text cannot be chunked the way prose is chunked. A statutory condition often spans multiple subsections within a single paragraph. Requirements for a given permit type might state the qualification condition in one subsection, the salary threshold in another, and the exceptions in a third. If a chunk boundary falls between them, any retrieval that returns only one subsection is retrieving half a legal condition. The chunking strategy here splits the corpus at section headers. This guarantees one complete statutory section per chunk. The integrity of the legal unit is non-negotiable.</p>
       <p><strong>Cross-lingual retrieval.</strong> The corpus is in German. A user asking in English needs to retrieve chunks using German statutory vocabulary. The solution is a two-step approach. The query is first expanded into the German legal terms, section numbers, and statutory vocabulary that correspond to the question. That expanded query is what gets embedded and matched against the corpus.</p>
@@ -315,8 +341,7 @@
       <p><strong>Model choice is infrastructure, not identity.</strong> The language model is not the product here. It is just a component. The system is designed to run any locally-served model. The corpus coverage and retrieval quality remain constant regardless of which model generates the final response. The true intelligence of the system lives in the retrieval pipeline, not in the model weights.</p>
 
       <hr class="rule">
-      <h2 id="how">How it works</h2>
-
+      <h2 id="rag-how">How it works</h2>
       <div class="diagram-section">
         <p class="dlabel">Pipeline: offline build and per-query flow</p>
         <div class="diagram">
@@ -355,7 +380,6 @@
           </div>
         </div>
       </div>
-
       <figure>
         <img src="assets/blog/RAG_v2.png" alt="The German Immigration Law Assistant showing a query, the retrieved German statute text, and the RAG insight panel with retrieval scores.">
         <figcaption>The RAG insight panel (right) shows cosine similarity and reranker relevance scores for every retrieved section. USED and NOT USED markers show exactly which chunks reached the language model. The source panel below displays the exact German statute text the answer drew from.</figcaption>
@@ -367,11 +391,10 @@
         </video>
         <figcaption>A short walkthrough: query in English, retrieval from German statute, answer with cited source text.</figcaption>
       </figure>
-
       <p>The RAG insight panel exists for one reason: transparency. It shows similarity scores and reranking scores side by side for every retrieved section. A user should be able to see exactly why a section was or was not included in the answer. That visibility is a core part of the trust contract.</p>
 
       <hr class="rule">
-      <h2 id="quality">The quality gate</h2>
+      <h2 id="rag-quality">The quality gate</h2>
       <p>Building a system is one thing. Knowing whether it works is another. Testing it requires stepping outside the builder&rsquo;s perspective entirely.</p>
       <p>I ran the system through a structured cross-evaluation using a set of questions a real user would ask. I checked these against the actual statute text to look for where the answers failed. This was not a test of latency or token throughput. It was a test of legal accuracy. Does the answer cite the right provision? Does it state the conditions correctly? Does it avoid inventing requirements that do not exist in the retrieved text?</p>
       <p>The results were instructive. For straightforward queries, the system performed well. Eligibility conditions, the distinction between different legal regimes for EU versus non-EU nationals, and the routing between different statutes all came back with accurate citations and appropriate legal framing.</p>
@@ -380,14 +403,14 @@
       <p>The principle this established is worth naming clearly. Accuracy evaluation in a regulated domain cannot be done by the builder alone. The test questions need to come from someone who knows the domain well enough to catch a plausible but wrong answer. Technical benchmarks measure technical performance. They do not measure whether the answer is legally correct.</p>
 
       <hr class="rule">
-      <h2 id="next">What comes next</h2>
+      <h2 id="rag-next">What comes next</h2>
       <p>Retrieval-augmented generation with vector similarity search is effective for straightforward queries. It is not sufficient for complex legal reasoning.</p>
       <p>The limitation is structural. A flat vector index retrieves sections based on semantic proximity to the query. It does not model how sections relate to each other. One provision might establish a general condition that another provision qualifies. A right established in one statute may be constrained by a cross-reference to another. A correct answer to a complex question sometimes requires reasoning across multiple sections in a specific sequence. Vector search alone cannot do that.</p>
       <p>The next architectural layer will address this. A graph-based retrieval approach can explicitly represent the relationships between statutory sections. It tracks which sections cross-reference which, which provisions depend on conditions established elsewhere, and which legal regimes take precedence. By combining this with a reasoning agent that plans a multi-step retrieval strategy before generating an answer, the system can begin to handle the kind of multi-condition questions that currently expose the ceiling of the vector approach.</p>
       <p>This is not a complete redesign. The existing pipeline remains intact: the chunking strategy, the embeddings, and the reranking logic. The graph layer will sit alongside the vector store, and a reasoning layer will decide which retrieval path is appropriate for each query. When you build the foundation right, extending it becomes a product decision rather than a total rebuild.</p>
 
       <hr class="rule">
-      <h2 id="learned">What this taught me about AI in regulated domains</h2>
+      <h2 id="rag-learned">What this taught me about AI in regulated domains</h2>
       <p>Coming from a background in business and finance rather than software engineering, I had to approach this architecture from first principles. I asked not how to build each component, but what each component needed to achieve. That constraint turned out to be useful. A few things are worth stating directly, because they get lost in most AI project write-ups.</p>
       <p><strong>The model is not the product.</strong> The retrieval architecture, the chunking strategy, the evaluation framework, and the honesty about scope: those are the product. The language model is one swappable component.</p>
       <p><strong>Demo quality and production quality are not the same thing.</strong> A system that produces plausible-looking answers in a demo can fail systematic accuracy review. The only way to know is to test it against the domain. There is no shortcut.</p>
@@ -396,49 +419,167 @@
       <p>This project started as a personal tool for a personal problem. It became a useful exercise in what it actually takes to build an AI system that can be trusted in a domain where being wrong has consequences.</p>
       <p>One thing worth being transparent about: the system design, architecture decisions, and testing were mine. The Python implementation was built using Claude Code and Gemini as coding assistants, working from the same architectural brief described in this post. That is also part of the point. You do not need to write every line yourself to understand what the system is doing and why.</p>
       <p>I am still learning and exploring this space. If you have built something similar, spotted a better approach, or have thoughts on the architecture or the direction, I would genuinely like to hear it.</p>
-
-      <a class="gh-link" href="https://github.com/arnav-ray/immigration-rag" target="_blank" rel="noopener noreferrer">View on GitHub &#8594;</a>
-
+      <a class="gh-link" href="https://github.com/arnav-ray/immigration-rag" target="_blank">View on GitHub &#8594;</a>
     </div>
-  </main>
+    </article>
 
+    <!-- ═══════════ ARTICLE 2: Finance Bot ═══════════ -->
+    <article id="art-finance">
+    <div class="body">
+      <div class="eyebrow">
+        <span class="tag">AI / Productivity</span>
+        <span class="dot">&middot;</span>
+        <span class="meta">March 2026</span>
+        <span class="dot">&middot;</span>
+        <span class="meta">10 min read</span>
+      </div>
+      <h1>Building the Finance Bot Our Family Actually Uses Every Day</h1>
+      <p class="sub">How a simple frustration with household expense tracking led to a serverless AI bot, and what it took to make something genuinely reliable rather than just technically interesting.</p>
+
+      <span id="fin-intro" class="s-anchor"></span>
+      <p>Most finance tracking systems have the same failure mode. They work beautifully for the person who set them up and nobody else. The categories are unfamiliar. The interface requires deliberate effort. The habit breaks within a week. The spreadsheet becomes a monument to good intentions.</p>
+      <p>My household runs on two people with different spending patterns, different contexts for each purchase, and a shared but loosely managed sense of where money goes each month. We had tried apps. We had tried shared Google Sheets. We had tried a period of determined discipline that lasted about three weeks before both of us stopped updating things.</p>
+      <p>The problem was never motivation. It was friction. Logging an expense needed to feel like sending a text, not filing a form. If it takes more than five seconds, it does not get done.</p>
+      <p>That is the constraint this project was built around. Not analytics richness. Not financial insight. Friction, first. Everything else second.</p>
+
+      <hr class="rule">
+      <h2 id="fin-q">The obvious question</h2>
+      <p>The obvious answer to household expense tracking in 2026 is to use one of the many apps built for exactly this purpose. They are polished, well-supported, and have years of iteration behind them. So why build something instead?</p>
+      <p>The short answer is that the apps solved a slightly different problem than the one I had. The long answer involves a few specific objections.</p>
+      <p><strong>Shared apps require shared buy-in.</strong> Getting a second person to install something, create an account, and learn a new interface is a non-trivial ask. Telegram is already on both of our phones. The bot lives inside a conversation thread. There is nothing to install and nothing to learn. That removes the largest single barrier to consistent use.</p>
+      <p><strong>Most apps require structured input.</strong> You tap a category, enter an amount, select a merchant from a dropdown, confirm. That is still a form, just a mobile one. The bot accepts a text message. "45 Rewe" is the entirety of what you need to type. The AI handles everything else. The interface is already a language model, which means the input can be as casual and unstructured as actual human speech.</p>
+      <p><strong>The data is ours and it stays ours.</strong> Commercial apps aggregate usage data. They have terms of service. Some connect directly to bank accounts, which introduces a category of risk that I am not comfortable with for a household finance tool. Google Sheets is a place I control. The bot writes to it. Nobody else reads it.</p>
+      <p><strong>The spreadsheet is still the interface for the people who need it.</strong> My family members who are not developers can open the Google Sheet, filter by month, and see exactly what was recorded. There is no proprietary format, no export step, and no lock-in. The underlying data is always plain and accessible.</p>
+      <p>Those four things together made building more attractive than buying, even accounting for the time it took.</p>
+
+      <hr class="rule">
+      <h2 id="fin-brief">The design brief</h2>
+      <p>Before writing any code, I wrote down what the system had to do and, just as importantly, what it did not need to do.</p>
+      <p>It had to accept natural language expense input without any required structure. "15 lunch," "12,50 pizza," "655 ETF investment," and a photo of a supermarket receipt all had to produce the same clean, structured row in the spreadsheet. The AI had to make every categorisation and parsing decision without asking the user for clarification.</p>
+      <p>It had to be truly serverless. Not because of cost, though that mattered, but because a tool that requires a running server is a tool with a maintenance burden. Vercel functions cost nothing at household scale and require no operational attention. The bot either responds instantly or it does not respond at all. There is no degraded state to manage.</p>
+      <p>It had to work across family members without any synchronisation mechanism beyond the shared spreadsheet. Two people logging expenses from different phones at the same time needed to produce two separate rows without collision. Race condition handling was a requirement, not an afterthought.</p>
+      <p>It had to be honest about what it could not do. A bot that confidently parses a receipt incorrectly and saves wrong data is worse than one that asks you to try again. Validation checks on parsed amounts, categories, and dates were built into the pipeline before any data reaches the spreadsheet.</p>
+      <p>The goals feature came later, but it followed the same brief. Create financial and task goals using a single natural language message. View them without navigating away from the conversation. Mark them complete when done. No special syntax. No form filling.</p>
+
+      <hr class="rule">
+      <h2 id="fin-arch">Architecture decisions</h2>
+      <p>The stack is deliberately minimal. Telegram handles the interface. Vercel handles the runtime. Google Sheets handles the database. Groq handles the AI inference. Each component does one thing well and passes its output to the next.</p>
+      <p><strong>Why Telegram over a dedicated web interface.</strong> The framing that drove this decision was simple: the best interface is the one people already have open. Telegram is a conversation. Adding a finance bot to an existing conversation thread is zero marginal effort. A dedicated web app, even a well-designed one, is a tab you have to remember to open.</p>
+      <p><strong>Why Groq over a local model.</strong> This system handles real-time conversational input. A user sends a message and expects a response within a second or two. Local inference at that latency requires hardware that a household setup does not have available for a lightweight task like expense parsing. Groq&rsquo;s LPU inference returns in under a second even for vision tasks like receipt scanning. The data involved is a purchase amount and a merchant name. Sending that to a cloud API is a different data governance decision than sending an immigration law query. I made the trade-off consciously.</p>
+      <p><strong>Why Google Sheets over a proper database.</strong> The &ldquo;database&rdquo; for a household finance tracker is used by non-technical family members who want to open a spreadsheet, scroll through January, and understand what they spent on groceries. A PostgreSQL instance is not accessible to those users without a purpose-built frontend. Google Sheets is. The entire value of the persistent store is its accessibility, and Sheets provides that natively. The trade-offs, including limited query expressiveness and race conditions on concurrent writes, were all solvable at household scale.</p>
+      <p><strong>Why a single serverless file.</strong> A single-file serverless handler eliminates the overhead of module management, import resolution across deployment environments, and the cognitive load of navigating a project structure for what is fundamentally a straightforward routing and persistence task. The entire bot fits in one file. Every component of the system is visible at once.</p>
+
+      <hr class="rule">
+      <h2 id="fin-how">How it works</h2>
+      <div class="diagram-section">
+        <p class="dlabel">Pipeline: inputs and per-message flow</p>
+        <div class="diagram">
+          <p class="d-trigger-label">Trigger sources</p>
+          <div class="d-trigger-row">
+            <div class="d-trigger-box"><span class="d-trigger-title">Text message</span><span class="d-trigger-sub">"45 Rewe" or "/goal Trip to Italy 2000"</span></div>
+            <div class="d-trigger-box"><span class="d-trigger-title">Receipt photo</span><span class="d-trigger-sub">Vision model scans total + merchant</span></div>
+            <div class="d-trigger-box"><span class="d-trigger-title">Button tap</span><span class="d-trigger-sub">Inline keyboard callback</span></div>
+          </div>
+          <p class="d-feed-note-center">&#8595; all routed through Telegram webhook</p>
+          <p class="d-online-label">Per-message handler: Vercel serverless function</p>
+          <div class="d-step"><div class="d-spine"><div class="d-dot"></div></div><div class="d-body pill"><div class="d-left"><span class="d-title">Webhook entry</span><span class="d-sub">Secret token validated &middot; user ID checked against allowlist</span></div></div></div>
+          <div class="d-sp"></div>
+          <div class="d-step"><div class="d-spine"><div class="d-dot"></div></div><div class="d-body"><div class="d-left"><span class="d-title">Route &amp; dispatch</span><span class="d-sub">Expense text &bull; receipt photo &bull; /goal &bull; /goals &bull; /summary &bull; button callback</span></div></div></div>
+          <div class="d-sp"></div>
+          <div class="d-step"><div class="d-spine"><div class="d-dot"></div></div><div class="d-body"><div class="d-left"><span class="d-title">AI parsing</span><span class="d-sub">Structured system prompt &middot; user input wrapped in delimiters &middot; JSON response format enforced</span></div><span class="d-tag">Groq &middot; Llama 4 Vision</span></div></div>
+          <div class="d-sp"></div>
+          <div class="d-step"><div class="d-spine"><div class="d-dot"></div></div><div class="d-body"><div class="d-left"><span class="d-title">Validation</span><span class="d-sub">Amount range &bull; category allowlist &bull; date future-check &bull; formula injection strip</span></div></div></div>
+          <div class="d-sp"></div>
+          <div class="d-step"><div class="d-spine"><div class="d-dot"></div></div><div class="d-body"><div class="d-left"><span class="d-title">Persist to Google Sheets</span><span class="d-sub">Expenses tab or Goals tab &middot; row append &middot; in-process cache invalidated</span></div><span class="d-tag">gspread</span></div></div>
+          <div class="d-sp"></div>
+          <div class="d-step"><div class="d-spine"><div class="d-dot"></div></div><div class="d-body branch"><div class="d-left"><span class="d-title">/summary path: analytics</span><span class="d-sub">pandas DataFrame &middot; 2-min in-memory cache &middot; category &bull; user &bull; merchant breakdowns</span></div><span class="d-tag">pandas</span></div></div>
+          <div class="d-sp"></div>
+          <div class="d-step"><div class="d-spine" style="background:transparent"></div><div class="d-body output"><div class="d-left"><span class="d-title">Telegram response</span><span class="d-sub">Confirmation with amount + category &nbsp;&bull;&nbsp; interactive dashboard with drill-down &nbsp;&bull;&nbsp; goals list with edit buttons</span></div></div></div>
+          <div class="d-legend">
+            <div class="d-leg"><div class="d-leg-line"></div>dashed border = analytics branch</div>
+            <div class="d-leg"><div class="d-leg-dot" style="background:#ccc"></div>pill = entry / exit</div>
+            <div class="d-leg"><div class="d-leg-dot" style="background:rgba(184,94,0,0.35)"></div>amber = final output</div>
+            <div class="d-leg"><div class="d-leg-dot" style="background:var(--muted2)"></div>model tag = active service</div>
+          </div>
+        </div>
+      </div>
+      <figure>
+        <img src="assets/blog/finance-bot-screenshot.png" alt="The Family Finance Bot in Telegram showing an expense confirmation, the /summary dashboard with category breakdown, and the goals list with inline action buttons.">
+        <figcaption>Left: expense confirmation after sending "45 Rewe". Centre: the /summary dashboard with category breakdown and user drill-down. Right: the goals list with inline edit and complete buttons.</figcaption>
+      </figure>
+      <p>The expense parsing prompt is where most of the system behaviour lives. It handles German decimal notation ("12,50" means 12.50 EUR, not 1250), local merchant shorthand ("DM" means dm-drogerie markt, not Deutsche Mark), and the full range of input formats a real user would actually type. The AI is instructed to return only valid JSON, to trust the exact number given without scaling it, and to default to "Other" rather than invent a category that does not exist. These rules are not clever. They are the result of actual failures in early testing that produced wrong data in the spreadsheet.</p>
+      <p>The goal parsing prompt has different challenges. It has to extract a deadline from natural language like "by next summer" or "in three months," classify the goal type from context, and decide whether something is a financial goal or a task based on whether it carries an amount. The AI is given the current date as context and instructed to return a null date rather than invent one when the input is ambiguous. A goal with no deadline is fine. A goal with a fabricated deadline is not.</p>
+      <p>The analytics engine runs on pandas. When a user calls /summary, the bot fetches the full Expenses sheet and caches the resulting DataFrame in memory for two minutes. This prevents repeated API calls to Google Sheets when family members hit the dashboard back-to-back, which would otherwise hit rate limits quickly. The dashboard uses Telegram&rsquo;s inline keyboard to let users drill down without leaving the conversation. Clicking a user&rsquo;s name opens their personal category breakdown. The interaction stays entirely within Telegram.</p>
+
+      <hr class="rule">
+      <h2 id="fin-quality">The quality gate</h2>
+      <p>The most useful testing was simply using the bot daily. Real failures surfaced quickly: "655 investment ETF" parsed as 6.55 EUR; "DM" classified as Deutsche Mark rather than the drugstore chain. Each was a wrong row in the spreadsheet, which is worse than no row at all. The parsing rules were tightened in the prompt until the failures stopped.</p>
+      <p>Security and correctness required explicit attention. Webhook secret token validation, an entry-point allowlist, and formula injection stripping were all added after testing showed the gaps. The undo handler uses a timestamp re-fetch before deleting to avoid corrupting data when two people log expenses at the same moment.</p>
+
+      <hr class="rule">
+      <h2 id="fin-next">What comes next</h2>
+      <p>Two extensions are clearly defined.</p>
+      <p>The goals feature currently tracks flat lists. A more useful version would connect goal targets to actual spending patterns in the Expenses sheet. If you are saving for a trip and logging expenses consistently, the system should tell you whether your savings rate maps to your target date.</p>
+      <p>Multi-currency support is the more pressing gap. The household spans three currencies regularly: INR and USD from travel to India and the US, and CHF from occasional trips to Switzerland. All amounts are currently normalised to EUR at entry, which requires a manual conversion before typing. The fix is to detect the currency from the input, fetch an exchange rate at log time, and store both the original and the EUR equivalent.</p>
+
+      <hr class="rule">
+      <h2 id="fin-learned">What this taught me about building tools for actual use</h2>
+      <p>A few things are worth stating plainly.</p>
+      <p><strong>You do not need a frontend for a proof of concept.</strong> Telegram already existed on every phone in the household. Building inside it rather than building a new interface meant zero onboarding, no installation, and no habit to form. The tool gets used because it is already in a conversation thread people check anyway. The friction that stops a family member from logging a &euro;15 lunch is the exact same friction that stops a sales team from updating their CRM. If the tool is not where the user already is, adoption fails regardless of how good the underlying system is.</p>
+      <p><strong>Google Sheets is a legitimate persistence layer for personal tools.</strong> It is not a database. But for a household finance tracker, the value of the persistent store is that family members can open it directly, without going through the bot. Plain and accessible beats sophisticated and opaque.</p>
+      <p><strong>Daily use is the only honest test.</strong> The parsing bugs that mattered did not appear in any test I designed. They appeared because the bot was used every day by real people. Ship to production early. That is where the real failures are.</p>
+      <p>The implementation was built using Claude Code as a coding assistant. The product decisions, prompt engineering, and architecture were mine.</p>
+    </div>
+    </article>
+
+  </main>
 </div>
 
 <script>
   const pane = document.getElementById('pane');
-  const headings = Array.from(document.querySelectorAll('.s-anchor[id], h2[id]'));
-  const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+  const sbItems = document.querySelectorAll('.sb-item[data-article]');
+  const tocGroups = document.querySelectorAll('.toc-group');
 
-  // Smooth scroll within the pane on TOC click
-  tocLinks.forEach(link => {
+  sbItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.dataset.article;
+      sbItems.forEach(s => s.classList.remove('active'));
+      item.classList.add('active');
+      document.querySelectorAll('article').forEach(a => a.classList.remove('active'));
+      document.getElementById('art-' + target).classList.add('active');
+      tocGroups.forEach(g => g.classList.remove('active'));
+      document.getElementById('toc-' + target).classList.add('active');
+      document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+      pane.scrollTo({ top: 0, behavior: 'smooth' });
+      const firstLink = document.querySelector('#toc-' + target + ' .toc-link');
+      if (firstLink) firstLink.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.toc-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const id = link.getAttribute('href').slice(1);
       const target = document.getElementById(id);
       if (!target) return;
-      const paneRect = pane.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      pane.scrollBy({ top: targetRect.top - paneRect.top - 40, behavior: 'smooth' });
+      pane.scrollBy({ top: target.getBoundingClientRect().top - pane.getBoundingClientRect().top - 40, behavior: 'smooth' });
     });
   });
 
-  // Highlight active TOC item on scroll
   pane.addEventListener('scroll', () => {
-    const paneTop = pane.getBoundingClientRect().top;
-    let active = headings[0]?.id || '';
-    headings.forEach(h => {
-      if (h.getBoundingClientRect().top - paneTop <= 80) active = h.id;
-    });
-    tocLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + active);
-    });
+    const activeArt = document.querySelector('article.active');
+    if (!activeArt) return;
+    const key = activeArt.id.replace('art-', '');
+    const anchors = Array.from(activeArt.querySelectorAll('.s-anchor[id], h2[id]'));
+    const links = Array.from(document.querySelectorAll('#toc-' + key + ' .toc-link'));
+    const top = pane.getBoundingClientRect().top;
+    let active = anchors[0]?.id || '';
+    anchors.forEach(h => { if (h.getBoundingClientRect().top - top <= 80) active = h.id; });
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
   }, { passive: true });
 
-  // Set initial active state
-  if (headings.length) {
-    const first = tocLinks.find(l => l.getAttribute('href') === '#' + headings[0].id);
-    if (first) first.classList.add('active');
-  }
+  const firstRag = document.querySelector('#toc-rag .toc-link');
+  if (firstRag) firstRag.classList.add('active');
 </script>
 
 </body>
