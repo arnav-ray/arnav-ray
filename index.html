@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnav Amal Ray - AI-Native Product Builder</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/favicon.svg" sizes="any">
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCZ0SSXZKR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HCZ0SSXZKR');
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    <!-- Umami Analytics (privacy-first, no cookies, GDPR-compliant) -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="fc4af2cc-04f8-4e8e-bd76-453bc694461b"></script>
 
     <style>
+        @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300; font-display: swap; src: url('/assets/fonts/dm-sans-latin-300-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/dm-sans-latin-600-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-serif-display-latin-400-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'DM Serif Display'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-serif-display-latin-400-italic.woff2') format('woff2'); }
+
         :root {
             --bg:        #070b18;
             --surface:   rgba(255,255,255,0.03);
@@ -307,7 +306,7 @@
             <h2 class="section-heading reveal">Proof over theory</h2>
             <p class="section-intro reveal">Every project here started with a real problem. One is actively used every day. The others are deliberate learning exercises - the fastest way to understand a technology is to build something that would break without it.</p>
             <div class="project-stack">
-                <div class="project-card amber-accent reveal" onclick="window.open('https://github.com/arnav-ray/immigration-rag','_blank')" style="cursor:pointer;">
+                <div class="project-card amber-accent reveal" onclick="window.open('https://github.com/arnav-ray/immigration-rag','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('https://github.com/arnav-ray/immigration-rag','_blank')}" tabindex="0" role="button" aria-label="Immigration RAG project — opens GitHub" style="cursor:pointer;">
                     <div class="card-badge-row"><span class="card-badge badge-amber">Learning in Public</span><span class="card-tier">Local &middot; On Premise</span></div>
                     <h3 class="card-title">Local LLM (RAG) for Immigration Questions</h3>
                     <p class="card-subtitle">On-premise AI that retrieves and cites exact sections of law - no cloud, no hallucinations.</p>
@@ -315,9 +314,9 @@
                         <div class="card-col col-problem"><h4>The Problem</h4><p>Standard AI assistants either refuse to answer legal questions or invent rules that do not exist. German immigration law spans multiple statutes with hundreds of cross-referenced sections - a single eligibility question can require reading five different parts of the law at once.</p></div>
                         <div class="card-col col-solution"><h4>What I Built</h4><p>A system that runs entirely on local hardware - no data ever leaves the machine, full GDPR compliance by design. It retrieves the most relevant legal sections for any question and generates an answer grounded only in those sections, citing exactly where each point comes from.</p></div>
                     </div>
-                    <div class="card-actions"><a href="https://github.com/arnav-ray/immigration-rag" class="btn btn-amber" target="_blank" onclick="event.stopPropagation();">View on GitHub &rarr;</a></div>
+                    <div class="card-actions"><a href="https://github.com/arnav-ray/immigration-rag" class="btn btn-amber" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">View on GitHub &rarr;</a></div>
                 </div>
-                <div class="project-card reveal" onclick="window.open('https://github.com/arnav-ray/Finance-and-Goals-bot','_blank')" style="cursor:pointer;">
+                <div class="project-card reveal" onclick="window.open('https://github.com/arnav-ray/Finance-and-Goals-bot','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('https://github.com/arnav-ray/Finance-and-Goals-bot','_blank')}" tabindex="0" role="button" aria-label="Family Finance Bot project — opens GitHub" style="cursor:pointer;">
                     <div class="card-badge-row"><span class="card-badge badge-green">Actively Used</span><span class="card-tier">Live &middot; Serverless</span></div>
                     <h3 class="card-title">Family Finance and Goals AI Bot</h3>
                     <p class="card-subtitle">Log expenses and track family goals - from any device, with just a message.</p>
@@ -325,9 +324,9 @@
                         <div class="card-col col-problem"><h4>The Problem</h4><p>Logging a family expense means opening an app, finding the right category, and typing it manually. The friction is small enough to skip - until weeks of spending disappear. Goals suffer the same way: written down once, never revisited.</p></div>
                         <div class="card-col col-solution"><h4>What I Built</h4><p>A Telegram bot that reads a message or a photo of a receipt and writes the expense directly into a shared Google Sheet in under a second. Goals work the same way - one natural-language message creates a tracked entry. Zero apps, zero manual effort.</p></div>
                     </div>
-                    <div class="card-actions"><a href="https://github.com/arnav-ray/Finance-and-Goals-bot" class="btn btn-amber" target="_blank" onclick="event.stopPropagation();">View on GitHub &rarr;</a></div>
+                    <div class="card-actions"><a href="https://github.com/arnav-ray/Finance-and-Goals-bot" class="btn btn-amber" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">View on GitHub &rarr;</a></div>
                 </div>
-                <div class="project-card reveal" onclick="window.open('https://treasuryflow.arnavray.ca/','_blank')" style="cursor:pointer;">
+                <div class="project-card reveal" onclick="window.open('https://treasuryflow.arnavray.ca/','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('https://treasuryflow.arnavray.ca/','_blank')}" tabindex="0" role="button" aria-label="TreasuryFlow project — opens live demo" style="cursor:pointer;">
                     <div class="card-badge-row"><span class="card-badge badge-blue">Concept Demo</span><span class="card-tier">Live &middot; Demo</span></div>
                     <h3 class="card-title">TreasuryFlow</h3>
                     <p class="card-subtitle">What enterprise cash visibility could look like if it were built today, not fifteen years ago.</p>
@@ -336,8 +335,8 @@
                         <div class="card-col col-solution"><h4>What I Built</h4><p>A working prototype of an ERP-agnostic treasury layer that pulls data via API without touching the underlying system, uses AI to surface insights, and gives a finance team a live command centre instead of a weekly Excel report.</p></div>
                     </div>
                     <div class="card-actions">
-                        <a href="https://treasuryflow.arnavray.ca/" class="btn btn-blue" target="_blank" onclick="event.stopPropagation();">View Live Demo &rarr;</a>
-                        <a href="https://github.com/arnav-ray/TreasuryFlow" class="btn" target="_blank" onclick="event.stopPropagation();">GitHub &rarr;</a>
+                        <a href="https://treasuryflow.arnavray.ca/" class="btn btn-blue" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">View Live Demo &rarr;</a>
+                        <a href="https://github.com/arnav-ray/TreasuryFlow" class="btn" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">GitHub &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -349,11 +348,11 @@
             <p class="section-eyebrow reveal">More Work</p>
             <h2 class="section-heading reveal">Other things I have built</h2>
             <div class="other-builds-grid reveal-stagger">
-                <a href="https://podcast.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Automated Podcast<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">100% automated daily episodes. AI-generated, zero operating cost.</p><p class="other-build-problem">Podcast production requires daily manual effort. This pipeline generates, voices, and publishes episodes automatically &mdash; no intervention at any step.</p></a>
-                <a href="https://credit.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-demo">Demo</span><div class="other-build-name">OpenCredit Platform<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Transparent credit scoring engine. Every calculation visible and interactive.</p><p class="other-build-problem">Credit scores are black boxes. This makes every calculation visible and interactive &mdash; Basel III methodology, fully auditable by anyone.</p></a>
-                <a href="https://github.com/arnav-ray/LocalSnap" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-local">Local</span><div class="other-build-name">LocalSnap<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Offline photo library manager with local face recognition. No cloud.</p><p class="other-build-problem">Cloud photo exports strip all metadata &mdash; timestamps, GPS, and face tags vanish. This recovers everything locally using offline OpenCV models.</p></a>
-                <a href="https://german.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Daily German<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Gamified German learning with interactive grammar and memory games.</p><p class="other-build-problem">Language learning apps are passive. This uses interactive games and spaced repetition to make German genuinely engaging to learn.</p></a>
-                <a href="https://game.arnavray.ca/" target="_blank" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Curse of the Frozen North<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Zero-install multiplayer party game with &lt;50ms Firestore sync.</p><p class="other-build-problem">Party games require downloads, accounts, and setup. This runs instantly in any browser &mdash; share a link, pick up your phone, start playing.</p></a>
+                <a href="https://podcast.arnavray.ca/" target="_blank" rel="noopener noreferrer" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Automated Podcast<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">100% automated daily episodes. AI-generated, zero operating cost.</p><p class="other-build-problem">Podcast production requires daily manual effort. This pipeline generates, voices, and publishes episodes automatically &mdash; no intervention at any step.</p></a>
+                <a href="https://credit.arnavray.ca/" target="_blank" rel="noopener noreferrer" class="other-build-item"><span class="other-build-badge ob-badge-demo">Demo</span><div class="other-build-name">OpenCredit Platform<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Transparent credit scoring engine. Every calculation visible and interactive.</p><p class="other-build-problem">Credit scores are black boxes. This makes every calculation visible and interactive &mdash; Basel III methodology, fully auditable by anyone.</p></a>
+                <a href="https://github.com/arnav-ray/LocalSnap" target="_blank" rel="noopener noreferrer" class="other-build-item"><span class="other-build-badge ob-badge-local">Local</span><div class="other-build-name">LocalSnap<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Offline photo library manager with local face recognition. No cloud.</p><p class="other-build-problem">Cloud photo exports strip all metadata &mdash; timestamps, GPS, and face tags vanish. This recovers everything locally using offline OpenCV models.</p></a>
+                <a href="https://german.arnavray.ca/" target="_blank" rel="noopener noreferrer" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Daily German<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Gamified German learning with interactive grammar and memory games.</p><p class="other-build-problem">Language learning apps are passive. This uses interactive games and spaced repetition to make German genuinely engaging to learn.</p></a>
+                <a href="https://game.arnavray.ca/" target="_blank" rel="noopener noreferrer" class="other-build-item"><span class="other-build-badge ob-badge-live">Live</span><div class="other-build-name">Curse of the Frozen North<span class="other-build-arrow">&#8599;</span></div><p class="other-build-desc">Zero-install multiplayer party game with &lt;50ms Firestore sync.</p><p class="other-build-problem">Party games require downloads, accounts, and setup. This runs instantly in any browser &mdash; share a link, pick up your phone, start playing.</p></a>
             </div>
         </div>
     </section>
@@ -363,15 +362,15 @@
             <h2 class="connect-headline reveal">Let&rsquo;s connect</h2>
             <p class="connect-sub reveal">Whether you are building an AI-enabled product, thinking about how AI changes enterprise finance, or looking for someone who bridges both worlds.</p>
             <div class="connect-links reveal">
-                <a href="https://linkedin.com/in/arnavray" target="_blank" class="connect-btn">LinkedIn</a>
-                <a href="https://github.com/arnav-ray" target="_blank" class="connect-btn">GitHub</a>
-                <a href="/cdn-cgi/l/email-protection#c7a6b5a9a6b187a6b5a9a6b1b5a6bee9a4a6" class="connect-btn"><span class="__cf_email__" data-cfemail="7011021e11063011021e11060211095e1311">[email&#160;protected]</span></a>
+                <a href="https://linkedin.com/in/arnavray" target="_blank" rel="noopener noreferrer" class="connect-btn">LinkedIn</a>
+                <a href="https://github.com/arnav-ray" target="_blank" rel="noopener noreferrer" class="connect-btn">GitHub</a>
+                <a href="mailto:arnav@arnavray.ca" class="connect-btn">Email</a>
             </div>
             <p class="footer-note">&copy; 2026 Arnav Amal Ray &nbsp;&bull;&nbsp; AI-Assisted Build &nbsp;&bull;&nbsp; Human-Directed</p>
         </div>
     </section>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const progressBar = document.getElementById('progress-bar');
         function updateProgress() {
             const scrolled = window.scrollY;
