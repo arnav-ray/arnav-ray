@@ -388,7 +388,41 @@
 
       <div class="diagram-section">
         <p class="dlabel">Pull and Push: how AI platform power is splitting in 2026</p>
-        <iframe src="/posts/clean-core-2026/infographic.html" width="100%" height="620" style="border:none; border-radius:8px; display:block;" title="Pull and Push infographic" loading="lazy"></iframe>
+        <div class="diagram">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <p class="d-offline-label" style="margin-bottom:0.6rem;">Pull &rarr; model as platform</p>
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <div class="d-box" style="text-align:left;padding:0.6rem 0.7rem;"><span class="d-box-title">Who</span><span class="d-box-sub">Anthropic &middot; OpenAI &middot; Google DeepMind</span></div>
+                <div class="d-box" style="text-align:left;padding:0.6rem 0.7rem;"><span class="d-box-title">Strategy</span><span class="d-box-sub">Model at centre. Apps, data, tools pulled in via MCP and agents.</span></div>
+                <div class="d-box" style="text-align:left;padding:0.6rem 0.7rem;"><span class="d-box-title">User home</span><span class="d-box-sub">Chat surface, API, agent loop.</span></div>
+              </div>
+            </div>
+            <div>
+              <p class="d-offline-label" style="margin-bottom:0.6rem;">&larr; Push, app as platform</p>
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <div class="d-box" style="text-align:left;padding:0.6rem 0.7rem;"><span class="d-box-title">Who</span><span class="d-box-sub">SAP &middot; Salesforce &middot; Adobe</span></div>
+                <div class="d-box" style="text-align:left;padding:0.6rem 0.7rem;"><span class="d-box-title">Strategy</span><span class="d-box-sub">Application at centre. Models pushed inside as embedded copilots.</span></div>
+                <div class="d-box" style="text-align:left;padding:0.6rem 0.7rem;"><span class="d-box-title">User home</span><span class="d-box-sub">System of record. Data gravity is the moat.</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--border);padding-top:0.85rem;">
+            <p class="d-offline-label" style="margin-bottom:0.6rem;">Where they meet: governed protocols</p>
+            <div class="d-offline-row">
+              <div class="d-box"><span class="d-box-title">MCP</span><span class="d-box-sub">Open wire protocol for agents</span></div>
+              <div class="d-arrow">&#8594;</div>
+              <div class="d-box"><span class="d-box-title">SAP API Policy v4</span><span class="d-box-sub">Push side door policy</span></div>
+              <div class="d-arrow">&#8594;</div>
+              <div class="d-box"><span class="d-box-title">Governance</span><span class="d-box-sub">Audit trail &amp; data contracts</span></div>
+            </div>
+          </div>
+          <div class="d-legend" style="margin-top:0.85rem;padding-top:0.75rem;">
+            <div class="d-leg"><div class="d-leg-dot" style="background:var(--amber);opacity:0.5"></div>Pull: model providers</div>
+            <div class="d-leg"><div class="d-leg-dot" style="background:var(--muted2)"></div>Push: application incumbents</div>
+            <div class="d-leg"><div class="d-leg-dot" style="background:var(--amber);opacity:0.8"></div>Shared governance layer</div>
+          </div>
+        </div>
       </div>
 
       <hr class="rule">
