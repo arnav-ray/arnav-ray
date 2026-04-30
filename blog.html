@@ -310,12 +310,12 @@
 
   <aside class="sidebar">
     <div class="sb-label">Articles</div>
-    <a class="sb-item" href="/posts/clean-core-2026/" style="display:block;text-decoration:none;color:inherit;">
+    <div class="sb-item active" data-article="clean-core">
       <div class="sb-tag">Enterprise AI architecture</div>
       <div class="sb-title">Why SAP API Policy v4 Quietly Made Clean Core the Most Important AI Decision of 2026</div>
       <div class="sb-meta">April 2026 &middot; 6 min read</div>
-    </a>
-    <div class="sb-item active" data-article="rag">
+    </div>
+    <div class="sb-item" data-article="rag">
       <div class="sb-tag">AI / RAG</div>
       <div class="sb-title">When AI gets immigration law wrong, the cost is not a bad essay</div>
       <div class="sb-meta">March 2026 &middot; 12 min read</div>
@@ -329,7 +329,16 @@
 
   <nav class="toc" aria-label="Article sections">
     <div class="toc-label">In this article</div>
-    <div class="toc-group active" id="toc-rag">
+    <div class="toc-group active" id="toc-clean-core">
+      <a href="#cc-intro"    class="toc-link">What drove this</a>
+      <a href="#cc-frame"    class="toc-link">Pull and Push</a>
+      <a href="#cc-policy"   class="toc-link">What the policy says</a>
+      <a href="#cc-timing"   class="toc-link">Why the timing matters</a>
+      <a href="#cc-levels"   class="toc-link">Clean Core levels</a>
+      <a href="#cc-collab"   class="toc-link">Collaboration</a>
+      <a href="#cc-practice" class="toc-link">What it means</a>
+    </div>
+    <div class="toc-group" id="toc-rag">
       <a href="#rag-intro"   class="toc-link">What drove this</a>
       <a href="#rag-q"       class="toc-link">The obvious question</a>
       <a href="#rag-brief"   class="toc-link">The design brief</a>
@@ -353,8 +362,79 @@
 
   <main class="pane" id="pane">
 
-    <!-- ═══════════ ARTICLE 1: Immigration RAG ═══════════ -->
-    <article id="art-rag" class="active">
+    <!-- ═══════════ ARTICLE 1: Clean Core ═══════════ -->
+    <article id="art-clean-core" class="active">
+    <div class="body">
+      <div class="eyebrow">
+        <span class="tag">Enterprise AI architecture</span>
+        <span class="dot">&middot;</span>
+        <span class="meta">April 2026</span>
+        <span class="dot">&middot;</span>
+        <span class="meta">6 min read</span>
+      </div>
+      <h1>Why SAP API Policy v4 Quietly Made Clean Core the Most Important AI Decision of 2026</h1>
+      <p class="sub">A new SAP policy reads like developer governance. Read against the agentic AI shifts of the last eighteen months, it is something else.</p>
+
+      <span id="cc-intro" class="s-anchor"></span>
+      <p>In April 2026, SAP published <a href="https://help.sap.com/doc/sap-api-policy/latest/en-US/API_Policy_latest.pdf" target="_blank" rel="noopener noreferrer">API Policy v4/2026</a>. On the surface it reads as a developer governance update. Only APIs published on the <a href="https://api.sap.com/" target="_blank" rel="noopener noreferrer">SAP Business Accelerator Hub</a> or in product documentation can be consumed. Internal, private, and non-published APIs are explicitly off-limits. No global grace period. No carve-out for systems on Public Cloud, Private Cloud, or BTP.</p>
+      <p>It is being read as a policy update. It is also the most concrete answer SAP has given to a question every CIO is asking: what does enterprise-grade agentic AI actually look like when the abstractions hit the ground?</p>
+
+      <hr class="rule">
+      <h2 id="cc-frame">A reading frame: Pull and Push</h2>
+      <p>I think about the agentic AI market through a frame I call Pull and Push. It is not industry vocabulary. The closest established analogues are Ben Thompson&rsquo;s <a href="https://stratechery.com/2015/aggregation-theory/" target="_blank" rel="noopener noreferrer">aggregation theory</a> and the more technical model-as-platform versus app-as-platform. Reasonable readers can map between them. The frame is a lens, not a claim of new terminology.</p>
+      <p>On the Pull side sit the model providers. Anthropic, OpenAI, Google DeepMind. Their strategy is to put the frontier model at the centre and pull apps, data, and tools inward through connectors, agents, and the <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">Model Context Protocol</a>. The user&rsquo;s home is the chat surface, the API, the agent loop.</p>
+      <p>On the Push side sit the application incumbents. SAP, Salesforce, Adobe. Their strategy is to keep the application at the centre and push frontier models into the platform as embedded copilots and domain agents. The user&rsquo;s home stays inside the system of record. Data gravity is the moat.</p>
+      <p>API Policy v4 is the most disciplined Push move I have seen in 2026. It does not announce a new feature. It defines what is allowed across the perimeter.</p>
+
+      <div class="diagram-section">
+        <p class="dlabel">Pull and Push: how AI platform power is splitting in 2026</p>
+        <iframe src="/posts/clean-core-2026/infographic.html" width="100%" height="620" style="border:none; border-radius:8px; display:block;" title="Pull and Push infographic" loading="lazy"></iframe>
+      </div>
+
+      <hr class="rule">
+      <h2 id="cc-policy">What the policy actually says</h2>
+      <p>The <a href="https://help.sap.com/doc/sap-api-policy/latest/en-US/API_Policy_latest.pdf" target="_blank" rel="noopener noreferrer">policy</a> formalises something SAP has been signalling for two years. New developments and extensions consume only Published APIs. Non-compliant integrations are now considered at-risk, because SAP reserves the right to change or decommission internal APIs in any release cycle without notice.</p>
+      <p>Where a published API does not exist, the recommendation is to wrap the gap on BTP, request the API through the <a href="https://influence.sap.com/" target="_blank" rel="noopener noreferrer">SAP Customer Influence portal</a>, or wait. Continued use of internal APIs in a Cloud or BTP context is not a supported path forward.</p>
+      <p>This is not a surprise to anyone who has been tracking the Clean Core message since 2024. What is new is that the language has hardened. Clean Core is no longer aspirational guidance. It is contractual.</p>
+
+      <hr class="rule">
+      <h2 id="cc-timing">Why the timing matters</h2>
+      <p>Read in isolation, the policy is a maintenance announcement. Read against what happened on the Pull side between November 2024 and April 2026, it is something else.</p>
+      <p>In that window, the <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer">Model Context Protocol</a> moved from a single-vendor specification to the de facto standard for how AI agents connect to enterprise systems. OpenAI adopted it in early 2025. Google DeepMind followed. Microsoft and AWS shipped MCP support across their stacks. The protocol was donated to the Linux Foundation&rsquo;s Agentic AI Foundation in late 2025. Thousands of public MCP servers exist as of early 2026.</p>
+      <p>The practical consequence is that any agent can now knock on any door. The cost of integrating an AI workflow with a business system has collapsed. What used to take a custom connector now takes a server registration.</p>
+      <p>That is precisely why SAP&rsquo;s policy matters. When the cost of integration falls, the question of which integrations are sanctioned becomes the question. Policy v4 is the Push side&rsquo;s door policy for the agentic era.</p>
+
+      <hr class="rule">
+      <h2 id="cc-levels">Clean Core in four levels</h2>
+      <p>SAP has been refining the <a href="https://learning.sap.com/courses/practicing-clean-core-extensibility-for-sap-s-4hana-cloud" target="_blank" rel="noopener noreferrer">extensibility model</a> alongside the policy work. The current framing classifies extensions across four levels.</p>
+      <p>Level A uses only released APIs and is fully upgrade-safe. It is the target for all new development. Level B uses classic APIs such as BAPIs, permitted with governance approval. Level C reaches into internal objects, carries upgrade risk, and requires a remediation plan. Level D covers direct modifications and is a retirement candidate.</p>
+      <p>Read this carefully and the AI implication is unambiguous. A customer running mostly Level A is ready for Joule agents and for Pull-side agents that connect through MCP, because the surface those agents touch is contractually stable. A customer running mostly Level C and D is not ready, regardless of how good the model is, because the agent&rsquo;s behaviour cannot be guaranteed across an upgrade.</p>
+      <p>Clean Core is no longer a code quality conversation. It is the prerequisite for AI to do anything reliable inside the system.</p>
+
+      <hr class="rule">
+      <h2 id="cc-collab">Collaboration through governed protocols</h2>
+      <p>The lazy framing for the rest of 2026 will be that Pull and Push are at war. That framing misses what is actually happening.</p>
+      <p>SAP itself ships MCP-compatible interfaces. Joule is being positioned to operate alongside, not in opposition to, agents built on the Pull side. The pattern that is emerging is not generalist orchestrators against sovereign systems. It is generalist orchestrators talking to sovereign systems through standards that both sides accept.</p>
+      <p>API Policy v4 is the Push side of that conversation. MCP is the Pull side. Read together, they describe a future in which the agent does not need to understand SAP. It needs to understand which doors are open and what governance applies on the other side. The work of designing that interface, deciding which agent owns which decision, where the audit trail lives, and how data leaves and returns, is not going away. It is the work.</p>
+
+      <hr class="rule">
+      <h2 id="cc-practice">What it means in practice</h2>
+      <p>For finance and operations leaders evaluating AI vendors, the first question is no longer about the model. It is whether your S/4HANA system is on a Clean Core trajectory. If it is not, the AI roadmap is constrained before the procurement conversation starts.</p>
+      <p>For SAP architects, Level A has graduated from preference to procurement criterion. Custom code assessments and remediation plans are now AI readiness plans by another name.</p>
+      <p>For startups and product teams building on top of SAP, the policy is both a constraint and a clarification. The published API surface defines the addressable problem. What that means in practice is harder than it sounds.</p>
+      <p>Getting an API published is not a shortcut. The official path runs through the <a href="https://influence.sap.com/" target="_blank" rel="noopener noreferrer">SAP Customer Influence portal</a>, where a request typically needs around fifteen votes from different SAP customers or partners to be considered. The published statistics suggest fewer than ten percent of requests reach that threshold. Even when they do, there is no commitment to delivery, and the gap from accepted request to released API can run several quarters or longer. Building a product roadmap around a future API is a slow bet.</p>
+      <p>The pragmatic options for a startup automating SAP S/4HANA with proprietary tools are roughly four.</p>
+      <p><strong>Map first, build second.</strong> The <a href="https://api.sap.com/" target="_blank" rel="noopener noreferrer">SAP Business Accelerator Hub</a> catalogues thousands of released APIs across Finance, Procurement, Supply Chain, and HR. Many capabilities that look missing already exist under unfamiliar names. The first move is a serious mapping exercise against this catalogue. It costs a week and saves quarters.</p>
+      <p><strong>Wrap the gap on BTP.</strong> Where no released API covers the use case, deploy your logic as a BTP-native extension using ABAP Cloud or CAP. The wrapper consumes whatever SAP exposes and presents your product with a stable contract. This moves non-compliance out of the SAP core into a managed layer that survives upgrades. It is the architecture SAP itself recommends for this exact gap.</p>
+      <p><strong>Become a partner.</strong> The <a href="https://partneredge.sap.com/" target="_blank" rel="noopener noreferrer">SAP PartnerEdge program</a> and the SAP Integration and Certification Center give certified partners a defensible path to integrate, distribute through SAP Store, and co-sell. Partner status is also how a startup gets product management attention on missing APIs faster than the public voting queue.</p>
+      <p><strong>Engage co-innovation.</strong> The SAP Customer Engagement Initiative offers a slower but genuine route into product roadmaps. Useful for startups with deep domain expertise SAP does not currently cover, where the conversation is about strategic fit rather than feature voting.</p>
+      <p>The SAP-as-platform reality has not changed. What has changed is that fighting it is now explicitly unsupported, while working with it is more clearly documented than at any point in the last decade.</p>
+      <p>The most boring decision in the room may turn out to be the most consequential one.</p>
+    </div>
+    </article>
+
+    <!-- ═══════════ ARTICLE 2: Immigration RAG ═══════════ -->
+    <article id="art-rag">
     <div class="body">
       <div class="eyebrow">
         <span class="tag">AI / RAG</span>
@@ -638,8 +718,8 @@
     links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
   }, { passive: true });
 
-  const firstRag = document.querySelector('#toc-rag .toc-link');
-  if (firstRag) firstRag.classList.add('active');
+  const firstCleanCore = document.querySelector('#toc-clean-core .toc-link');
+  if (firstCleanCore) firstCleanCore.classList.add('active');
 </script>
 
 </body>
