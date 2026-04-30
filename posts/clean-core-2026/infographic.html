@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pull vs Push: Agentic AI Architecture</title>
+<style>
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300; font-display: swap; src: url('/assets/fonts/dm-sans-latin-300-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/dm-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/dm-serif-display-latin-400-normal.woff2') format('woff2'); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #070b18;
+  --surface: #0c1426;
+  --surface-2: #111a30;
+  --border: rgba(240, 160, 80, 0.17);
+  --border-bright: rgba(240, 160, 80, 0.32);
+  --amber: #f0a050;
+  --amber-soft: #f5c089;
+  --amber-dim: rgba(240, 160, 80, 0.10);
+  --pull: #4a9eff;
+  --pull-dim: rgba(74, 158, 255, 0.10);
+  --pull-border: rgba(74, 158, 255, 0.25);
+  --push: #f0a050;
+  --push-dim: rgba(240, 160, 80, 0.10);
+  --push-border: rgba(240, 160, 80, 0.25);
+  --text: #ede4d6;
+  --text-bright: #f8f1e3;
+  --muted: #9a8e7c;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.infographic {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+.inf-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--text-bright);
+  text-align: center;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.inf-subtitle {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+/* Two-column grid */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.col-header {
+  border-radius: 10px 10px 0 0;
+  padding: 0.75rem 1rem;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: -0.005em;
+}
+
+.col-pull .col-header {
+  background: var(--pull-dim);
+  border: 1px solid var(--pull-border);
+  color: var(--pull);
+}
+
+.col-push .col-header {
+  background: var(--push-dim);
+  border: 1px solid var(--push-border);
+  color: var(--push);
+}
+
+.col-header span {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 0.15rem;
+}
+
+.card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid transparent;
+}
+
+.col-pull .card { border-left-color: var(--pull); border: 1px solid var(--pull-border); border-left-width: 3px; }
+.col-push .card { border-left-color: var(--push); border: 1px solid var(--push-border); border-left-width: 3px; }
+
+.card-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.col-pull .card-label { color: var(--pull); }
+.col-push .card-label { color: var(--push); }
+
+.card-title {
+  font-weight: 600;
+  color: var(--text-bright);
+  font-size: 0.88rem;
+  margin-bottom: 0.25rem;
+}
+
+.card-body {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.card-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.chip {
+  font-size: 0.68rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.chip-pull {
+  background: var(--pull-dim);
+  color: #7ab8ff;
+  border: 1px solid var(--pull-border);
+}
+
+.chip-push {
+  background: var(--push-dim);
+  color: var(--amber-soft);
+  border: 1px solid var(--push-border);
+}
+
+/* Synthesis row */
+.synthesis {
+  background: var(--surface-2);
+  border: 1px solid var(--border-bright);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.synthesis-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.synthesis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.synth-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+.synth-item-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.synth-item-text {
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1rem 0;
+}
+
+@media (max-width: 600px) {
+  .columns { grid-template-columns: 1fr; }
+  .synthesis-grid { grid-template-columns: 1fr; }
+  .infographic { padding: 1.25rem 1rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="infographic">
+  <h1 class="inf-title">Pull vs Push: The Two Architectures of Agentic AI</h1>
+  <p class="inf-subtitle">How enterprises access AI capability -- and why the split matters for SAP customers</p>
+
+  <div class="columns">
+    <!-- Pull column -->
+    <div class="col-pull">
+      <div class="col-header">
+        <span>Architecture A</span>
+        Pull
+      </div>
+      <div class="card-group" style="margin-top:0.6rem;">
+
+        <div class="card">
+          <div class="card-label">What it is</div>
+          <div class="card-title">Agent-initiated, tool-mediated access</div>
+          <div class="card-body">The AI agent reaches into enterprise systems at runtime, using standardised tool APIs to retrieve data and execute actions on demand.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Key protocol</div>
+          <div class="card-title">Model Context Protocol (MCP)</div>
+          <div class="card-body">Anthropic's open standard (2024), now widely adopted. Defines how agents discover and call tools across system boundaries without custom integration work per pair.</div>
+          <div class="card-examples">
+            <span class="chip chip-pull">Claude</span>
+            <span class="chip chip-pull">GPT-4o</span>
+            <span class="chip chip-pull">Gemini</span>
+            <span class="chip chip-pull">Cursor</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Clean Core dependency</div>
+          <div class="card-title">Hard requirement via SAP API Policy v4</div>
+          <div class="card-body">Only stable, released SAP APIs are permitted as MCP tool endpoints. Custom ABAP that modifies standard objects is invisible -- or worse, unstable -- to external agents.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Opportunity</div>
+          <div class="card-title">Open agent ecosystem</div>
+          <div class="card-body">Any agent -- internal or third-party -- can be pointed at your SAP system if you expose clean APIs. Clean Core becomes a procurement signal, not just a technical posture.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Push column -->
+    <div class="col-push">
+      <div class="col-header">
+        <span>Architecture B</span>
+        Push
+      </div>
+      <div class="card-group" style="margin-top:0.6rem;">
+
+        <div class="card">
+          <div class="card-label">What it is</div>
+          <div class="card-title">Vendor-embedded, workflow-triggered AI</div>
+          <div class="card-body">The software vendor embeds AI directly into existing workflows. The system pushes AI suggestions into the user's context at defined moments -- no separate agent required.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">SAP's implementation</div>
+          <div class="card-title">Joule + SAP Business AI</div>
+          <div class="card-body">Joule is SAP's embedded copilot across S/4HANA, Ariba, SuccessFactors and others. Skills are pre-built workflow integrations. Joule Studio lets customers configure and extend them.</div>
+          <div class="card-examples">
+            <span class="chip chip-push">Joule</span>
+            <span class="chip chip-push">Joule Studio</span>
+            <span class="chip chip-push">SAP AI Agent Hub</span>
+            <span class="chip chip-push">Skills</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Clean Core dependency</div>
+          <div class="card-title">Softer, but real</div>
+          <div class="card-body">Joule skills target standard SAP processes. Heavy customisation can break skill applicability or require manual re-mapping after every upgrade -- the same migration tax as before, now affecting AI features.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Constraint</div>
+          <div class="card-title">SAP controls the roadmap</div>
+          <div class="card-body">Push AI ships on SAP's release cadence. Customers influence -- but do not direct -- which skills appear and when. The upside is zero integration cost; the tradeoff is reduced optionality.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Synthesis -->
+  <div class="synthesis">
+    <div class="synthesis-label">What Clean Core connects</div>
+    <div class="synthesis-grid">
+      <div class="synth-item">
+        <div class="synth-item-label">API stability</div>
+        <div class="synth-item-text">SAP API Policy v4 restricts MCP tool endpoints to stable, released APIs. Clean Core is the prerequisite.</div>
+      </div>
+      <div class="synth-item">
+        <div class="synth-item-label">Agent portability</div>
+        <div class="synth-item-text">A clean system can be reached by any MCP-compatible agent. A customised system is reachable only by agents written for its quirks.</div>
+      </div>
+      <div class="synth-item">
+        <div class="synth-item-label">Upgrade leverage</div>
+        <div class="synth-item-text">Clean Core preserves the ability to take SAP innovations -- Joule skills, new APIs -- without costly remediation on every release.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
